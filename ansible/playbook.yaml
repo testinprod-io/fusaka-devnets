@@ -1,0 +1,324 @@
+- hosts: localhost
+  roles:
+    - role: ethpandaops.general.ethereum_genesis
+      tags: [ethereum_genesis]
+
+- import_playbook: ethpandaops.general.bootstrap_server
+  vars:
+    target: "all:!localhost"
+  tags: [init-server, bootstrap]
+
+- hosts: all:!localhost
+  serial: "{{ batch_count | default('100%') }}"
+  become: true
+  roles:
+    # - role: robertdebock.fail2ban
+    #   tags: [init-server, fail2ban]
+    - role: geerlingguy.docker
+      tags: [init-server, docker]
+    - role: geerlingguy.pip
+      pip_install_packages:
+        - name: docker
+          extra_args: --break-system-packages
+      tags: [init-server, pip]
+    - role: ethpandaops.general.docker_cleanup
+      tags: [init-server, docker_cleanup]
+    - role: ethpandaops.general.docker_network
+      tags: [init-server, docker_network]
+    - role: ethpandaops.general.node_exporter
+      tags: [init-server, node_exporter]
+    - role: ethpandaops.general.prometheus
+      tags: [init-server, prometheus]
+    - role: ethpandaops.general.vector
+      tags: [init-server, vector]
+
+- hosts: bootnode
+  become: true
+  pre_tasks:
+    - name: Ensure /etc/ethereum_metrics_exporter directory exists
+      file:
+        path: /etc/ethereum_metrics_exporter
+        state: directory
+        mode: '0755'
+      tags: [ethereum, ethereum_node]
+    - name: Create config.yaml for ethereum_metrics_exporter
+      tags: [ethereum, ethereum_node]
+      copy:
+        dest: /etc/ethereum_metrics_exporter/config.yaml
+        content: |
+          consensus:
+            enabled: true
+            url: "http://beacon:5052"
+            name: "consensus-client"
+            eventStream:
+              enabled: true
+              topics: 
+                - "head"
+                - "block"
+                - "block_gossip"
+                - "attestation"
+                - "single_attestation"
+                - "voluntary_exit"
+                - "bls_to_execution_change"
+                - "proposer_slashing"
+                - "attester_slashing"
+                - "finalized_checkpoint"
+                - "chain_reorg"
+                - "contribution_and_proof"
+                - "light_client_finality_update"
+                - "light_client_optimistic_update"
+                - "payload_attributes"
+                - "blob_sidecar"
+          execution:
+            enabled: true
+            url: "http://execution:8545"
+            name: "execution-client"
+            modules:
+              - "eth"
+              - "net"
+              - "web3"
+              - "txpool"
+          diskUsage:
+            enabled: false
+            interval: 60m
+            directories:
+              - /data/ethereum
+        mode: '0644'
+  roles:
+    - role: ethpandaops.general.cl_bootnode
+      tags: [cl_bootnode]
+    - role: ethpandaops.general.ethereum_testnet_config
+      tags: [ethereum, eth_testnet_config, ethereum_testnet_config]
+    - role: ethpandaops.general.validator_keys
+      when: ethereum_node_cl_validator_enabled == true
+      tags: [ethereum, validator_keys]
+    - role: ethpandaops.general.ethereum_node
+      tags: [ethereum, ethereum_node]
+    - role: ethpandaops.general.docker_nginx_proxy
+      tags: [docker_nginx_proxy]
+    - role: ethpandaops.general.generate_basic_auth_nginx
+      tags: [docker_nginx_proxy]
+
+- hosts: mevrelay
+  become: true
+  roles:
+    - role: ethpandaops.general.mev_relay
+      tags: [mev_relay]
+
+- hosts: ethereum_node
+  serial: "{{ batch_count | default('100%') }}"
+  become: true
+  pre_tasks:
+    - name: Ensure /etc/ethereum_metrics_exporter directory exists
+      file:
+        path: /etc/ethereum_metrics_exporter
+        state: directory
+        mode: '0755'
+      tags: [ethereum, ethereum_node]
+    - name: Create config.yaml for ethereum_metrics_exporter
+      tags: [ethereum, ethereum_node]
+      copy:
+        dest: /etc/ethereum_metrics_exporter/config.yaml
+        content: |
+          consensus:
+            enabled: true
+            url: "http://beacon:5052"
+            name: "consensus-client"
+            eventStream:
+              enabled: true
+              topics: 
+                - "head"
+                - "block"
+                - "block_gossip"
+                - "attestation"
+                - "single_attestation"
+                - "voluntary_exit"
+                - "bls_to_execution_change"
+                - "proposer_slashing"
+                - "attester_slashing"
+                - "finalized_checkpoint"
+                - "chain_reorg"
+                - "contribution_and_proof"
+                - "light_client_finality_update"
+                - "light_client_optimistic_update"
+                - "payload_attributes"
+                - "blob_sidecar"
+          execution:
+            enabled: true
+            url: "http://execution:8545"
+            name: "execution-client"
+            modules:
+              - "eth"
+              - "net"
+              - "web3"
+              - "txpool"
+          diskUsage:
+            enabled: false
+            interval: 60m
+            directories:
+              - /data/ethereum
+        mode: '0644'
+  roles:
+    - role: ethpandaops.general.ethereum_testnet_config
+      tags: [ethereum, eth_testnet_config, ethereum_testnet_config]
+    - role: ethpandaops.general.validator_keys
+      when: ethereum_node_cl_validator_enabled == true
+      tags: [ethereum, validator_keys]
+    - role: ethpandaops.general.ethereum_node
+      tags: [ethereum, ethereum_node]
+    - role: ethpandaops.general.docker_nginx_proxy
+      tags: [docker_nginx_proxy]
+    - role: ethpandaops.general.generate_basic_auth_nginx
+      tags: [docker_nginx_proxy]  
+  post_tasks:
+    - name: Restart xatu sentry containers
+      tags: [restart_xatu]
+      community.docker.docker_container:
+        name: "xatu-sentry"
+        state: started
+        restart: true    
+    - name: Wait between runs
+      tags: [ethereum, ethereum_node]
+      ansible.builtin.pause:
+        seconds: >-
+          {{
+            batch_count is defined | ternary(
+                (batch_wait_seconds | default(30)),
+                0
+              )
+          }}
+    - name: Refresh inventory web
+      ansible.builtin.import_role:
+        name: ethpandaops.general.ethereum_inventory_web
+      tags: [eth_inventory_web, ethereum_inventory_web]
+      delegate_to: bootnode-1
+      run_once: true
+      vars:
+        eth_inventory_web_container_networks: "{{ docker_networks_shared }}" # noqa var-naming[no-role-prefix]
+        eth_inventory_web_container_env: # noqa var-naming[no-role-prefix]
+          VIRTUAL_HOST: "bootnode-1.{{ network_subdomain }}"
+          VIRTUAL_PORT: "80"
+          VIRTUAL_PATH: "/meta/api"
+          VIRTUAL_DEST: "/"
+          LETSENCRYPT_HOST: "bootnode-1.{{ network_subdomain }}"
+    - name: Apply bandwidth limit
+      tags: [apply_bandwidth]
+      shell: |
+        if [ -z "{{ bandwidth }}" ]; then
+          echo "Error: 'bandwidth' variable is not set. Aborting."
+          exit
+        fi
+        if [ "{{ bandwidth }}" -eq 0 ]; then
+          echo "Error: 'bandwidth' variable is 0. Aborting."
+          exit
+        fi
+        
+        sudo su
+        {% raw %}
+        execution_container_id=$(docker inspect execution -f '{{.State.Pid}}')
+        beacon_container_id=$(docker inspect beacon -f '{{.State.Pid}}')
+        {% endraw %}
+        
+        mkdir -p /var/run/netns
+        ln -sfT /proc/$execution_container_id/ns/net /var/run/netns/execution
+        ln -sfT /proc/$beacon_container_id/ns/net /var/run/netns/beacon
+
+        ip netns exec execution ip -br -c link
+        ip netns exec beacon ip -br -c link
+
+        tc -n execution qdisc del dev eth0 root
+        tc -n execution qdisc add dev eth0 handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+
+        tc -n beacon qdisc del dev eth0 root
+        tc -n beacon qdisc add dev eth0 handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+        docker restart ethereum-metrics-exporter prometheus
+  
+    - name: Remove bandwidth limit
+      tags: [remove_bandwidth]
+      shell: |
+        if [ -z "{{ bandwidth }}" ]; then
+          echo "Error: 'bandwidth' variable is not set. Aborting."
+          exit
+        fi
+        if [ "{{ bandwidth }}" -eq 0 ]; then
+          echo "Error: 'bandwidth' variable is 0. Aborting."
+          exit
+        fi
+        
+        tc -n execution qdisc del dev eth0 root
+        tc -n beacon qdisc del dev eth0 root
+
+
+- hosts: bootnode
+  become: true
+  roles:
+    - role: ethpandaops.general.ethereum_inventory_web
+      tags: [eth_inventory_web, ethereum_inventory_web]
+
+- hosts: dora
+  become: true
+  roles:
+    - role: ethpandaops.general.dora
+      tags: [dora]
+
+- hosts: localhost
+  roles:
+    - role: ethpandaops.general.ethereum_post_network_setup
+      tags: [eth_post_network_setup, ethereum_post_network_setup]
+    - role: ethpandaops.general.generate_kubernetes_config
+      tags: [gen_kubernetes_config, generate_kubernetes_config]
+
+- hosts: tx_fuzz_blobs
+  become: true
+  roles:
+    - role: ethpandaops.general.tx_fuzz
+      tags: [tx_fuzz, tx_fuzz_blobs]
+      vars:
+        tx_fuzz_container_name: "{{ tx_fuzz_blobs_container_name }}"
+        tx_fuzz_container_command: "{{ tx_fuzz_blobs_container_command }}"
+        tx_fuzz_container_image: "{{ tx_fuzz_blobs_container_image }}"
+- hosts: tx_fuzz_txs
+  become: true
+  roles:
+    - role: ethpandaops.general.tx_fuzz
+      tags: [tx_fuzz, tx_fuzz_txs]
+      vars:
+        tx_fuzz_container_name: "{{ tx_fuzz_txs_container_name }}"
+        tx_fuzz_container_command: "{{ tx_fuzz_txs_container_command }}"
+        tx_fuzz_container_image: "{{ tx_fuzz_txs_container_image }}"
+
+- hosts: spamoor
+  become: true
+  roles:
+    - role: spamoor
+      tags: [spamoor]
+
+- hosts: goomy
+  become: true
+  roles:
+    - role: ethpandaops.general.goomy
+      tags: [goomy]
+
+- hosts: xatu
+  become: true
+  roles:
+    - role: ethpandaops.general.xatu_stack
+      tags: [ethereum, xatu]
+
+- hosts: mev_flood
+  become: true
+  roles:
+    - role: ethpandaops.general.mev_flood
+      tags: [mev_flood]
+
+- hosts: hive
+  become: true
+  roles:
+    - role: gantsign.golang
+      golang_gopath: '/data/workspace-go'
+      golang_version: '1.21.13'
+      tags: [init-server, golang]
+    - role: ethpandaops.general.hive
+      tags: [hive]
+    - role: ethpandaops.general.docker_nginx_proxy
+      tags: [docker_nginx_proxy]
