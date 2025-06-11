@@ -1,0 +1,135 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dugtrio.yaml.j2
+
+dugtrio:
+  fullnameOverride: dugtrio
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/dugtrio
+    tag: latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 100m
+      memory: 200Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: beacon.fusaka-devnet-ssl-teku-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  dugtrioFrontendTitle: "Dugtrio: fusaka-devnet-ssl-teku-1"
+  dugtrioProxyCount: 2
+  dugtrioProxyBlockedPaths:
+    - "^/teku/v[0-9]+/admin/.*"
+
+  endpoints:
+  # Rpc
+  - url: http://prysm-geth-001:5052
+    name: rpc-prysm-geth-001
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: bootnode-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-1.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-10.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-10
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-11.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-11
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-12.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-12
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-13.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-13
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-14.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-14
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-15.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-15
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-16.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-16
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-17.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-17
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-18.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-18
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-19.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-19
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-2.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-2
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-20.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-20
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-21.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-21
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-22.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-22
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-23.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-23
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-24.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-24
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-25.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-25
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-26.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-26
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-27.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-27
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-28.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-28
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-29.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-29
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-3.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-3
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-30.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-30
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-31.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-31
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-32.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-32
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-33.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-33
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-34.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-34
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-35.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-35
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-36.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-36
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-37.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-37
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-38.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-38
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-39.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-39
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-4.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-4
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-40.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-40
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-41.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-41
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-42.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-42
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-43.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-43
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-44.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-44
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-45.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-45
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-46.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-46
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-47.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-47
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-48.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-48
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-49.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-49
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-5.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-5
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-50.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-50
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-6.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-6
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-7.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-7
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-8.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-8
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-9.fusaka-devnet-ssl-teku-1.yolkie.xyz
+    name: teku-nethermind-9

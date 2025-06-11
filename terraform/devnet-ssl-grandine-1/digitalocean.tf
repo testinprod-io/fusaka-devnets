@@ -18,6 +18,7 @@ variable "digitalocean_regions" {
     "nyc3",
     "fra1",
     "sfo3",
+    "ams3",
   ]
 }
 

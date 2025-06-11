@@ -1,0 +1,304 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-1.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-1.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-10
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-10.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-10.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-11
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-11.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-11.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-12
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-12.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-12.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-13
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-13.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-13.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-14
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-14.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-14.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-15
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-15.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-15.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-16
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-16.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-16.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-17
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-17.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-17.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-18
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-18.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-18.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-19
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-19.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-19.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-2.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-2.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-20
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-20.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-20.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-21
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-21.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-21.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-22
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-22.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-22.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-23
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-23.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-23.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-24
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-24.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-24.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-25
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-25.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-25.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-26
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-26.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-26.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-27
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-27.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-27.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-28
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-28.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-28.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-29
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-29.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-29.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-3.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-3.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-30
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-30.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-30.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-31
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-31.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-31.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-32
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-32.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-32.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-33
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-33.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-33.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-34
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-34.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-34.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-35
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-35.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-35.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-36
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-36.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-36.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-37
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-37.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-37.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-38
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-38.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-38.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-39
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-39.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-39.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-4.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-4.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-40
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-40.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-40.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-41
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-41.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-41.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-42
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-42.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-42.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-43
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-43.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-43.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-44
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-44.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-44.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-45
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-45.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-45.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-46
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-46.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-46.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-47
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-47.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-47.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-48
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-48.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-48.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-49
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-49.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-49.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-5.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-5.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-50
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-50.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-50.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-6.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-6.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-7
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-7.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-7.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-8
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-8.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-8.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+    - name:  grandine-nethermind-9
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-9.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-9.fusaka-devnet-ssl-grandine-1.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-grandine-1.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - grandine-nethermind-1
+      - grandine-nethermind-10
+      - grandine-nethermind-11
+      - grandine-nethermind-12
+      - grandine-nethermind-13
+      - grandine-nethermind-14
+      - grandine-nethermind-15
+      - grandine-nethermind-16
+      - grandine-nethermind-17
+      - grandine-nethermind-18
+      - grandine-nethermind-19
+      - grandine-nethermind-2
+      - grandine-nethermind-20
+      - grandine-nethermind-21
+      - grandine-nethermind-22
+      - grandine-nethermind-23
+      - grandine-nethermind-24
+      - grandine-nethermind-25
+      - grandine-nethermind-26
+      - grandine-nethermind-27
+      - grandine-nethermind-28
+      - grandine-nethermind-29
+      - grandine-nethermind-3
+      - grandine-nethermind-30
+      - grandine-nethermind-31
+      - grandine-nethermind-32
+      - grandine-nethermind-33
+      - grandine-nethermind-34
+      - grandine-nethermind-35
+      - grandine-nethermind-36
+      - grandine-nethermind-37
+      - grandine-nethermind-38
+      - grandine-nethermind-39
+      - grandine-nethermind-4
+      - grandine-nethermind-40
+      - grandine-nethermind-41
+      - grandine-nethermind-42
+      - grandine-nethermind-43
+      - grandine-nethermind-44
+      - grandine-nethermind-45
+      - grandine-nethermind-46
+      - grandine-nethermind-47
+      - grandine-nethermind-48
+      - grandine-nethermind-49
+      - grandine-nethermind-5
+      - grandine-nethermind-50
+      - grandine-nethermind-6
+      - grandine-nethermind-7
+      - grandine-nethermind-8
+      - grandine-nethermind-9
+    validatorPairNames:
+      - grandine-nethermind-10
+      - grandine-nethermind-11
+      - grandine-nethermind-12
+      - grandine-nethermind-13
+      - grandine-nethermind-14
+      - grandine-nethermind-15
+      - grandine-nethermind-16
+      - grandine-nethermind-17
+      - grandine-nethermind-18
+      - grandine-nethermind-19
+      - grandine-nethermind-2
+      - grandine-nethermind-20
+      - grandine-nethermind-21
+      - grandine-nethermind-22
+      - grandine-nethermind-23
+      - grandine-nethermind-24
+      - grandine-nethermind-25
+      - grandine-nethermind-26
+      - grandine-nethermind-27
+      - grandine-nethermind-28
+      - grandine-nethermind-29
+      - grandine-nethermind-3
+      - grandine-nethermind-30
+      - grandine-nethermind-31
+      - grandine-nethermind-32
+      - grandine-nethermind-33
+      - grandine-nethermind-34
+      - grandine-nethermind-35
+      - grandine-nethermind-36
+      - grandine-nethermind-37
+      - grandine-nethermind-38
+      - grandine-nethermind-39
+      - grandine-nethermind-4
+      - grandine-nethermind-40
+      - grandine-nethermind-41
+      - grandine-nethermind-42
+      - grandine-nethermind-43
+      - grandine-nethermind-44
+      - grandine-nethermind-45
+      - grandine-nethermind-46
+      - grandine-nethermind-47
+      - grandine-nethermind-48
+      - grandine-nethermind-49
+      - grandine-nethermind-5
+      - grandine-nethermind-50
+      - grandine-nethermind-6
+      - grandine-nethermind-7
+      - grandine-nethermind-8
+      - grandine-nethermind-9
+
+  assertoorTests: []

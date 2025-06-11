@@ -18,6 +18,7 @@ variable "digitalocean_regions" {
     "nyc3",
     "fra1",
     "sfo3",
+    "ams3",
   ]
 }
 
@@ -334,5 +335,5 @@ resource "local_file" "ansible_inventory" {
       )
     }
   )
-  filename = "../../ansible/inventories/devnet-ssl-nimbus-1/inventory.ini"
+  filename = "../../ansible/inventories/devnet-ssl-teku-1/inventory.ini"
 }

@@ -18,11 +18,10 @@ erigon_container_env:
   VIRTUAL_PORT: "{{ ethereum_node_el_ports_http_rpc | string }}"
   LETSENCRYPT_HOST: "{{ ethereum_node_rcp_hostname }}"
 erigon_container_command_extra_args:
-  - --chain=dev
   - --http.api=eth,erigon,engine,web3,net,debug,trace,txpool,admin
   - --http.vhosts=*
   - --ws
-  - --prune=htc
+  - --no-downloader
   - --networkid={{ ethereum_network_id }}
   - --db.size.limit=500GB
   - --bootnodes={{ ethereum_el_bootnodes | join(',') }}
@@ -80,7 +79,7 @@ prometheus_config: |
         - targets: ["{{ vars[ethereum_node_cl + '_container_name'] }}:{{ ethereum_node_cl_ports_metrics }}"]
           labels:
             instance: "{{ ethereum_network_name }}-{{ inventory_hostname }}"
-            supernode: "{{ ethereum_node_cl_supernode_enabled | bool }}"
+            supernode: "{{ ethereum_node_cl_supernode_enabled | bool | default(false) }}"
     - job_name: "execution"
       metrics_path: "/debug/metrics/prometheus"
       static_configs:
