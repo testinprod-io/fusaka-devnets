@@ -1,0 +1,254 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/ethereum-node.yaml.j2
+
+prysm-geth-001:
+  global:
+    main:
+      network: fusaka-devnet-ssl-4
+      engineEndpoint: http://geth-prysm-001:8551
+      rpcEndpoint: http://geth-prysm-001:8545
+      beaconEndpoint: http://prysm-geth-001:5052
+    checkpointSync:
+      enabled: false
+      addresses:
+        fusaka-devnet-ssl-4: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-4.yolkie.xyz
+    clientArgs:
+      networks:
+        fusaka-devnet-ssl-4:
+          execution:
+            besu:
+              - --genesis-file=/data/network-config/besu.json
+              - --bootnodes=enode://906053fd11468b19cfe66d06585c4fcc3e89e752c0c7c659ed46756bbb94e342f037630cac9e5112b71633df5a18f09aea2a669a14a59ab622213a88260e8e4a@206.189.202.177:30303?discport=30303
+              - --rpc-http-api=ADMIN,DEBUG,ETH,MINER,NET,TRACE,TXPOOL,WEB3
+              - --sync-mode=FULL
+              - --data-storage-format=BONSAI
+              - --bonsai-limit-trie-logs-enabled=false
+              - --ethstats=localhost:5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd@ethstats.fusaka-devnet-ssl-4.yolkie.xyz:443
+            nethermind:
+              - --Init.ChainSpecPath=/data/network-config/chainspec.json
+              - --JsonRpc.EnabledModules=Eth,Subscribe,Trace,TxPool,Web3,Personal,Proof,Net,Parity,Health,Rpc,Debug,Admin
+              - --Discovery.Bootnodes=enode://906053fd11468b19cfe66d06585c4fcc3e89e752c0c7c659ed46756bbb94e342f037630cac9e5112b71633df5a18f09aea2a669a14a59ab622213a88260e8e4a@206.189.202.177:30303?discport=30303
+              - --Init.IsMining=false
+              - --Pruning.Mode=None
+              - --config=none
+              - --EthStats.Enabled=true
+              - --EthStats.Name=localhost
+              - --EthStats.Secret=5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd
+              - --EthStats.Server=wss://ethstats.fusaka-devnet-ssl-4.yolkie.xyz/api/
+              - --log=INFO
+              - --Seq.MinLevel=Info
+            geth:
+              - --http.api=eth,net,web3,debug,admin
+              - --http.vhosts=*
+              - --networkid=7063093579
+              - --syncmode=full
+              - --bootnodes=enode://906053fd11468b19cfe66d06585c4fcc3e89e752c0c7c659ed46756bbb94e342f037630cac9e5112b71633df5a18f09aea2a669a14a59ab622213a88260e8e4a@206.189.202.177:30303?discport=30303,enode://6154b030540cb42273221a3ca1df01d8d4ca6ab743e1add41f8b946ad8f12cb797e5e85751db6d2fb5fc5854e5e69caf9ef1588cb15edd44418de168f3c50a65@137.184.96.205:30303?discport=30303,enode://81084925a6dc8ca45b6a0788701e4d8d612290b83f8fda8827c00e8b8b107636fb5956a008bdc4aeef83dd322752a245bc81899f2088330a680bb5e2d593834c@165.22.56.11:30303?discport=30303,enode://6d9f07fc32ba86357a54b3e0d8b455309bb6223bcdf877f9b5c796d8a591da31f18064f157e647cda729ec88ff9f5d8d69d7cf07d6652f1dc5bba0cbce997cd7@159.65.55.138:30303?discport=30303,enode://c9e7d706e9ddcdad49e5d3735f8293d9969cf4806f348ce351612850f5f06e301d19a7c5ba91652c74c4c370ce6274562123802a61930b9e324bdda09dcb158b@165.227.186.210:30303?discport=30303,enode://b60fdbea0708aa50f53f7779c1edcad60aa541d57d2a1df564c375e2cf5da2b19cf387ed79db39a58c58a02a36bbe31aaf2697af61d57e06c03a9b3636047e21@142.93.15.31:30303?discport=30303,enode://16bd3418fd5dfac87a8c5205ab5b0ee3d35de3b2fa5689a81c3f433c6b8a4d9cd9f88b5baad4bc25608e13508ba28294060fa52769aa20fa8d72e75bc733ab78@178.128.97.219:30303?discport=30303,enode://f7694ab8110fd926cc0d799da5f69ac6cb65fd3358fb1807de47936a8aef6625838d6416e67462f2813c76338408fbfaa0d632aa54a209358872f777ba2098ca@161.35.170.190:30303?discport=30303,enode://ef6aee4bc71a8ef8fe482c5fa8089c18920184afc7ca33248476c399426239c5350be903a8a556c28f352dd82774931447f4f0431251af4597e3ab33638fc7b7@68.183.150.61:30303?discport=30303,enode://10c57e45962e4980e7c4a2e0cc720b5673a8dfa1bf80df0d38289f054829c74697c17e432f6a3b365a549120fb2990991f5e8741586de8d0506be9a3d8873c0c@159.223.191.197:30303?discport=30303,enode://7913fb34bc25e344cc7c1cce9d9d58ab88abf36d150b060d2dd4ce88fb9c3d32ef9303dc3f48747552320a2e73a4a54c6783401e5993d0c1040de0d69cc8a1ac@188.166.214.108:30303?discport=30303,enode://78be1c706de4cca767e091522c44d7340a9fc79a040b51c1b5d0031c871c13f0a56e822a79e6d9d70f51d3f33ba518cbc55e39b5a175befedf50e54cc4e3d71a@46.101.80.7:30303?discport=30303,enode://267795ad9c504973ecefc06f6e4ecf3b23148e0cb6fa4e646065b091561b2d5a470a060597498d558d20d4e4506f62a564dd1952caa6e111b803a136218a55c2@104.248.4.250:30303?discport=30303,enode://6f7e80ad77f80b2dbbb61f21457f3522881375c8456fa543c375b495893de43b8f59ed60a9fd800e9be3a86eeaea030ed0b4585a0f3f95f9f72c641edb2ad339@134.122.26.192:30303?discport=30303,enode://3fbb54258b50fe7a321ff7b7bd8a635d2148a00e30bf665a2a05940f0cad6cef35c666bf14de6db37ba9e7091500942ed1b3ae8629f6e3e13332c1db3b92c785@165.232.161.94:30303?discport=30303,enode://5c8a01019644d85a41c7af21e0a0ddeb36a9593fe8546de2d4e5e65f39aac16d1479f299623a1d4a38d2c16a281384dea69a95432f1a0fc4d7db898bc3c52b15@165.232.41.116:30303?discport=30303,enode://716248e62fc58792c7a1e8fb0fca2f6d2cb7bff46629fbf98ccfc4e061242d2b29e0e3610f62a850f88d7ed410bda232e3dd733f77081921d078d1073b7dafb2@104.131.40.184:30303?discport=30303,enode://185147e748f50ec401740965259db2cc9188f9e20489d49a5d3d5fc1ea514212f33b8114df9076f0e302f103ba7323731b75e7a8017e33473e6afa9c5a467134@64.227.14.163:30303?discport=30303,enode://1af742000eb13e48e9ccc7a26b8609fcf705b8a90659780491f41a72c79142b7df58612168a15ee366082eaee2bf0a05fe7f86ff3e7bb9310926dbbca1ea3c72@152.42.229.57:30303?discport=30303,enode://579c45715e78612472ac723d689811804f3a2e08c9aad6a087aeb306a3b50e276b14aa618064ccc005d5e36e1909f3d663f70bf128c0eedd09b2b0e15410fdc7@209.97.133.187:30303?discport=30303,enode://900ba24bedca4bd679896ff4d2bcfe59a9611d4809ff6d90d51e82d80c83e3289de690f7fd9b6605bf8f72140f059a281c90a9b7fb089129d0bffd4c90428d13@138.197.100.77:30303?discport=30303,enode://0cbcee269d9ee33184c52468889608e20bfbf1ed0dd36171d3def343589cdba34912ec23352fb085914bd061f426db81b3ceb6a013741dcf30e431ec5fc6330e@142.93.3.149:30303?discport=30303,enode://f80180078b7fa18fb2d03944aeaa23e4dd75254f26d1e6f37ce99499457728e82e4f115324257f1a7d8d02fb5a0d05aee1a0ce7222f09758a8a4ac5fddf049fc@178.128.17.230:30303?discport=30303,enode://b52b148efff0bfa53e741f6699130f4f12600aa8c68dc228a3333175969cf848d47f5dcd5273e3a63d852c2806ea084bbf7592e2a8932c994a9566924ed0e442@165.22.124.224:30303?discport=30303,enode://583cb53729532bdac5eaef4b8a789aec137c7f0714e6e45be53460d8f6f15b6c9d9054607ed8e47d041d0f1c5cf02fc28b02fa2edaea873cb03efe4af694d094@159.65.254.13:30303?discport=30303,enode://c1cd4c71aced0201bdb9bf070cef12bbd1242fe3f8dcff5b4ab9866cb8dd1bb7043eb04f57956bb28b57eaf6fde0676c92264acedbc00b5d51d2892e172c85d3@67.205.157.56:30303?discport=30303,enode://35dbd0e9da687739f0b2a53f90d0449660214942151208744ec8e8e4c8cf6fdc55377d3d84ab7e23f7358eb5276348634a0bd2a444e78c0fff349139c31c4f6a@209.97.163.165:30303?discport=30303,enode://8ee69b529d8555adaf2c8b4e1a606c3c58585a871233bffac3b2271ac6e283eeb0495b4f102ae3f1d78baf47d977e1f5e13f729cec3f2d9a53763197328ab649@138.68.162.18:30303?discport=30303,enode://af1da60798f7c7d63c92525c0bc7628d57fdbfefb528c3ed14208554a44a8a11197931e8b6925173b87a8e0e0f899554562f029fee268e36603fe2c72d6f26ce@167.172.29.230:30303?discport=30303,enode://c4367f35d2bcff6d10bbf919d624aa03c40dedb254de5af2061fcd129b93d1c0f63b6e2b8866b6c7086816da6bcc95d5c3daf7a70c71678d87f4acf9ff32461a@147.182.143.85:30303?discport=30303,enode://2214bfb640bdaaae1f82bf064e9167e9c8592194982e0a9e796cb38f47cff53d1086cd45b13960fdf3fa5cad45046ef0c577bde9c9c4fada44778bcba0d307ff@178.128.110.13:30303?discport=30303,enode://af4d7bcb558abcc44f775e020b2b8b56ea3160fcf4fcd3e518127f6bb30f7532969cf6f4cc8d7ddc637812b8d7bf13959b74377cdb198947f1af0cdf653f8cf3@167.99.198.156:30303?discport=30303,enode://689c070dfc781fd91438b72d3e2d6ddd5df5d66d91f366f11f082a77be36950f9794eef3379ec6a0d23a60bddc514d3087ee025d16623fcb4e3cbe591cdcf72a@68.183.159.52:30303?discport=30303,enode://e4c2f30b9b73bacfb49068cb231e23af539d9a317d18030a9efe90a5505d4ce6d2e5b514479dc91ffaf500d43640757c0c344dd2702b14b45a761972117ca13f@165.227.90.151:30303?discport=30303,enode://6300892d7fb145c4e86c8f3ff657809b5e8848f60e65a5b9cc810ab2e23a8e062745b6980fcaad25b7794d5e40c78ea5c2956bd08069ace1ec2eb4e01dc2a991@159.223.67.231:30303?discport=30303,enode://ba3d9712de8d37aa31f4afcae74d9b2c9d6a68563be6909d2f8ffc23287f414867c8efee8ab9fe92b50f519e11703460ad8d3630fa6273d679c126076f80427a@68.183.43.210:30303?discport=30303,enode://487c6832ff57c2c7a78018c8c7552013dafa630ffd9053a17ab495e0f1b1986cc3d82ce8dca6fa60e35ffebd70cc2319e7413cad791162d83d4be2d62b8524e3@167.99.115.42:30303?discport=30303,enode://61c492cf4bbb109af133965292ecf88393aa5ab7e04f4588e774e1f5ebc91a3f06ea4f86c9657836405e3ea113809c35ea3377f467561cd787e7274c07289211@159.223.170.220:30303?discport=30303,enode://76dbe30ad6d791bcbff96f81bb6baee0055ad7e1d433bb0e6d21eb0d73ad5dfc8fe56a4fd0ba689d37c8a253725c408da073b8740879ee90e9465790a686a5bf@152.42.170.196:30303?discport=30303,enode://61a408bc146fbf6b6f6f09b320d5f5eeb12c23decf7013028aef6cce5d0f3d52311e6aae70a9e6ee07ce80f46050fcaeaf333ae88ec738057c30a15aed7d3046@134.209.19.15:30303?discport=30303,enode://ec77392e1d01cdd9db7b0c181675d08ea13f60eb04725e3b6d892bbdc8928878696e7f6c6563a42e60dc1495bb646a1a984e6a16e5adc22578caccc00f6915e9@64.225.17.116:30303?discport=30303,enode://438aff6f6596a5e65e6ef85acd4a9e91f3a95d92b01d4b22c71bb6a7b2c1decc242a50f52e5f8513df901bc56195e8bcff0c7e5f3a69b674da87023359a228ca@165.22.181.154:30303?discport=30303,enode://b046a62fc310ea00ef6149ee4ce40da5d7036761ec3f8295ef4b2d5364052108245e0c46a237dbcafc7294f0d27341a362a98787559328d69ba438bcad5cef66@143.198.86.83:30303?discport=30303,enode://a46a16ac1049157b7c30b1229004b24a516947761c204c98dd3400a6fec74e03ce52f2a99682e2c8db93dee1c4e4982143a3be238145cc63f8f3790c53bedbeb@165.232.96.249:30303?discport=30303,enode://a833a2c41d028ddbdfa38d476140d482e120d67ed8a89260d3ba1e23fcd5d8e0197c1e6bff5308b764c681c57c528063161fbde4c021d2fdbd27958b3abd6e65@159.203.70.28:30303?discport=30303,enode://4bc476c1fccf466c12b36f991e42f3912313d382a2b170c038e5f86dd23e35a25265cf342d0ff3ded9b94dca2f5fa0aa039f00b7ecb42de4750e85d1f43794f5@137.184.214.62:30303?discport=30303,enode://afe6bb2ed2bab5a207726060eed01eee2d28e15da5337f30076ec183b2648699b329674559acd296f93425d11bebbcfacf1b6737c9467710255710eb7b5e5611@143.198.198.136:30303?discport=30303,enode://d955e4f1e8d00f2f98687eb13ccf5bcfab0950c6f29df8170760b47eb1f5d31eaea99376b7683e0b92e15b581e81a4023a1dcc5173376b5ab4ff595c77407cc6@138.68.151.149:30303?discport=30303,enode://33a17bff16156711e46a538389927aed2d8715f2acc08cb0ccad6078365fe657d2ecdcde1f69c9419314d131867e3d9ae002c708df6b07d773dfd4751ef73c32@167.99.124.99:30303?discport=30303,enode://d7280f3af3cd7c0da54f18d32e85ce34d6849cd243a2f7f0e2d5e341fb02dc41877ab8d268a35e55e5553e7db1ed0cbed4fdafd3236c01f66d744afe5772d81d@143.198.171.212:30303?discport=30303,enode://ede1e92b07d96a7c46fec28f61fce3c865e3b3c6ebd40a125681290cbb2502c35254b102bf4542379e1c6836beafba25c5ae3b0e007a5f5c5ca34a33a8aa7346@143.198.85.180:30303?discport=30303,enode://c2ae5ad5a1581e66eea331fedd69eb53946a8664cd6de34f891ad87c8709a8f1c3f023f86bcbb9ea4af8b76d0461779d718f6467c6e400f41e931ace4d773b42@209.38.165.62:30303?discport=30303,enode://aa0b66c1a927110a562a5a36b2cfbc952798f9608a0dd761d9aa1406c70e164de143366912978e4cae8cb769fed823626bfa039906f11355231f89318a5208c6@167.71.91.227:30303?discport=30303,enode://b6726134651c76f9c9e0f797a42872a17d2a5cfa220d118685c89b0d5aa82055c4eb7694efab5620500bb6fe50e02c64fc76346f7e1dd94d625c4c463f681753@137.184.21.137:30303?discport=30303,enode://a88b6459e8f8898bdeb23dd9d82519260a2e1f0ff2d6c6a986c08b6b6f7ef1db2a76ca9fb8b15d2ae1935cdc6607f7ed19d84f8639816a39af53ca2fe3721ca2@152.42.210.146:30303?discport=30303,enode://58b84ce69da61a4bb8cd782aaf6919ffc581737b105d376ec291fd1f5b43aa5b24b7f70fc71d75e44fda3ee7bb27ee359d5ce8da36a4839717276fec051dcf31@134.122.101.211:30303?discport=30303,enode://c0be964008a34259337563cee98e5f136730fba9580e32f8b86764fdfd5a3b87cd2e5de460675eb2655f0c3b1a90d2f0596079c5591d4063b1548169a27907d7@143.198.3.131:30303?discport=30303,enode://c593d8739f3a5aebdfa743208943d90e2f8daf344afecc9f6b27ef0cc2590945fe09d76d8369638572c2fca95fe7d71b6c18500d1f4d2202ca2e38979c0d0e2c@68.183.21.179:30303?discport=30303,enode://fe335515506a160f18402496edabc94b13a95bb1d71842bc8efc8d518844d26220742ce2c37f151556dd35a284bfa84e225c1669270a82aed9b75165a95a66e3@139.59.238.49:30303?discport=30303,enode://dbe405e8e213017fcaf066a1557f1741923cdaf37aec5403ce3c28073e6a65c9375a0504f7c78997b65b857cd3b66fa7ab9854bd365c7d33e382cf08e7754ff7@139.59.167.90:30303?discport=30303,enode://e6c4ed93c171f1a19663979acd8a87bd4f9c9d37eba6c5020649c0ca8a2fce96fdc2bb27a4a0f67aa5e6cb81e56f5458758eb44d81fda3eb053103e9af027bc9@167.172.230.20:30303?discport=30303,enode://bae7907029fadcae8d761a5c437a089ea300861f22015e4e5d614c74ae4bfcc256738511a0e40e7eff7bc52238d8bf976057003d6ef4f862dc438f0ad05d62e6@159.89.231.146:30303?discport=30303,enode://41e046029b0e87b856d15fc91ed6ce7d01eeb77e553f3d1988113dd4cbf488c89908dcada3a7a96b97e6b6ae78609d375134ced1dd0b5023fc39d7e5b8378123@152.42.169.52:30303?discport=30303,enode://25378c4746e4b7c6267387dd7bc5d4f321323f83db16d3ab875c1d862ed46dbbaf2246bc71e80ece613e5c9e3a12353d0a8b1ee26aa626c3c35f4744e36fd9a3@209.97.187.218:30303?discport=30303,enode://402910b9a88e5da98319fe485c24e37d85aca0217a9de37e28b4d447f4f8d9337d0fe32c25c8ae4ba0e9f1b5ac251102f00d9e964d6db63a03ad10b927852e1d@167.99.120.31:30303?discport=30303
+              - --ethstats=localhost:5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd@ethstats.fusaka-devnet-ssl-4.yolkie.xyz
+              - --rpc.allow-unprotected-txs
+            erigon:
+              - --http.api=eth,erigon,engine,web3,net,debug,trace,txpool,admin
+              - --http.vhosts=*
+              - --ws
+              - --no-downloader
+              - --networkid=7063093579
+              - --db.size.limit=500GB
+              - --bootnodes=enode://906053fd11468b19cfe66d06585c4fcc3e89e752c0c7c659ed46756bbb94e342f037630cac9e5112b71633df5a18f09aea2a669a14a59ab622213a88260e8e4a@206.189.202.177:30303?discport=30303
+              - --ethstats=localhost:5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd@ethstats.fusaka-devnet-ssl-4.yolkie.xyz
+            ethereumjs:
+          consensus:
+            lodestar:
+              - --paramsFile=/data/network-config/config.yaml
+              - --genesisStateFile=/data/network-config/genesis.ssz
+              - --bootnodes=enr:-Iq4QHRj4q1TAVRqBO6RfRFDarjenfAL8NqJFzZuSVdMG3QJUvxcyVDOiFE2wXKYeKqzWarPR6Sx0Ag_F2VxS_3Ie7qGAZdkbDXigmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-Li4QAQdj66_gdJhLN_-s9HAB3h6M2vi_EbRnfxJHtiC3gWpF4anACLOC8mJ7QYkq4e9mxELy0_O6TiwCA4x0bxiAnIFh2F0dG5ldHOIAAAAABgAAACDY2djgYCEZXRoMpCll6iOcFFHkwEAAAAAAAAAgmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQNC2VhvRKlellxhmeoHGD92nSZYrcLR5UFTH42KkxkwToN0Y3CCIyiDdWRwgiMo
+              - --rest.namespace="*"
+              - --network.connectToDiscv5Bootnodes
+              - --nat=true
+            teku:
+              - --network=/data/network-config/config.yaml
+              - --genesis-state=/data/network-config/genesis.ssz
+              - --p2p-discovery-bootnodes=enr:-Iq4QHRj4q1TAVRqBO6RfRFDarjenfAL8NqJFzZuSVdMG3QJUvxcyVDOiFE2wXKYeKqzWarPR6Sx0Ag_F2VxS_3Ie7qGAZdkbDXigmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-Li4QAQdj66_gdJhLN_-s9HAB3h6M2vi_EbRnfxJHtiC3gWpF4anACLOC8mJ7QYkq4e9mxELy0_O6TiwCA4x0bxiAnIFh2F0dG5ldHOIAAAAABgAAACDY2djgYCEZXRoMpCll6iOcFFHkwEAAAAAAAAAgmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQNC2VhvRKlellxhmeoHGD92nSZYrcLR5UFTH42KkxkwToN0Y3CCIyiDdWRwgiMo
+              - --p2p-peer-upper-bound=100
+              - --data-storage-non-canonical-blocks-enabled=true
+              - --data-storage-mode=PRUNE
+              - --logging=info
+              - --Xlog-include-p2p-warnings-enabled
+              - --metrics-block-timing-tracking-enabled
+              - --ignore-weak-subjectivity-period-enabled
+              - --rest-api-docs-enabled
+            prysm:
+              - --grpc-gateway-corsdomain=*
+              - --chain-config-file=/data/network-config/config.yaml
+              - --genesis-state=/data/network-config/genesis.ssz
+              - --contract-deployment-block=0
+              - --min-sync-peers=1
+              - --pprof
+              - --enable-debug-rpc-endpoints
+              - --verbosity=debug
+              - --subscribe-all-subnets
+              - --bootstrap-node=enr:-Iq4QHRj4q1TAVRqBO6RfRFDarjenfAL8NqJFzZuSVdMG3QJUvxcyVDOiFE2wXKYeKqzWarPR6Sx0Ag_F2VxS_3Ie7qGAZdkbDXigmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
+              - --bootstrap-node=enr:-Li4QAQdj66_gdJhLN_-s9HAB3h6M2vi_EbRnfxJHtiC3gWpF4anACLOC8mJ7QYkq4e9mxELy0_O6TiwCA4x0bxiAnIFh2F0dG5ldHOIAAAAABgAAACDY2djgYCEZXRoMpCll6iOcFFHkwEAAAAAAAAAgmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQNC2VhvRKlellxhmeoHGD92nSZYrcLR5UFTH42KkxkwToN0Y3CCIyiDdWRwgiMo
+            lighthouse:
+              - --testnet-dir=/data/network-config
+              - --boot-nodes=enr:-Iq4QHRj4q1TAVRqBO6RfRFDarjenfAL8NqJFzZuSVdMG3QJUvxcyVDOiFE2wXKYeKqzWarPR6Sx0Ag_F2VxS_3Ie7qGAZdkbDXigmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-Li4QAQdj66_gdJhLN_-s9HAB3h6M2vi_EbRnfxJHtiC3gWpF4anACLOC8mJ7QYkq4e9mxELy0_O6TiwCA4x0bxiAnIFh2F0dG5ldHOIAAAAABgAAACDY2djgYCEZXRoMpCll6iOcFFHkwEAAAAAAAAAgmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQNC2VhvRKlellxhmeoHGD92nSZYrcLR5UFTH42KkxkwToN0Y3CCIyiDdWRwgiMo
+              - --debug-level=debug
+            nimbus:
+              - --network=/data/network-config
+              - --validator-monitor-auto=false
+              - --doppelganger-detection=off
+              - --log-level=DEBUG
+              - --light-client-data-serve=false
+              - --bootstrap-node=enr:-Iq4QHRj4q1TAVRqBO6RfRFDarjenfAL8NqJFzZuSVdMG3QJUvxcyVDOiFE2wXKYeKqzWarPR6Sx0Ag_F2VxS_3Ie7qGAZdkbDXigmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
+              - --bootstrap-node=enr:-Li4QAQdj66_gdJhLN_-s9HAB3h6M2vi_EbRnfxJHtiC3gWpF4anACLOC8mJ7QYkq4e9mxELy0_O6TiwCA4x0bxiAnIFh2F0dG5ldHOIAAAAABgAAACDY2djgYCEZXRoMpCll6iOcFFHkwEAAAAAAAAAgmlkgnY0gmlwhM69yrGJc2VjcDI1NmsxoQNC2VhvRKlellxhmeoHGD92nSZYrcLR5UFTH42KkxkwToN0Y3CCIyiDdWRwgiMo
+
+
+  geth:
+    enabled: true
+    fullnameOverride: geth-prysm-001
+    image:
+      repository: docker.ethquokkaops.io/dh/ethpandaops/geth
+      tag: fusaka-devnet-1
+      pullPolicy: Always
+    p2pNodePort:
+      enabled: true
+      port: 31405
+    persistence:
+      enabled: true
+      size: 100Gi
+    podLabels:
+      network: fusaka-devnet-ssl-4
+      testnet: fusaka-devnet-ssl-4
+      ethereum_network: fusaka-devnet-ssl-4
+      ethereum_role: execution
+      consensus_client: prysm
+      execution_client: geth
+      ethereum_instance: geth-prysm-001
+    resources:
+      requests:
+        cpu: 2000m
+        memory: 5Gi
+      limits:
+        cpu: 3000m
+        memory: 7Gi
+    initContainers:
+      - name: init-config
+        image: alpine:latest
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsNonRoot: false
+          runAsUser: 0
+        command:
+          - sh
+          - -ace
+          - >
+            CHAINSPEC_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/el/chainspec.json;
+            GENESIS_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/el/genesis.json;
+            BESU_GENESIS_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/el/besu.json;
+            ENODES_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/el/enodes.txt;
+            mkdir -p /data/network-config;
+            if ! [ -f /data/network_config_init_done ];
+            then
+              apk update && apk add curl jq;
+              wget -O /data/network-config/chainspec.json $CHAINSPEC_URI;
+              wget -O /data/network-config/genesis.json $GENESIS_URI;
+              wget -O /data/network-config/besu.json $BESU_GENESIS_URI;
+              wget -O /data/network-config/enodes.txt $ENODES_URI;
+              cat /data/network-config/genesis.json | jq -r '.config.chainId' > /data/network-config/chainid.txt;
+              touch /data/network_config_init_done;
+              echo "network config init done";
+            else
+              echo "network config already present";
+            fi;
+            echo "bootnode init done: $(cat /data/network-config/enodes.txt)";
+        volumeMounts:
+          - name: storage
+            mountPath: "/data"
+      - name: init-genesis
+        image: docker.ethquokkaops.io/dh/ethpandaops/geth:fusaka-devnet-1
+        imagePullPolicy: Always
+        securityContext:
+          runAsNonRoot: false
+          runAsUser: 0
+        command:
+          - sh
+          - -ace
+          - >
+            if ! [ -f /data/genesis_init_done ];
+            then
+              geth init --datadir /data /data/network-config/genesis.json;
+              touch /data/genesis_init_done;
+              echo "genesis init done";
+            else
+              echo "genesis is already initialized";
+            fi;
+        volumeMounts:
+          - name: storage
+            mountPath: "/data"
+
+  prysm:
+    checkpointSync:
+      enabled: false
+      addresses:
+        fusaka-devnet-ssl-4: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-4.yolkie.xyz
+    enabled: true
+    fullnameOverride: prysm-geth-001
+    image:
+      repository: docker.ethquokkaops.io/dh/ethpandaops/prysm-beacon-chain
+      tag: fusaka-devnet-1-49d5065
+      pullPolicy: Always
+    mode: "beacon"
+    p2pNodePort:
+      enabled: true
+      port: 32405
+    podLabels:
+      network: fusaka-devnet-ssl-4
+      testnet: fusaka-devnet-ssl-4
+      ethereum_network: fusaka-devnet-ssl-4
+      ethereum_role: consensus
+      consensus_client: prysm
+      execution_client: geth
+      ethereum_instance: prysm-geth-001
+    resources:
+      requests:
+        cpu: 2000m
+        memory: 5Gi
+      limits:
+        cpu: 3000m
+        memory: 7Gi
+    persistence:
+      enabled: true
+      size: 200Gi
+    initContainers:
+    - name: init-genesis
+      image: alpine:latest
+      imagePullPolicy: IfNotPresent
+      securityContext:
+        runAsNonRoot: false
+        runAsUser: 0
+      command:
+        - sh
+        - -ace
+        - >
+          apk add jq curl sed;
+          DEPOSIT_CONTRACT_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/cl/deposit_contract.txt;
+          DEPOSIT_CONTRACT_BLOCK_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/cl/deposit_contract_block.txt;
+          DEPOSIT_CONTRACT_BLOCK_HASH_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/cl/deposit_contract_block_hash.txt;
+          GENESIS_CONFIG_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/cl/config.yaml;
+          GENESIS_SSZ_URI=https://config.fusaka-devnet-ssl-4.yolkie.xyz/cl/genesis.ssz;
+          mkdir -p /data/network-config;
+          curl -s https://config.fusaka-devnet-ssl-4.yolkie.xyz/api/v1/nodes/inventory | jq -r '.ethereum_pairs[] | .consensus.enr' > /data/network-config/bootstrap_nodes.txt;
+          if ! [ -f /data/network-config/genesis.ssz ];
+          then
+            wget -O /data/network-config/deposit_contract.txt $DEPOSIT_CONTRACT_URI;
+            wget -O /data/network-config/deposit_contract_block.txt $DEPOSIT_CONTRACT_BLOCK_URI;
+            wget -O /data/network-config/deposit_contract_block_hash.txt $DEPOSIT_CONTRACT_BLOCK_HASH_URI;
+            wget -O /data/network-config/config.yaml $GENESIS_CONFIG_URI;
+            wget -O /data/network-config/genesis.ssz $GENESIS_SSZ_URI;
+            echo "genesis init done";
+          else
+            echo "genesis exists. skipping...";
+          fi;
+          (tr '\n' ',' < /data/network-config/bootstrap_nodes.txt | sed 's/[^,]*/"&"/g') > /data/network-config/bootstrap_nodes2.txt;
+          mv /data/network-config/bootstrap_nodes2.txt /data/network-config/bootstrap_nodes.txt;
+          echo "bootnode init done: $(cat /data/network-config/bootstrap_nodes.txt)";
+      volumeMounts:
+        - name: storage
+          mountPath: "/data"

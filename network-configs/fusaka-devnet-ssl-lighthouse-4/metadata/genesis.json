@@ -36,12 +36,18 @@
         "target": 128,
         "max": 128,
         "baseFeeUpdateFraction": 5007716
+      },
+      "bpo2": {
+        "target": 72,
+        "max": 72,
+        "baseFeeUpdateFraction": 5007716
       }
     },
     "depositContractAddress": "0x00000000219ab540356cBB839Cbe05303d7705Fa",
     "pragueTime": 0,
     "osakaTime": 1749568139,
-    "bpo1Time": 1749568523
+    "bpo1Time": 1749568523,
+    "bpo2Time": 1749732875
   },
   "alloc": {
     "0x0000000000000000000000000000000000000000": {

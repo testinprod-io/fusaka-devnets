@@ -72,6 +72,12 @@
         "target": 128,
         "max": 128,
         "baseFeeUpdateFraction": "0x4c6964"
+      },
+      {
+        "timestamp": "0x684ace0b",
+        "target": 72,
+        "max": 72,
+        "baseFeeUpdateFraction": "0x4c6964"
       }
     ],
     "eip7594TransitionTimestamp": "0x68484a8b",
