@@ -1,0 +1,304 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-1.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-1.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-10
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-10.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-10.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-11
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-11.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-11.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-12
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-12.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-12.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-13
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-13.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-13.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-14
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-14.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-14.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-15
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-15.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-15.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-16
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-16.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-16.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-17
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-17.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-17.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-18
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-18.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-18.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-19
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-19.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-19.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-2.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-2.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-20
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-20.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-20.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-21
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-21.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-21.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-22
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-22.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-22.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-23
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-23.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-23.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-24
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-24.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-24.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-25
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-25.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-25.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-26
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-26.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-26.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-27
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-27.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-27.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-28
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-28.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-28.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-29
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-29.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-29.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-3.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-3.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-30
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-30.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-30.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-31
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-31.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-31.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-32
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-32.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-32.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-33
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-33.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-33.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-34
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-34.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-34.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-35
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-35.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-35.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-36
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-36.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-36.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-37
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-37.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-37.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-38
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-38.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-38.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-39
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-39.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-39.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-4.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-4.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-40
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-40.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-40.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-41
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-41.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-41.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-42
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-42.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-42.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-43
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-43.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-43.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-44
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-44.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-44.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-45
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-45.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-45.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-46
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-46.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-46.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-47
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-47.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-47.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-48
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-48.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-48.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-49
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-49.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-49.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-5.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-5.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-50
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-50.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-50.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-6.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-6.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-7
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-7.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-7.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-8
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-8.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-8.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    - name:  lighthouse-nethermind-9
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-9.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-9.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - lighthouse-nethermind-1
+      - lighthouse-nethermind-10
+      - lighthouse-nethermind-11
+      - lighthouse-nethermind-12
+      - lighthouse-nethermind-13
+      - lighthouse-nethermind-14
+      - lighthouse-nethermind-15
+      - lighthouse-nethermind-16
+      - lighthouse-nethermind-17
+      - lighthouse-nethermind-18
+      - lighthouse-nethermind-19
+      - lighthouse-nethermind-2
+      - lighthouse-nethermind-20
+      - lighthouse-nethermind-21
+      - lighthouse-nethermind-22
+      - lighthouse-nethermind-23
+      - lighthouse-nethermind-24
+      - lighthouse-nethermind-25
+      - lighthouse-nethermind-26
+      - lighthouse-nethermind-27
+      - lighthouse-nethermind-28
+      - lighthouse-nethermind-29
+      - lighthouse-nethermind-3
+      - lighthouse-nethermind-30
+      - lighthouse-nethermind-31
+      - lighthouse-nethermind-32
+      - lighthouse-nethermind-33
+      - lighthouse-nethermind-34
+      - lighthouse-nethermind-35
+      - lighthouse-nethermind-36
+      - lighthouse-nethermind-37
+      - lighthouse-nethermind-38
+      - lighthouse-nethermind-39
+      - lighthouse-nethermind-4
+      - lighthouse-nethermind-40
+      - lighthouse-nethermind-41
+      - lighthouse-nethermind-42
+      - lighthouse-nethermind-43
+      - lighthouse-nethermind-44
+      - lighthouse-nethermind-45
+      - lighthouse-nethermind-46
+      - lighthouse-nethermind-47
+      - lighthouse-nethermind-48
+      - lighthouse-nethermind-49
+      - lighthouse-nethermind-5
+      - lighthouse-nethermind-50
+      - lighthouse-nethermind-6
+      - lighthouse-nethermind-7
+      - lighthouse-nethermind-8
+      - lighthouse-nethermind-9
+    validatorPairNames:
+      - lighthouse-nethermind-10
+      - lighthouse-nethermind-11
+      - lighthouse-nethermind-12
+      - lighthouse-nethermind-13
+      - lighthouse-nethermind-14
+      - lighthouse-nethermind-15
+      - lighthouse-nethermind-16
+      - lighthouse-nethermind-17
+      - lighthouse-nethermind-18
+      - lighthouse-nethermind-19
+      - lighthouse-nethermind-2
+      - lighthouse-nethermind-20
+      - lighthouse-nethermind-21
+      - lighthouse-nethermind-22
+      - lighthouse-nethermind-23
+      - lighthouse-nethermind-24
+      - lighthouse-nethermind-25
+      - lighthouse-nethermind-26
+      - lighthouse-nethermind-27
+      - lighthouse-nethermind-28
+      - lighthouse-nethermind-29
+      - lighthouse-nethermind-3
+      - lighthouse-nethermind-30
+      - lighthouse-nethermind-31
+      - lighthouse-nethermind-32
+      - lighthouse-nethermind-33
+      - lighthouse-nethermind-34
+      - lighthouse-nethermind-35
+      - lighthouse-nethermind-36
+      - lighthouse-nethermind-37
+      - lighthouse-nethermind-38
+      - lighthouse-nethermind-39
+      - lighthouse-nethermind-4
+      - lighthouse-nethermind-40
+      - lighthouse-nethermind-41
+      - lighthouse-nethermind-42
+      - lighthouse-nethermind-43
+      - lighthouse-nethermind-44
+      - lighthouse-nethermind-45
+      - lighthouse-nethermind-46
+      - lighthouse-nethermind-47
+      - lighthouse-nethermind-48
+      - lighthouse-nethermind-49
+      - lighthouse-nethermind-5
+      - lighthouse-nethermind-50
+      - lighthouse-nethermind-6
+      - lighthouse-nethermind-7
+      - lighthouse-nethermind-8
+      - lighthouse-nethermind-9
+
+  assertoorTests: []

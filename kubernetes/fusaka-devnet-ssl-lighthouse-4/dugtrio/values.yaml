@@ -1,0 +1,135 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dugtrio.yaml.j2
+
+dugtrio:
+  fullnameOverride: dugtrio
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/dugtrio
+    tag: latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 100m
+      memory: 200Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: beacon.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  dugtrioFrontendTitle: "Dugtrio: fusaka-devnet-ssl-lighthouse-4"
+  dugtrioProxyCount: 2
+  dugtrioProxyBlockedPaths:
+    - "^/teku/v[0-9]+/admin/.*"
+
+  endpoints:
+  # Rpc
+  - url: http://prysm-geth-001:5052
+    name: rpc-prysm-geth-001
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: bootnode-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-1.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-10.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-10
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-11.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-11
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-12.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-12
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-13.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-13
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-14.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-14
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-15.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-15
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-16.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-16
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-17.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-17
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-18.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-18
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-19.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-19
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-2.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-2
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-20.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-20
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-21.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-21
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-22.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-22
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-23.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-23
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-24.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-24
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-25.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-25
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-26.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-26
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-27.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-27
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-28.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-28
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-29.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-29
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-3.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-3
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-30.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-30
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-31.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-31
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-32.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-32
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-33.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-33
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-34.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-34
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-35.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-35
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-36.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-36
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-37.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-37
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-38.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-38
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-39.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-39
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-4.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-4
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-40.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-40
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-41.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-41
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-42.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-42
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-43.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-43
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-44.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-44
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-45.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-45
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-46.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-46
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-47.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-47
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-48.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-48
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-49.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-49
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-5.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-5
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-50.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-50
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-6.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-6
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-7.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-7
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-8.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-8
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-9.fusaka-devnet-ssl-lighthouse-4.yolkie.xyz
+    name: lighthouse-nethermind-9

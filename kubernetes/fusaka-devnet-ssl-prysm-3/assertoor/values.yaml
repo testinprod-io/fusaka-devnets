@@ -1,0 +1,304 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-1.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-1.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-10
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-10.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-10.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-11
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-11.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-11.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-12
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-12.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-12.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-13
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-13.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-13.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-14
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-14.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-14.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-15
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-15.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-15.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-16
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-16.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-16.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-17
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-17.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-17.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-18
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-18.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-18.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-19
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-19.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-19.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-2.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-2.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-20
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-20.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-20.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-21
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-21.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-21.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-22
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-22.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-22.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-23
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-23.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-23.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-24
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-24.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-24.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-25
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-25.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-25.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-26
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-26.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-26.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-27
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-27.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-27.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-28
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-28.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-28.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-29
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-29.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-29.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-3.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-3.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-30
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-30.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-30.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-31
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-31.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-31.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-32
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-32.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-32.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-33
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-33.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-33.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-34
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-34.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-34.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-35
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-35.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-35.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-36
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-36.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-36.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-37
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-37.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-37.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-38
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-38.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-38.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-39
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-39.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-39.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-4.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-4.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-40
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-40.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-40.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-41
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-41.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-41.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-42
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-42.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-42.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-43
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-43.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-43.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-44
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-44.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-44.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-45
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-45.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-45.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-46
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-46.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-46.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-47
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-47.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-47.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-48
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-48.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-48.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-49
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-49.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-49.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-5.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-5.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-50
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-50.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-50.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-6.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-6.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-7
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-7.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-7.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-8
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-8.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-8.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+    - name:  prysm-nethermind-9
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-9.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-9.fusaka-devnet-ssl-prysm-3.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-prysm-3.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - prysm-nethermind-1
+      - prysm-nethermind-10
+      - prysm-nethermind-11
+      - prysm-nethermind-12
+      - prysm-nethermind-13
+      - prysm-nethermind-14
+      - prysm-nethermind-15
+      - prysm-nethermind-16
+      - prysm-nethermind-17
+      - prysm-nethermind-18
+      - prysm-nethermind-19
+      - prysm-nethermind-2
+      - prysm-nethermind-20
+      - prysm-nethermind-21
+      - prysm-nethermind-22
+      - prysm-nethermind-23
+      - prysm-nethermind-24
+      - prysm-nethermind-25
+      - prysm-nethermind-26
+      - prysm-nethermind-27
+      - prysm-nethermind-28
+      - prysm-nethermind-29
+      - prysm-nethermind-3
+      - prysm-nethermind-30
+      - prysm-nethermind-31
+      - prysm-nethermind-32
+      - prysm-nethermind-33
+      - prysm-nethermind-34
+      - prysm-nethermind-35
+      - prysm-nethermind-36
+      - prysm-nethermind-37
+      - prysm-nethermind-38
+      - prysm-nethermind-39
+      - prysm-nethermind-4
+      - prysm-nethermind-40
+      - prysm-nethermind-41
+      - prysm-nethermind-42
+      - prysm-nethermind-43
+      - prysm-nethermind-44
+      - prysm-nethermind-45
+      - prysm-nethermind-46
+      - prysm-nethermind-47
+      - prysm-nethermind-48
+      - prysm-nethermind-49
+      - prysm-nethermind-5
+      - prysm-nethermind-50
+      - prysm-nethermind-6
+      - prysm-nethermind-7
+      - prysm-nethermind-8
+      - prysm-nethermind-9
+    validatorPairNames:
+      - prysm-nethermind-10
+      - prysm-nethermind-11
+      - prysm-nethermind-12
+      - prysm-nethermind-13
+      - prysm-nethermind-14
+      - prysm-nethermind-15
+      - prysm-nethermind-16
+      - prysm-nethermind-17
+      - prysm-nethermind-18
+      - prysm-nethermind-19
+      - prysm-nethermind-2
+      - prysm-nethermind-20
+      - prysm-nethermind-21
+      - prysm-nethermind-22
+      - prysm-nethermind-23
+      - prysm-nethermind-24
+      - prysm-nethermind-25
+      - prysm-nethermind-26
+      - prysm-nethermind-27
+      - prysm-nethermind-28
+      - prysm-nethermind-29
+      - prysm-nethermind-3
+      - prysm-nethermind-30
+      - prysm-nethermind-31
+      - prysm-nethermind-32
+      - prysm-nethermind-33
+      - prysm-nethermind-34
+      - prysm-nethermind-35
+      - prysm-nethermind-36
+      - prysm-nethermind-37
+      - prysm-nethermind-38
+      - prysm-nethermind-39
+      - prysm-nethermind-4
+      - prysm-nethermind-40
+      - prysm-nethermind-41
+      - prysm-nethermind-42
+      - prysm-nethermind-43
+      - prysm-nethermind-44
+      - prysm-nethermind-45
+      - prysm-nethermind-46
+      - prysm-nethermind-47
+      - prysm-nethermind-48
+      - prysm-nethermind-49
+      - prysm-nethermind-5
+      - prysm-nethermind-50
+      - prysm-nethermind-6
+      - prysm-nethermind-7
+      - prysm-nethermind-8
+      - prysm-nethermind-9
+
+  assertoorTests: []
