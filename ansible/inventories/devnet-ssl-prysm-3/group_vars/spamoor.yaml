@@ -6,7 +6,7 @@ spamoor_container_command: |
   -h=https://{{ secret_nginx_shared_basic_auth.name }}:{{ secret_nginx_shared_basic_auth.password }}@rpc.{{ host }}.{{ network_subdomain }}
   {% endfor %}
   -p={{ tx_fuzz_txs_privkey }}
-  -t=33
+  -t=5
   --blob-v1-percent=100
   --fulu-activation=0
   --throughput-increment-interval=300

@@ -1,6 +1,6 @@
 {
   "config": {
-    "chainId": 7064166131,
+    "chainId": 7062344913,
     "homesteadBlock": 0,
     "eip150Block": 0,
     "eip155Block": 0,
@@ -37,8 +37,8 @@
     "withdrawalRequestContractAddress": "0x00000961Ef480Eb55e80D19ad83579A64c007002",
     "consolidationRequestContractAddress": "0x0000BBdDc7CE488642fb579F8B00f3a590007251",
     "pragueTime": 0,
-    "osakaTime": 1749636683,
-    "bpo1Time": 1749637067
+    "osakaTime": 1749807076,
+    "bpo1Time": 1749807460
   },
   "alloc": {
     "0x0000000000000000000000000000000000000000": {
@@ -944,5 +944,5 @@
   "nonce": "0x1234",
   "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "timestamp": "1749633299"
+  "timestamp": "1749803692"
 }

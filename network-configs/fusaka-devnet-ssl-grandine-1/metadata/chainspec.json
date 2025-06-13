@@ -68,17 +68,17 @@
         "baseFeeUpdateFraction": "0x4c6964"
       },
       {
-        "timestamp": "0x68495f72",
+        "timestamp": "0x684b63a4",
         "target": 128,
         "max": 128,
         "baseFeeUpdateFraction": "0x4c6964"
       }
     ],
-    "eip7594TransitionTimestamp": "0x68495df2",
-    "eip7823TransitionTimestamp": "0x68495df2",
-    "eip7825TransitionTimestamp": "0x68495df2",
-    "eip7883TransitionTimestamp": "0x68495df2",
-    "eip7918TransitionTimestamp": "0x68495df2"
+    "eip7594TransitionTimestamp": "0x684b6224",
+    "eip7823TransitionTimestamp": "0x684b6224",
+    "eip7825TransitionTimestamp": "0x684b6224",
+    "eip7883TransitionTimestamp": "0x684b6224",
+    "eip7918TransitionTimestamp": "0x684b6224"
   },
   "genesis": {
     "seal": {
@@ -89,7 +89,7 @@
     },
     "difficulty": "0x0",
     "author": "0x0000000000000000000000000000000000000000",
-    "timestamp": "0x684950ba",
+    "timestamp": "0x684b54ec",
     "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
     "extraData": "",
     "gasLimit": "0x2255100"

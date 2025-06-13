@@ -72,7 +72,7 @@ erpc:
           - matchDomain: "*"
             serveProject: "main"
             serveArchitecture: "evm"
-            serveChain: "7064166131"
+            serveChain: "7062344913"
 
     metrics:
       enabled: true
