@@ -9,11 +9,11 @@ default_ethereum_client_images:
   grandine: docker.ethquokkaops.io/dh/ethpandaops/grandine:peerdas-fulu
 ### Execution layer clients
   besu: docker.ethquokkaops.io/dh/ethpandaops/besu:fusaka-devnet-1
-  geth: docker.ethquokkaops.io/dh/ethpandaops/geth:fusaka-devnet-1
+  geth: public.ecr.aws/s5g8t9d9/ethereum-devnets/geth:horizontally-sharded-blob-mempool
   erigon: docker.ethquokkaops.io/dh/ethpandaops/erigon:fusaka-devnet-1
   ethereumjs: docker.ethquokkaops.io/dh/ethpandaops/ethereumjs:master
   nethermind: docker.ethquokkaops.io/dh/ethpandaops/nethermind:fusaka-c98b792
-  reth: docker.ethquokkaops.io/dh/ethpandaops/reth:fusaka-devnet1
+  reth: public.ecr.aws/s5g8t9d9/ethereum-devnets/reth:sharded_mempoolv2
   nimbusel: docker.ethquokkaops.io/dh/ethpandaops/nimbus-eth1:fusaka-devnet-1-ca1c783
 
 default_tooling_images:
