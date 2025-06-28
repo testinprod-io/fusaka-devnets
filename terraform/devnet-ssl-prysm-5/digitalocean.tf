@@ -14,14 +14,14 @@ variable "digitalocean_ssh_key_name" {
 variable "digitalocean_regions" {
   default = [
     "nyc1",
-    "sgp1",
-    "lon1",
-    "nyc3",
+    #"nyc3",
+    "sfo3",
     "ams3",
+    #"sgp1",
+    "lon1",
     "fra1",
     "tor1",
     "blr1",
-    "sfo3",
     "syd1"
   ]
 }
@@ -339,5 +339,5 @@ resource "local_file" "ansible_inventory" {
       )
     }
   )
-  filename = "../../ansible/inventories/devnet-ssl-prysm-4/inventory.ini"
+  filename = "../../ansible/inventories/devnet-ssl-prysm-5/inventory.ini"
 }

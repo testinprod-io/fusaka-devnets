@@ -27,7 +27,7 @@ terraform {
     skip_s3_checksum            = true
     region                      = "us-east-1"
     bucket                      = "ethereum-devnets"
-    key                         = "infrastructure/fusaka-devnet-ssl-prysm-4/terraform.tfstate"
+    key                         = "infrastructure/fusaka-devnet-ssl-prysm-5/terraform.tfstate"
   }
 }
 
@@ -57,7 +57,7 @@ variable "cloudflare_api_token" {
 
 variable "ethereum_network" {
   type    = string
-  default = "fusaka-devnet-ssl-prysm-4"
+  default = "fusaka-devnet-ssl-prysm-5"
 }
 
 variable "base_cidr_block" {
