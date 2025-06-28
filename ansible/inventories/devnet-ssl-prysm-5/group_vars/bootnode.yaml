@@ -2,7 +2,6 @@ ethereum_cl_bootnode: "{{ hostvars['bootnode-1']['cl_bootnode_fact_enr'] }}"
 #cl_bootnode_container_image: "{{ default_tooling_images.cl_bootnode }}"
 # role: eth_inventory_web
 cl_bootnode_privkey: "5beb5bcd4d7fe23f1a365722a0eec9f45583ea1a4e1c3a0e7f72482c241b682e"
-
 eth_inventory_web_container_networks: "{{ docker_networks_shared }}"
 eth_inventory_web_container_env:
   VIRTUAL_HOST: "{{ server_fqdn }}"

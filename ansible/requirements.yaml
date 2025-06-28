@@ -1,6 +1,6 @@
 roles:
   - name: gantsign.oh-my-zsh
-    version: "2.4.0"
+    version: "2.7.0"
   - name: geerlingguy.docker
     version: "6.0.3"
   - name: geerlingguy.firewall
@@ -15,8 +15,9 @@ roles:
 collections:
   - name: ansible.posix
   - name: community.sops
-    version: 1.6.0
+    version: 1.7.0
   - name: ethpandaops.general
     source: https://github.com/ethpandaops/ansible-collection-general.git,master
     type: git
   - name: kubernetes.core
+  - name: ansible.utils
