@@ -17,7 +17,11 @@ variable "digitalocean_regions" {
     #"nyc3",
     "sfo3",
     "ams3",
+<<<<<<< HEAD
     #"sgp1",
+=======
+    "sgp1",
+>>>>>>> 69cec2f6a84ecc91612551e92fc39dd82c7a8456
     "lon1",
     "fra1",
     "tor1",

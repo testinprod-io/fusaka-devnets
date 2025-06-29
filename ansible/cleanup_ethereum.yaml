@@ -32,6 +32,7 @@
             - "geth-init"
             - "geth"
             - "nethermind"
+            - "reth"
             - "execution"
             - "execution-init"
             - "nimbusel"
@@ -48,6 +49,7 @@
             - "grandine"
             - "beacon"
             - "validator"
+            - "grandine"
             # Others
             - "ethereum-metrics-exporter"
             - "snooper-engine"
@@ -55,6 +57,7 @@
             - "cl-bootnode"
             - "mev-boost"
             - "external-block-builder"
+            - "xatu-sentry"
         - name: Remove data dirs
           file:
             state: absent
@@ -85,3 +88,4 @@
             - /data/ethereum-network-config
             - /data/execution-auth.secret
             - /data/cl-bootnode
+            - /data/xatu-sentry
