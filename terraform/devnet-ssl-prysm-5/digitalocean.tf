@@ -17,11 +17,7 @@ variable "digitalocean_regions" {
     #"nyc3",
     "sfo3",
     "ams3",
-<<<<<<< HEAD
     #"sgp1",
-=======
-    "sgp1",
->>>>>>> 69cec2f6a84ecc91612551e92fc39dd82c7a8456
     "lon1",
     "fra1",
     "tor1",
@@ -54,7 +50,7 @@ locals {
         vms = {
           "${i + 1}" = {
             tags   = join(",", [
-              "bandwidth:${try(i == 0 ? 0 : vm_group.bandwidth, 0)}",
+              "bandwidth:${try(i % 2 == 0 ? 0 : vm_group.bandwidth, 0)}",
               "group_name:${vm_group.name}",
               "val_start:${vm_group.validator_start + (i * (vm_group.validator_end - vm_group.validator_start) / vm_group.count)}",
               "val_end:${min(vm_group.validator_start + ((i + 1) * (vm_group.validator_end - vm_group.validator_start) / vm_group.count), vm_group.validator_end)}",

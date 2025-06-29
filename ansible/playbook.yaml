@@ -212,41 +212,58 @@
           echo "Error: 'bandwidth' variable is 0. Aborting."
           exit
         fi
-        
-        sudo su
-        {% raw %}
-        execution_container_id=$(docker inspect execution -f '{{.State.Pid}}')
-        beacon_container_id=$(docker inspect beacon -f '{{.State.Pid}}')
-        {% endraw %}
-        
-        mkdir -p /var/run/netns
-        ln -sfT /proc/$execution_container_id/ns/net /var/run/netns/execution
-        ln -sfT /proc/$beacon_container_id/ns/net /var/run/netns/beacon
 
-        ip netns exec execution ip -br -c link
-        ip netns exec beacon ip -br -c link
+        # Automatically find the main network interface (not lo or docker)
+        interface=$(ip route | awk '/default/ {print $5; exit}')
+        if [ -z "$interface" ]; then
+          echo "Could not find default network interface!"
+          exit 1
+        fi
 
-        tc -n execution qdisc del dev eth0 root
-        tc -n execution qdisc add dev eth0 handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+        # Remove old bandwidth limit (ignore errors)
+        tc qdisc del dev $interface root || true
 
-        tc -n beacon qdisc del dev eth0 root
-        tc -n beacon qdisc add dev eth0 handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+        # Apply new limit
+        tc qdisc add dev $interface handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+
+        echo "Bandwidth for $interface limited to {{ bandwidth }}mbit"
+
         docker restart ethereum-metrics-exporter prometheus
-  
-    - name: Remove bandwidth limit
-      tags: [remove_bandwidth]
-      shell: |
-        if [ -z "{{ bandwidth }}" ]; then
-          echo "Error: 'bandwidth' variable is not set. Aborting."
-          exit
-        fi
-        if [ "{{ bandwidth }}" -eq 0 ]; then
-          echo "Error: 'bandwidth' variable is 0. Aborting."
-          exit
-        fi
         
-        tc -n execution qdisc del dev eth0 root
-        tc -n beacon qdisc del dev eth0 root
+#sudo su
+#{% raw %}
+#execution_container_id=$(docker inspect execution -f '{{.State.Pid}}')
+#beacon_container_id=$(docker inspect beacon -f '{{.State.Pid}}')
+#{% endraw %}
+#
+#mkdir -p /var/run/netns
+#ln -sfT /proc/$execution_container_id/ns/net /var/run/netns/execution
+#ln -sfT /proc/$beacon_container_id/ns/net /var/run/netns/beacon
+#
+#ip netns exec execution ip -br -c link
+#ip netns exec beacon ip -br -c link
+#
+#tc -n execution qdisc del dev eth0 root
+#tc -n execution qdisc add dev eth0 handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+#
+#tc -n beacon qdisc del dev eth0 root
+#tc -n beacon qdisc add dev eth0 handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+#docker restart ethereum-metrics-exporter prometheus
+  
+#    - name: Remove bandwidth limit
+#      tags: [remove_bandwidth]
+#      shell: |
+#        if [ -z "{{ bandwidth }}" ]; then
+#          echo "Error: 'bandwidth' variable is not set. Aborting."
+#          exit
+#        fi
+#        if [ "{{ bandwidth }}" -eq 0 ]; then
+#          echo "Error: 'bandwidth' variable is 0. Aborting."
+#          exit
+#        fi
+#        
+#        tc -n execution qdisc del dev eth0 root
+#        tc -n beacon qdisc del dev eth0 root
 
 
 - hosts: bootnode

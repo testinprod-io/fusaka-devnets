@@ -76,6 +76,7 @@ variable "prysm_geth" {
     count           = 50
     validator_start = 0
     validator_end   = 400
+    bandwidth       = 10
   }
 }
 
