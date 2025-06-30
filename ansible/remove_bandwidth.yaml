@@ -1,0 +1,13 @@
+- hosts: ethereum_node
+  tasks:
+    - name: Remove all bandwidth limits from the node
+      tags: [remove_bandwidth]
+      shell: |
+        interface=$(ip route | awk '/default/ {print $5; exit}')
+        if [ -z "$interface" ]; then
+          echo "Could not find default network interface!"
+          exit 1
+        fi
+        tc qdisc del dev $interface root || true
+        tc qdisc del dev $interface ingress || true
+        echo "Bandwidth limits removed from $interface"
