@@ -1,0 +1,414 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dora.yaml.j2
+
+dora:
+  fullnameOverride: dora
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/dora
+    tag: fulu-support
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: dora.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  name: fusaka-devnet-ssl-grandine-2
+  configPath: "https://config.fusaka-devnet-ssl-grandine-2.yolkie.xyz/cl/config.yaml"
+  validatorNamesInventory: "https://config.fusaka-devnet-ssl-grandine-2.yolkie.xyz/api/v1/nodes/validator-ranges"
+  proxyCount: 2
+  extraEnv:
+    - name: FRONTEND_PPROF
+      value: "true"
+    - name: FRONTEND_SHOW_SENSITIVE_PEER_INFOS
+      value: "true"
+    - name: FRONTEND_ETH_EXPLORER_LINK
+      value: "https://explorer.fusaka-devnet-ssl-grandine-2.yolkie.xyz"
+    - name: FRONTEND_PUBLIC_RPC_URL
+      value: "https://rpc.fusaka-devnet-ssl-grandine-2.yolkie.xyz"
+    - name: FRONTEND_SHOW_SUBMIT_DEPOSIT
+      value: "true"
+    - name: FRONTEND_SHOW_SUBMIT_EL_REQUESTS
+      value: "true"
+  postgresql:
+    name: "dora-postgresql"
+    fullnameOverride: "dora-postgresql"
+
+  endpoints:
+  # Rpc
+  - url: http://prysm-geth-001:5052
+    name: rpc-prysm-geth-001
+    archive: true
+    priority: 1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: bootnode-1
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-1.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-1
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-10.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-10
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-11.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-11
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-12.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-12
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-13.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-13
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-14.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-14
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-15.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-15
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-16.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-16
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-17.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-17
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-18.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-18
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-19.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-19
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-2.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-2
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-20.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-20
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-21.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-21
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-22.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-22
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-23.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-23
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-24.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-24
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-25.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-25
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-26.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-26
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-27.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-27
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-28.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-28
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-29.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-29
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-3.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-3
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-30.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-30
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-31.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-31
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-32.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-32
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-33.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-33
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-34.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-34
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-35.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-35
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-36.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-36
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-37.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-37
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-38.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-38
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-39.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-39
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-4.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-4
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-40.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-40
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-41.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-41
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-42.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-42
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-43.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-43
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-44.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-44
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-45.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-45
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-46.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-46
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-47.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-47
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-48.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-48
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-49.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-49
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-5.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-5
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-50.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-50
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-6.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-6
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-7.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-7
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-8.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-8
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-9.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-9
+    priority: -1
+  executionEndpoints:
+  # Rpc
+  - url: http://geth-prysm-001:8545
+    name: rpc-prysm-geth-001
+    archive: true
+    priority: 1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: bootnode-1
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-1.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-1
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-10.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-10
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-11.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-11
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-12.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-12
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-13.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-13
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-14.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-14
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-15.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-15
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-16.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-16
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-17.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-17
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-18.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-18
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-19.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-19
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-2.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-2
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-20.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-20
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-21.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-21
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-22.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-22
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-23.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-23
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-24.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-24
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-25.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-25
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-26.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-26
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-27.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-27
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-28.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-28
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-29.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-29
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-3.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-3
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-30.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-30
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-31.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-31
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-32.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-32
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-33.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-33
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-34.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-34
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-35.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-35
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-36.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-36
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-37.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-37
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-38.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-38
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-39.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-39
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-4.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-4
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-40.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-40
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-41.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-41
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-42.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-42
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-43.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-43
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-44.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-44
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-45.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-45
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-46.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-46
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-47.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-47
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-48.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-48
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-49.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-49
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-5.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-5
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-50.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-50
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-6.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-6
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-7.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-7
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-8.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-8
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-9.fusaka-devnet-ssl-grandine-2.yolkie.xyz
+    name: grandine-geth-9
+    priority: -1
+    archive: false
