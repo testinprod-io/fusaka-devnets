@@ -1,0 +1,414 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dora.yaml.j2
+
+dora:
+  fullnameOverride: dora
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/dora
+    tag: fulu-support
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: dora.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  name: fusaka-devnet-ssl-lodestar-2
+  configPath: "https://config.fusaka-devnet-ssl-lodestar-2.yolkie.xyz/cl/config.yaml"
+  validatorNamesInventory: "https://config.fusaka-devnet-ssl-lodestar-2.yolkie.xyz/api/v1/nodes/validator-ranges"
+  proxyCount: 2
+  extraEnv:
+    - name: FRONTEND_PPROF
+      value: "true"
+    - name: FRONTEND_SHOW_SENSITIVE_PEER_INFOS
+      value: "true"
+    - name: FRONTEND_ETH_EXPLORER_LINK
+      value: "https://explorer.fusaka-devnet-ssl-lodestar-2.yolkie.xyz"
+    - name: FRONTEND_PUBLIC_RPC_URL
+      value: "https://rpc.fusaka-devnet-ssl-lodestar-2.yolkie.xyz"
+    - name: FRONTEND_SHOW_SUBMIT_DEPOSIT
+      value: "true"
+    - name: FRONTEND_SHOW_SUBMIT_EL_REQUESTS
+      value: "true"
+  postgresql:
+    name: "dora-postgresql"
+    fullnameOverride: "dora-postgresql"
+
+  endpoints:
+  # Rpc
+  - url: http://prysm-geth-001:5052
+    name: rpc-prysm-geth-001
+    archive: true
+    priority: 1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: bootnode-1
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-1.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-1
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-10.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-10
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-11.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-11
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-12.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-12
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-13.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-13
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-14.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-14
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-15.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-15
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-16.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-16
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-17.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-17
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-18.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-18
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-19.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-19
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-2.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-2
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-20.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-20
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-21.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-21
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-22.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-22
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-23.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-23
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-24.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-24
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-25.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-25
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-26.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-26
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-27.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-27
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-28.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-28
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-29.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-29
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-3.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-3
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-30.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-30
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-31.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-31
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-32.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-32
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-33.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-33
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-34.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-34
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-35.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-35
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-36.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-36
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-37.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-37
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-38.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-38
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-39.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-39
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-4.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-4
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-40.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-40
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-41.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-41
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-42.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-42
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-43.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-43
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-44.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-44
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-45.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-45
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-46.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-46
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-47.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-47
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-48.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-48
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-49.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-49
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-5.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-5
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-50.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-50
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-6.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-6
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-7.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-7
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-8.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-8
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-9.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-9
+    priority: -1
+  executionEndpoints:
+  # Rpc
+  - url: http://geth-prysm-001:8545
+    name: rpc-prysm-geth-001
+    archive: true
+    priority: 1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: bootnode-1
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-1.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-1
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-10.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-10
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-11.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-11
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-12.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-12
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-13.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-13
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-14.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-14
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-15.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-15
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-16.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-16
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-17.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-17
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-18.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-18
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-19.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-19
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-2.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-2
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-20.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-20
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-21.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-21
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-22.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-22
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-23.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-23
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-24.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-24
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-25.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-25
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-26.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-26
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-27.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-27
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-28.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-28
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-29.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-29
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-3.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-3
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-30.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-30
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-31.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-31
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-32.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-32
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-33.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-33
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-34.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-34
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-35.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-35
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-36.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-36
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-37.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-37
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-38.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-38
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-39.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-39
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-4.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-4
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-40.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-40
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-41.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-41
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-42.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-42
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-43.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-43
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-44.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-44
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-45.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-45
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-46.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-46
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-47.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-47
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-48.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-48
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-49.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-49
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-5.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-5
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-50.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-50
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-6.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-6
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-7.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-7
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-8.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-8
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-9.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-9
+    priority: -1
+    archive: false

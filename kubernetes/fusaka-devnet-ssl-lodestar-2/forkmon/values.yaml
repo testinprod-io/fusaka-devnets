@@ -1,0 +1,138 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/forkmon.yaml.j2
+
+forkmon:
+  fullnameOverride: forkmon
+  image:
+    repository: docker.ethquokkaops.io/dh/skylenet/nodemonitor
+    tag: darkmode
+    pullPolicy: IfNotPresent
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: forkmon.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+  network: fusaka-devnet-ssl-lodestar-2
+  endpoints:
+  # Rpc
+  - addr: http://geth-prysm-001:8545
+    name: rpc-prysm-geth-001
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: bootnode-1
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-1.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-1
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-10.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-10
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-11.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-11
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-12.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-12
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-13.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-13
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-14.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-14
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-15.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-15
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-16.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-16
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-17.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-17
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-18.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-18
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-19.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-19
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-2.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-2
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-20.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-20
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-21.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-21
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-22.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-22
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-23.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-23
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-24.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-24
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-25.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-25
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-26.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-26
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-27.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-27
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-28.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-28
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-29.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-29
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-3.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-3
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-30.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-30
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-31.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-31
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-32.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-32
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-33.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-33
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-34.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-34
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-35.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-35
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-36.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-36
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-37.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-37
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-38.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-38
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-39.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-39
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-4.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-4
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-40.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-40
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-41.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-41
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-42.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-42
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-43.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-43
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-44.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-44
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-45.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-45
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-46.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-46
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-47.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-47
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-48.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-48
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-49.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-49
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-5.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-5
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-50.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-50
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-6.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-6
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-7.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-7
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-8.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-8
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-9.fusaka-devnet-ssl-lodestar-2.yolkie.xyz
+    name: lodestar-geth-9
+
+  config: |
+    # How often to reload data from the nodes
+    reload_interval = "10s"
+    # If specified, a http server will serve static content here
+    server_address = "0.0.0.0:{{ .Values.httpPort}}"
+    # Shown in the document title, if specified
+    chain_name="{{ .Values.network }}"
+    # Local or non third party connection require rpc kind
+    {{- range .Values.endpoints }}
+    [[clients]]
+      url  = {{ .addr | quote }}
+      name = {{ .name | quote }}
+      kind = "rpc"
+    {{- end }}
