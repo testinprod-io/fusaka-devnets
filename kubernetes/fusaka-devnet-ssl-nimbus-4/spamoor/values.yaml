@@ -1,0 +1,85 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/spamoor.yaml.j2
+
+spamoor:
+  fullnameOverride: spamoor
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/spamoor
+    tag: latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 250m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: spamoor.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  customArgs:
+    - --fulu-activation=1751287120
+
+  persistence:
+    enabled: true
+
+  privateKey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.spamoor_private_key}>"
+  rpcEndpoints:
+  # Rpc
+  - "http://geth-prysm-001:8545"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-1.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-10.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-11.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-12.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-13.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-14.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-15.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-16.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-17.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-18.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-19.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-2.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-20.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-21.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-22.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-23.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-24.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-25.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-26.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-27.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-28.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-29.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-3.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-30.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-31.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-32.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-33.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-34.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-35.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-36.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-37.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-38.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-39.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-4.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-40.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-41.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-42.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-43.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-44.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-45.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-46.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-47.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-48.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-49.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-5.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-50.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-6.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-7.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-8.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-9.fusaka-devnet-ssl-nimbus-4.yolkie.xyz"

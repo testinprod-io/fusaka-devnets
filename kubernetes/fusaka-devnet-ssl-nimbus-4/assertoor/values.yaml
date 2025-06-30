@@ -1,0 +1,304 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-1.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-1.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-10
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-10.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-10.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-11
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-11.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-11.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-12
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-12.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-12.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-13
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-13.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-13.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-14
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-14.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-14.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-15
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-15.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-15.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-16
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-16.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-16.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-17
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-17.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-17.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-18
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-18.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-18.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-19
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-19.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-19.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-2.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-2.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-20
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-20.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-20.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-21
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-21.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-21.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-22
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-22.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-22.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-23
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-23.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-23.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-24
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-24.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-24.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-25
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-25.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-25.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-26
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-26.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-26.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-27
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-27.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-27.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-28
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-28.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-28.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-29
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-29.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-29.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-3.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-3.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-30
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-30.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-30.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-31
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-31.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-31.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-32
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-32.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-32.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-33
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-33.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-33.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-34
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-34.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-34.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-35
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-35.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-35.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-36
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-36.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-36.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-37
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-37.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-37.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-38
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-38.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-38.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-39
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-39.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-39.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-4.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-4.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-40
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-40.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-40.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-41
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-41.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-41.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-42
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-42.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-42.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-43
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-43.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-43.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-44
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-44.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-44.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-45
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-45.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-45.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-46
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-46.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-46.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-47
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-47.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-47.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-48
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-48.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-48.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-49
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-49.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-49.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-5.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-5.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-50
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-50.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-50.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-6.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-6.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-7
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-7.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-7.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-8
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-8.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-8.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+    - name:  nimbus-geth-9
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-9.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-9.fusaka-devnet-ssl-nimbus-4.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-nimbus-4.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - nimbus-geth-1
+      - nimbus-geth-10
+      - nimbus-geth-11
+      - nimbus-geth-12
+      - nimbus-geth-13
+      - nimbus-geth-14
+      - nimbus-geth-15
+      - nimbus-geth-16
+      - nimbus-geth-17
+      - nimbus-geth-18
+      - nimbus-geth-19
+      - nimbus-geth-2
+      - nimbus-geth-20
+      - nimbus-geth-21
+      - nimbus-geth-22
+      - nimbus-geth-23
+      - nimbus-geth-24
+      - nimbus-geth-25
+      - nimbus-geth-26
+      - nimbus-geth-27
+      - nimbus-geth-28
+      - nimbus-geth-29
+      - nimbus-geth-3
+      - nimbus-geth-30
+      - nimbus-geth-31
+      - nimbus-geth-32
+      - nimbus-geth-33
+      - nimbus-geth-34
+      - nimbus-geth-35
+      - nimbus-geth-36
+      - nimbus-geth-37
+      - nimbus-geth-38
+      - nimbus-geth-39
+      - nimbus-geth-4
+      - nimbus-geth-40
+      - nimbus-geth-41
+      - nimbus-geth-42
+      - nimbus-geth-43
+      - nimbus-geth-44
+      - nimbus-geth-45
+      - nimbus-geth-46
+      - nimbus-geth-47
+      - nimbus-geth-48
+      - nimbus-geth-49
+      - nimbus-geth-5
+      - nimbus-geth-50
+      - nimbus-geth-6
+      - nimbus-geth-7
+      - nimbus-geth-8
+      - nimbus-geth-9
+    validatorPairNames:
+      - nimbus-geth-10
+      - nimbus-geth-11
+      - nimbus-geth-12
+      - nimbus-geth-13
+      - nimbus-geth-14
+      - nimbus-geth-15
+      - nimbus-geth-16
+      - nimbus-geth-17
+      - nimbus-geth-18
+      - nimbus-geth-19
+      - nimbus-geth-2
+      - nimbus-geth-20
+      - nimbus-geth-21
+      - nimbus-geth-22
+      - nimbus-geth-23
+      - nimbus-geth-24
+      - nimbus-geth-25
+      - nimbus-geth-26
+      - nimbus-geth-27
+      - nimbus-geth-28
+      - nimbus-geth-29
+      - nimbus-geth-3
+      - nimbus-geth-30
+      - nimbus-geth-31
+      - nimbus-geth-32
+      - nimbus-geth-33
+      - nimbus-geth-34
+      - nimbus-geth-35
+      - nimbus-geth-36
+      - nimbus-geth-37
+      - nimbus-geth-38
+      - nimbus-geth-39
+      - nimbus-geth-4
+      - nimbus-geth-40
+      - nimbus-geth-41
+      - nimbus-geth-42
+      - nimbus-geth-43
+      - nimbus-geth-44
+      - nimbus-geth-45
+      - nimbus-geth-46
+      - nimbus-geth-47
+      - nimbus-geth-48
+      - nimbus-geth-49
+      - nimbus-geth-5
+      - nimbus-geth-50
+      - nimbus-geth-6
+      - nimbus-geth-7
+      - nimbus-geth-8
+      - nimbus-geth-9
+
+  assertoorTests: []
