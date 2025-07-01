@@ -1,4 +1,4 @@
-spamoor_container_image: "docker.ethquokkaops.io/dh/ethpandaops/spamoor:master-latest"
+spamoor_container_image: "docker.ethquokkaops.io/dh/ethpandaops/spamoor:master-4791eb9"
 
 spamoor_container_command: |
   blobs
