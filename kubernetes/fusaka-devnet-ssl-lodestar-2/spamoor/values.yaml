@@ -23,7 +23,7 @@ spamoor:
             pathType: Prefix
 
   customArgs:
-    - --fulu-activation=1751283671
+    - --fulu-activation=1751372912
 
   persistence:
     enabled: true

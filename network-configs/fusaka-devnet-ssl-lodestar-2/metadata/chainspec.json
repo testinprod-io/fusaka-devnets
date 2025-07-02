@@ -68,21 +68,21 @@
         "baseFeeUpdateFraction": "0x4c6964"
       },
       {
-        "timestamp": "0x68627957",
+        "timestamp": "0x6863d5f0",
         "target": 96,
         "max": 96,
         "baseFeeUpdateFraction": "0x4c6964"
       }
     ],
-    "eip7594TransitionTimestamp": "0x686277d7",
-    "eip7823TransitionTimestamp": "0x686277d7",
-    "eip7825TransitionTimestamp": "0x686277d7",
-    "eip7883TransitionTimestamp": "0x686277d7",
-    "eip7907TransitionTimestamp": "0x686277d7",
-    "eip7918TransitionTimestamp": "0x686277d7",
-    "eip7934TransitionTimestamp": "0x686277d7",
-    "eip7939TransitionTimestamp": "0x686277d7",
-    "eip7951TransitionTimestamp": "0x686277d7"
+    "eip7594TransitionTimestamp": "0x6863d470",
+    "eip7823TransitionTimestamp": "0x6863d470",
+    "eip7825TransitionTimestamp": "0x6863d470",
+    "eip7883TransitionTimestamp": "0x6863d470",
+    "eip7907TransitionTimestamp": "0x6863d470",
+    "eip7918TransitionTimestamp": "0x6863d470",
+    "eip7934TransitionTimestamp": "0x6863d470",
+    "eip7939TransitionTimestamp": "0x6863d470",
+    "eip7951TransitionTimestamp": "0x6863d470"
   },
   "genesis": {
     "seal": {
@@ -93,7 +93,7 @@
     },
     "difficulty": "0x0",
     "author": "0x0000000000000000000000000000000000000000",
-    "timestamp": "0x68626a9f",
+    "timestamp": "0x6863c738",
     "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
     "extraData": "",
     "gasLimit": "0x2aea540"
