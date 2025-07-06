@@ -1,0 +1,85 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/spamoor.yaml.j2
+
+spamoor:
+  fullnameOverride: spamoor
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/spamoor
+    tag: latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 250m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: spamoor.fusaka-devnet-ssl-besu-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  customArgs:
+    - --fulu-activation=1751588834
+
+  persistence:
+    enabled: true
+
+  privateKey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.spamoor_private_key}>"
+  rpcEndpoints:
+  # Rpc
+  - "http://geth-prysm-001:8545"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-1.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-10.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-11.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-12.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-13.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-14.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-15.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-16.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-17.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-18.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-19.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-2.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-20.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-21.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-22.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-23.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-24.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-25.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-26.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-27.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-28.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-29.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-3.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-30.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-31.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-32.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-33.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-34.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-35.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-36.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-37.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-38.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-39.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-4.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-40.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-41.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-42.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-43.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-44.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-45.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-46.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-47.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-48.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-49.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-5.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-50.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-6.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-7.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-8.fusaka-devnet-ssl-besu-1.yolkie.xyz"
+  - "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-9.fusaka-devnet-ssl-besu-1.yolkie.xyz"
