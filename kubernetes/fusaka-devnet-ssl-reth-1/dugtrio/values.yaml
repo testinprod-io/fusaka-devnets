@@ -1,0 +1,135 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dugtrio.yaml.j2
+
+dugtrio:
+  fullnameOverride: dugtrio
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/dugtrio
+    tag: latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 100m
+      memory: 200Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: beacon.fusaka-devnet-ssl-reth-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  dugtrioFrontendTitle: "Dugtrio: fusaka-devnet-ssl-reth-1"
+  dugtrioProxyCount: 2
+  dugtrioProxyBlockedPaths:
+    - "^/teku/v[0-9]+/admin/.*"
+
+  endpoints:
+  # Rpc
+  - url: http://prysm-geth-001:5052
+    name: rpc-prysm-geth-001
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: bootnode-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-1.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-10.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-10
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-11.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-11
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-12.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-12
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-13.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-13
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-14.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-14
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-15.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-15
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-16.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-16
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-17.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-17
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-18.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-18
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-19.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-19
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-2.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-2
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-20.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-20
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-21.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-21
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-22.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-22
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-23.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-23
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-24.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-24
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-25.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-25
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-26.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-26
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-27.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-27
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-28.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-28
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-29.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-29
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-3.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-3
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-30.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-30
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-31.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-31
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-32.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-32
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-33.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-33
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-34.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-34
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-35.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-35
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-36.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-36
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-37.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-37
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-38.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-38
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-39.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-39
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-4.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-4
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-40.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-40
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-41.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-41
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-42.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-42
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-43.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-43
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-44.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-44
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-45.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-45
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-46.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-46
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-47.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-47
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-48.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-48
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-49.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-49
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-5.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-5
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-50.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-50
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-6.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-6
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-7.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-7
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-8.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-8
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-9.fusaka-devnet-ssl-reth-1.yolkie.xyz
+    name: prysm-reth-9
