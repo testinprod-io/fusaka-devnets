@@ -10,6 +10,6 @@ spamoor_container_command: |
   --max-wallets=200
   --blob-v1-percent=100
   --fulu-activation=2
-  #--throughput-increment-interval=300
+  #--throughput-increment-interval=240
   --max-pending=1000
   #--count=1000000
