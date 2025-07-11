@@ -213,23 +213,23 @@
           exit
         fi
 
-        # Find the main interface (not lo or docker)
-        interface=$(ip route | awk '/default/ {print $5; exit}')
-        if [ -z "$interface" ]; then
-          echo "Could not find default network interface!"
-          exit 1
-        fi
-
         # Remove previous qdisc (ignore errors)
-        tc qdisc del dev $interface root || true
-        tc qdisc del dev $interface ingress || true
+        tc qdisc del dev eth0 root || true
+        tc qdisc del dev eth0 ingress || true
+        tc qdisc del dev ifb0 root || true
 
         # Outbound limit (egress)
-        tc qdisc add dev $interface handle 10: root tbf burst 32kbit rate {{ bandwidth }}mbit latency 100ms
+        tc qdisc add dev eth0 root handle 1: htb default 1
+        tc class add dev eth0 parent 1: classid 1:1 htb rate {{ bandwidth }}mbit burst 1mbit
 
         # Inbound limit (ingress)
-        tc qdisc add dev $interface handle ffff: ingress 2>/dev/null || true
-        tc filter add dev $interface parent ffff: protocol all prio 49 basic police rate {{ bandwidth }}mbit burst 32kbit drop flowid :1 2>/dev/null || true
+        modprobe ifb
+        ip link add ifb0 type ifb
+        ip link set ifb0 up
+        tc qdisc add dev eth0 handle ffff: ingress
+        tc filter add dev eth0 parent ffff: protocol all u32 match u32 0 0 action mirred egress redirect dev ifb0
+        tc qdisc add dev ifb0 root handle 1: htb default 1
+        tc class add dev ifb0 parent 1: classid 1:1 htb rate {{ bandwidth }}mbit burst 1mbit
 
         echo "Limited $interface to {{ bandwidth }}mbit both outbound and inbound."
 

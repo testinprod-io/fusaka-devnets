@@ -16,6 +16,7 @@ variable "lighthouse_geth" {
     count           = 8
     validator_start = 0
     validator_end   = 64
+    bandwidth       = 30
   }
 }
 
@@ -25,6 +26,7 @@ variable "lighthouse_besu" {
     count           = 8
     validator_start = 64
     validator_end   = 128
+    bandwidth       = 30
   }
 }
 
@@ -34,6 +36,7 @@ variable "lighthouse_nethermind" {
     count           = 8
     validator_start = 128
     validator_end   = 192
+    bandwidth       = 30
   }
 }
 
@@ -52,6 +55,7 @@ variable "lighthouse_erigon" {
     count           = 8
     validator_start = 192
     validator_end   = 256
+    bandwidth       = 30
   }
 }
 
@@ -71,6 +75,7 @@ variable "prysm_geth" {
     count           = 8
     validator_start = 256
     validator_end   = 320
+    bandwidth       = 30
   }
 }
 
@@ -80,6 +85,7 @@ variable "prysm_besu" {
     count           = 8
     validator_start = 320
     validator_end   = 384
+    bandwidth       = 30
   }
 }
 
@@ -89,6 +95,7 @@ variable "prysm_nethermind" {
     count           = 8
     validator_start = 384
     validator_end   = 448
+    bandwidth       = 30
   }
 }
 
@@ -107,6 +114,7 @@ variable "prysm_erigon" {
     count           = 8
     validator_start = 448
     validator_end   = 512
+    bandwidth       = 30
   }
 }
 
@@ -236,6 +244,7 @@ variable "teku_geth" {
     count           = 8
     validator_start = 512
     validator_end   = 576
+    bandwidth       = 30
   }
 }
 
@@ -245,6 +254,7 @@ variable "teku_besu" {
     count           = 8
     validator_start = 576
     validator_end   = 640
+    bandwidth       = 30
   }
 }
 
@@ -254,6 +264,7 @@ variable "teku_nethermind" {
     count           = 8
     validator_start = 640
     validator_end   = 704
+    bandwidth       = 30
   }
 }
 
@@ -272,6 +283,7 @@ variable "teku_erigon" {
     count           = 8
     validator_start = 704
     validator_end   = 768
+    bandwidth       = 30
   }
 }
 
@@ -290,6 +302,7 @@ variable "grandine_geth" {
     count           = 8
     validator_start = 768
     validator_end   = 832
+    bandwidth       = 30
   }
 }
 
@@ -299,6 +312,7 @@ variable "grandine_besu" {
     count           = 8
     validator_start = 832
     validator_end   = 896
+    bandwidth       = 30
   }
 }
 
@@ -308,6 +322,7 @@ variable "grandine_nethermind" {
     count           = 8
     validator_start = 896
     validator_end   = 960
+    bandwidth       = 30
   }
 }
 
@@ -326,6 +341,7 @@ variable "grandine_erigon" {
     count           = 8
     validator_start = 960
     validator_end   = 1024
+    bandwidth       = 30
   }
 }
 
