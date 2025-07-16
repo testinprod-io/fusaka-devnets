@@ -1,0 +1,654 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-6.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-6.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-besu-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-besu-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-besu-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-besu-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-besu-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-besu-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-erigon-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-erigon-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-erigon-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-erigon-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-erigon-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-erigon-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-geth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-geth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-geth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-geth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-geth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-geth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-nethermind-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-nethermind-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-nethermind-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-nethermind-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-nethermind-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-nethermind-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-reth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-reth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-reth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-reth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-reth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  grandine-reth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.grandine-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.grandine-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-besu-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-besu-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-besu-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-besu-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-besu-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-besu-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-erigon-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-erigon-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-erigon-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-erigon-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-erigon-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-erigon-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-geth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-geth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-geth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-geth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-geth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-geth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-nethermind-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-nethermind-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-nethermind-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-nethermind-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-nethermind-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-nethermind-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-reth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-reth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-reth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-reth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-reth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  lighthouse-reth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-besu-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-besu-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-besu-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-besu-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-besu-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-besu-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-erigon-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-erigon-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-erigon-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-erigon-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-erigon-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-erigon-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-geth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-geth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-geth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-geth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-geth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-geth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-nethermind-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-nethermind-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-nethermind-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-nethermind-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-nethermind-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-nethermind-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-reth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-reth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-reth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-reth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-reth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  prysm-reth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-besu-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-besu-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-besu-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-besu-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-besu-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-besu-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-besu-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-besu-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-besu-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-besu-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-besu-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-besu-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-erigon-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-erigon-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-erigon-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-erigon-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-erigon-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-erigon-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-erigon-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-erigon-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-erigon-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-erigon-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-erigon-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-erigon-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-geth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-geth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-geth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-geth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-geth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-geth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-nethermind-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-nethermind-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-nethermind-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-nethermind-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-nethermind-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-nethermind-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-nethermind-6.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-reth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-reth-1.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-reth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-reth-2.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-reth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-reth-3.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-reth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-reth-4.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-reth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-reth-5.fusaka-devnet-ssl-6.yolkie.xyz
+    - name:  teku-reth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-reth-6.fusaka-devnet-ssl-6.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-6.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - grandine-besu-1
+      - grandine-besu-2
+      - grandine-besu-3
+      - grandine-besu-4
+      - grandine-besu-5
+      - grandine-besu-6
+      - grandine-erigon-1
+      - grandine-erigon-2
+      - grandine-erigon-3
+      - grandine-erigon-4
+      - grandine-erigon-5
+      - grandine-erigon-6
+      - grandine-geth-1
+      - grandine-geth-2
+      - grandine-geth-3
+      - grandine-geth-4
+      - grandine-geth-5
+      - grandine-geth-6
+      - grandine-nethermind-1
+      - grandine-nethermind-2
+      - grandine-nethermind-3
+      - grandine-nethermind-4
+      - grandine-nethermind-5
+      - grandine-nethermind-6
+      - grandine-reth-1
+      - grandine-reth-2
+      - grandine-reth-3
+      - grandine-reth-4
+      - grandine-reth-5
+      - grandine-reth-6
+      - lighthouse-besu-1
+      - lighthouse-besu-2
+      - lighthouse-besu-3
+      - lighthouse-besu-4
+      - lighthouse-besu-5
+      - lighthouse-besu-6
+      - lighthouse-erigon-1
+      - lighthouse-erigon-2
+      - lighthouse-erigon-3
+      - lighthouse-erigon-4
+      - lighthouse-erigon-5
+      - lighthouse-erigon-6
+      - lighthouse-geth-1
+      - lighthouse-geth-2
+      - lighthouse-geth-3
+      - lighthouse-geth-4
+      - lighthouse-geth-5
+      - lighthouse-geth-6
+      - lighthouse-nethermind-1
+      - lighthouse-nethermind-2
+      - lighthouse-nethermind-3
+      - lighthouse-nethermind-4
+      - lighthouse-nethermind-5
+      - lighthouse-nethermind-6
+      - lighthouse-reth-1
+      - lighthouse-reth-2
+      - lighthouse-reth-3
+      - lighthouse-reth-4
+      - lighthouse-reth-5
+      - lighthouse-reth-6
+      - prysm-besu-1
+      - prysm-besu-2
+      - prysm-besu-3
+      - prysm-besu-4
+      - prysm-besu-5
+      - prysm-besu-6
+      - prysm-erigon-1
+      - prysm-erigon-2
+      - prysm-erigon-3
+      - prysm-erigon-4
+      - prysm-erigon-5
+      - prysm-erigon-6
+      - prysm-geth-1
+      - prysm-geth-2
+      - prysm-geth-3
+      - prysm-geth-4
+      - prysm-geth-5
+      - prysm-geth-6
+      - prysm-nethermind-1
+      - prysm-nethermind-2
+      - prysm-nethermind-3
+      - prysm-nethermind-4
+      - prysm-nethermind-5
+      - prysm-nethermind-6
+      - prysm-reth-1
+      - prysm-reth-2
+      - prysm-reth-3
+      - prysm-reth-4
+      - prysm-reth-5
+      - prysm-reth-6
+      - teku-besu-1
+      - teku-besu-2
+      - teku-besu-3
+      - teku-besu-4
+      - teku-besu-5
+      - teku-besu-6
+      - teku-erigon-1
+      - teku-erigon-2
+      - teku-erigon-3
+      - teku-erigon-4
+      - teku-erigon-5
+      - teku-erigon-6
+      - teku-geth-1
+      - teku-geth-2
+      - teku-geth-3
+      - teku-geth-4
+      - teku-geth-5
+      - teku-geth-6
+      - teku-nethermind-1
+      - teku-nethermind-2
+      - teku-nethermind-3
+      - teku-nethermind-4
+      - teku-nethermind-5
+      - teku-nethermind-6
+      - teku-reth-1
+      - teku-reth-2
+      - teku-reth-3
+      - teku-reth-4
+      - teku-reth-5
+      - teku-reth-6
+    validatorPairNames:
+      - grandine-besu-1
+      - grandine-besu-2
+      - grandine-besu-3
+      - grandine-besu-4
+      - grandine-besu-5
+      - grandine-besu-6
+      - grandine-erigon-1
+      - grandine-erigon-2
+      - grandine-erigon-3
+      - grandine-erigon-4
+      - grandine-erigon-5
+      - grandine-erigon-6
+      - grandine-geth-1
+      - grandine-geth-2
+      - grandine-geth-3
+      - grandine-geth-4
+      - grandine-geth-5
+      - grandine-geth-6
+      - grandine-nethermind-1
+      - grandine-nethermind-2
+      - grandine-nethermind-3
+      - grandine-nethermind-4
+      - grandine-nethermind-5
+      - grandine-nethermind-6
+      - grandine-reth-1
+      - grandine-reth-2
+      - grandine-reth-3
+      - grandine-reth-4
+      - grandine-reth-5
+      - grandine-reth-6
+      - lighthouse-besu-1
+      - lighthouse-besu-2
+      - lighthouse-besu-3
+      - lighthouse-besu-4
+      - lighthouse-besu-5
+      - lighthouse-besu-6
+      - lighthouse-erigon-1
+      - lighthouse-erigon-2
+      - lighthouse-erigon-3
+      - lighthouse-erigon-4
+      - lighthouse-erigon-5
+      - lighthouse-erigon-6
+      - lighthouse-geth-1
+      - lighthouse-geth-2
+      - lighthouse-geth-3
+      - lighthouse-geth-4
+      - lighthouse-geth-5
+      - lighthouse-geth-6
+      - lighthouse-nethermind-1
+      - lighthouse-nethermind-2
+      - lighthouse-nethermind-3
+      - lighthouse-nethermind-4
+      - lighthouse-nethermind-5
+      - lighthouse-nethermind-6
+      - lighthouse-reth-1
+      - lighthouse-reth-2
+      - lighthouse-reth-3
+      - lighthouse-reth-4
+      - lighthouse-reth-5
+      - lighthouse-reth-6
+      - prysm-besu-1
+      - prysm-besu-2
+      - prysm-besu-3
+      - prysm-besu-4
+      - prysm-besu-5
+      - prysm-besu-6
+      - prysm-erigon-1
+      - prysm-erigon-2
+      - prysm-erigon-3
+      - prysm-erigon-4
+      - prysm-erigon-5
+      - prysm-erigon-6
+      - prysm-geth-2
+      - prysm-geth-3
+      - prysm-geth-4
+      - prysm-geth-5
+      - prysm-geth-6
+      - prysm-nethermind-1
+      - prysm-nethermind-2
+      - prysm-nethermind-3
+      - prysm-nethermind-4
+      - prysm-nethermind-5
+      - prysm-nethermind-6
+      - prysm-reth-1
+      - prysm-reth-2
+      - prysm-reth-3
+      - prysm-reth-4
+      - prysm-reth-5
+      - prysm-reth-6
+      - teku-besu-1
+      - teku-besu-2
+      - teku-besu-3
+      - teku-besu-4
+      - teku-besu-5
+      - teku-besu-6
+      - teku-erigon-1
+      - teku-erigon-2
+      - teku-erigon-3
+      - teku-erigon-4
+      - teku-erigon-5
+      - teku-erigon-6
+      - teku-geth-1
+      - teku-geth-2
+      - teku-geth-3
+      - teku-geth-4
+      - teku-geth-5
+      - teku-geth-6
+      - teku-nethermind-1
+      - teku-nethermind-2
+      - teku-nethermind-3
+      - teku-nethermind-4
+      - teku-nethermind-5
+      - teku-nethermind-6
+      - teku-reth-1
+      - teku-reth-2
+      - teku-reth-3
+      - teku-reth-4
+      - teku-reth-5
+      - teku-reth-6
+
+  assertoorTests: []
