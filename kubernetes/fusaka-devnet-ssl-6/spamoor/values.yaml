@@ -24,6 +24,7 @@ spamoor:
 
   customArgs:
     - --fulu-activation=1752570630
+    - --trace
 
   persistence:
     enabled: true
