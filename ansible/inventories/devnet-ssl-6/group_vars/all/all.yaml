@@ -42,7 +42,7 @@ ethereum_genesis_generator_version: "{{ ethereum_genesis_generator_container_ima
 ethereum_genesis_network_seed: "{{ ansible_inventory_sources[0] }}"
 ethereum_genesis_chain_id: "70{{ 99999999 | random(start=10000000, seed=ethereum_genesis_network_seed) }}"
 ethereum_genesis_generator_output_dir: "../network-configs/{{ ethereum_network_name | replace('fusaka-', '') }}"
-ethereum_genesis_timestamp: "1752567246"
+ethereum_genesis_timestamp: "1753075402"
 ethereum_genesis_timedelay: 3000
 ethereum_genesis_fork_version_suffix: "{{ 999999 | random(start=100000, seed=ethereum_genesis_network_seed) }}"
 ethereum_genesis_timestamp_relative_cmd:
@@ -160,6 +160,7 @@ xatu_sentry_config: |
   ethereum:
     beaconNodeAddress: {{ xatu_sentry_config_beacon_uri }}
     overrideNetworkName: {{ xatu_sentry_config_network_name_override }}
+    beaconSubscriptions: ["attestation","single_attestation","block","block_gossip","chain_reorg","finalized_checkpoint","head","voluntary_exit","contribution_and_proof","blob_sidecar","data_column_sidecar"]
   proposerDuty: 
     enabled: true
   outputs:
