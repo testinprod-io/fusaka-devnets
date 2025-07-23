@@ -23,7 +23,7 @@ dora:
             pathType: Prefix
 
   name: fusaka-devnet-ssl-6
-  configPath: "https://config.fusaka-devnet-ssl-6.yolkie.xyz/cl/config.yaml"
+  configPath: "https://raw.githubusercontent.com/testinprod-io/fusaka-devnets/refs/heads/main/network-configs/devnet-ssl-6/metadata/config.yaml"
   validatorNamesInventory: "https://config.fusaka-devnet-ssl-6.yolkie.xyz/api/v1/nodes/validator-ranges"
   proxyCount: 2
   extraEnv:
