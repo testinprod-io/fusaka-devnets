@@ -17,7 +17,7 @@ prysm-geth-001:
           execution:
             besu:
               - --genesis-file=/data/network-config/besu.json
-              - --bootnodes=enode://ffb9ee9820001b301b9467f64c9f0ca5800d41ef4a69a0723441f7feb6c1ef29de565e792df7e96c1a8f87c99fb017081d940583822f9f8ea228a60fbc3c1e9b@157.245.69.192:30303?discport=30303
+              - --bootnodes=enode://76bd9585beaaefdcc0f98f32cea6573f3d3b33b8c1aa3c714104074de105056130ff6e7b9042b921d92fabdae902234aaa0d330a6f4746556ab44df3f2c3f177@64.227.69.218:30303?discport=30303
               - --rpc-http-api=ADMIN,DEBUG,ETH,MINER,NET,TRACE,TXPOOL,WEB3
               - --sync-mode=FULL
               - --data-storage-format=BONSAI
@@ -28,7 +28,7 @@ prysm-geth-001:
             nethermind:
               - --Init.ChainSpecPath=/data/network-config/chainspec.json
               - --JsonRpc.EnabledModules=Eth,Subscribe,Trace,TxPool,Web3,Personal,Proof,Net,Parity,Health,Rpc,Debug,Admin
-              - --Discovery.Bootnodes=enode://ffb9ee9820001b301b9467f64c9f0ca5800d41ef4a69a0723441f7feb6c1ef29de565e792df7e96c1a8f87c99fb017081d940583822f9f8ea228a60fbc3c1e9b@157.245.69.192:30303?discport=30303
+              - --Discovery.Bootnodes=enode://76bd9585beaaefdcc0f98f32cea6573f3d3b33b8c1aa3c714104074de105056130ff6e7b9042b921d92fabdae902234aaa0d330a6f4746556ab44df3f2c3f177@64.227.69.218:30303?discport=30303
               - --Init.IsMining=false
               - --Pruning.Mode=None
               - --config=none
@@ -44,7 +44,7 @@ prysm-geth-001:
               - --http.vhosts=*
               - --networkid=7017928245
               - --syncmode=full
-              - --bootnodes=enode://ffb9ee9820001b301b9467f64c9f0ca5800d41ef4a69a0723441f7feb6c1ef29de565e792df7e96c1a8f87c99fb017081d940583822f9f8ea228a60fbc3c1e9b@157.245.69.192:30303?discport=30303,enode://34a20de360be7ef5f0a172b16dcb04faee93eaf9618590ac6ea2fdd4b7e2f933ea8fbe8b0631e1c57cd0bc3a58a8199eefaa2a82f51991ecb32661b1daf6b425@142.93.201.115:30303?discport=30303,enode://a7ace4bb0935c92dc8a8ff66521f97ae84477d3447707f70b768cddd4d7e167edb0215b6ad2a6d81c5c068a2e381a23f645bedd920b6a683adee919a1d8fe54b@159.223.205.212:30303?discport=30303,enode://045e283bdb1ee973bc9f0fc767fb463a5ba26bdfec7e6781f38ea3da573fdb38f77fd2619f690e1aa5d7befe66f7152a84fff18e3ff021b9e94f99222a08d1aa@159.223.228.109:30303?discport=30303,enode://d8b291567ebf9905863837fdb1a1f5e4bde8705c2becb84508c1112f573aba41156c6e79c1a737e028bb213b658beb06774632ade3ee8632e1c4abbf3fbeda25@159.65.90.34:30303?discport=30303,enode://a706e3afe8b0a9f7b25b331ea9ade764ca442a5a1ade64cc9bbf8c9db2eefbf4e1b16bf07b1d421717006370ae7c665036b1751a448a174c33f64f9093e01939@159.203.181.77:30303?discport=30303,enode://83f7f964bdcf8318f16d307582703c054d8f15ea354269ecfab5968752efe24c1110a313cdc09eaefd3c5bde360dc8630d3e1c1d15d4e0e250f28ce4fe01f450@164.92.76.43:30303?discport=30303,enode://00777880037c2d7c87861488c462ee3108146ba9e98c932fede894125801786dc41d8c8f401e6006628420fe909e63b366012d513576df37ef8577c690ddec96@142.93.231.46:30303?discport=30303,enode://05b4f677e2a2299a9389f1f6a8ccefcb86704069d74527b3e464c0afc79cf06185845fea95f6fcf5eaa477d45d287aac3ddd34689eb0bbf2594a144b63b7ed4c@178.128.169.33:30303?discport=30303,enode://2a45854f48f108a8729d60df925f69dc3df1425af2426b1e6859762c5314df1400a815a5bdec722c2eb41414e13e798168b848609fa64787fe298981f4a7593b@134.122.85.88:30303?discport=30303,enode://08cc9a99fc5d2617d5bb558bbd585aaf0a3b9c1928fc2a63340c13d2af93e8ed5caeb637e737e452ef4069010f7ddeeae387524d67948a73f129486d501d3e45@167.99.189.126:30303?discport=30303,enode://dd68413875efbd984b22ce47b7288b1ae14100595b3ad2d0d66687e9bb82497d2793d93e4927035598c3deca65c9e7e78fa1f11872528be1650daea5197d053d@139.59.18.253:30303?discport=30303,enode://cb0cd2e07d03da1dcbd0eda94f6a87377e59621fb4bdd3db64fad4d05dac393dde6ae955680690a73daf720bcbf58b3c8120219a27d4266799efd582a87bfe83@134.199.167.191:30303?discport=30303,enode://21b3cfff7d83cf9d4e2f12a6c8db9456992be1d4eb28094aaf45eeeae1918618956fc1cbfa50984166df30445b2a1600d346362adfffd3cc62635424ff589588@159.223.190.159:30303?discport=30303,enode://5d8b2be416244d1d5038dc425d8715fd41f6b2cef2a8911522f951175fbbd8a1cba751937c3c42b7b0f277b0186c720b57eb38d4efb6eb4ab62c675bea795726@147.182.206.102:30303?discport=30303,enode://72ed1eb2c7ccd80b6c58d84406a34029d88d0286939a0ef65af28497f4665f2c792ad496763d58713ebeff52eddc79f2211a8a3541119fa657d58ad4eb15a5ef@142.93.134.48:30303?discport=30303,enode://97f0f9a3f3b9f1734af77ab63e9c1f908d6f25ed4f50e00033e4809621f9344ef5f4642620ef0a4c080c5fd26989bb47d5282925b2ad40558966ca51521a238f@143.110.171.208:30303?discport=30303
+              - --bootnodes=enode://76bd9585beaaefdcc0f98f32cea6573f3d3b33b8c1aa3c714104074de105056130ff6e7b9042b921d92fabdae902234aaa0d330a6f4746556ab44df3f2c3f177@64.227.69.218:30303?discport=30303,enode://a72d1be2a61136154be8371edd27a56f32d694017082fb5199cb7a020c3d58c607d2ab585b0624d26450e4bea9142b78b220c09992b81991d5a43a9b5671cf32@147.182.166.185:30303?discport=30303,enode://9d096434faf5c215a06c3ec838328f6c8011def017408de11e5856cc31bc76f0bf063ebf69f11885941d5076560f62653625cdfdddd63414dc8d9bf0793c53a0@164.92.76.47:30303?discport=30303,enode://64c3b2ecda7a9d891a315008693d579e5b70fa5f6aaaf0307071df1a5c3ca7a5c87b991410efd5f074bb9c41468756ea96055b19601da3b31c01c7345e9fd000@209.38.107.125:30303?discport=30303,enode://0519cb9f265e6bf4adbef3ac8f9f4d4a97d49c2f79b3d3267f59c69abfffae7657b91a50d4b886ed76a8dfc3fc24ede62b1f1212459e5599ad5cd521e6d6cde9@134.209.18.253:30303?discport=30303,enode://ee0a511543848c4f2a4b98ead865498799241d9eae3faef93ad1b00398b48ba6fc197aea0649d30bc46a022fca5b3609ffde1fa8aadc5f8c27e9127f2348684c@206.81.6.222:30303?discport=30303,enode://51f0fa2429ce76571427f1f5eee819b79d132bab731a318ba79be80a27cc8787dc4a6eaf62527a1805733bdc61ae794ba5d2169be47d3e30a806a9bcc8f584d5@146.190.145.63:30303?discport=30303,enode://8b49d0ee044a89d81635857dbcef27b4b1036f96d7936f1c0e8224ac7ec73ddbdfec633e3d0fa49775b2635a7396a4b4e28f357dfe672aa94ab3f109629e257b@167.99.45.227:30303?discport=30303,enode://5bdbff81a2ec8592fce13acb5e070c8c3d344f9ea3a789dc47bedb2ff9ed6971794e8f1f2465d45c53efd011193cd9ae52a14c961022b4715ce4c7ce57ca01af@188.166.171.180:30303?discport=30303,enode://f775eb052d1d4c4057a60e9f8cb65e8d76bdf56752757f8821c18e1ea663ff0a980cbfb81c359ed12ebfa3020b77d2a3a15c22be889f06129cdaf3e39c3036cf@68.183.211.186:30303?discport=30303,enode://2ddbcdc1fb85e505e7758a528770822f8224f4c65bc7936b18756855225fe0f0a1b854698dde18d1a765a57be1206b72c8cf7d9a463e8e0be965b6753daa617f@137.184.162.235:30303?discport=30303,enode://7ec5af431c0dd85a9aba5cf9106c9e0f11d324c0082c4836d55cb199e983665ae9b9b662b5911f076c96d4e1d2e2138578975397b5fd74c20bb922e6cf72f11b@64.227.136.202:30303?discport=30303,enode://294ed63269ade366b49e2e652ec75c5aa2974516ea9565a2feeb9c96ba9152497347792f865231c5a1902a4c4865816ccbac4be11257e7dfe8aa8e76920c331c@170.64.204.38:30303?discport=30303,enode://66dc9c9c175148fffff901535bcbcefce2b02dc46fc9b30729b8dfea76f5dee07cff79a9437048e1cdfc62ca6f8ee45f50bfed23744d9b4fe0d6fce2ab8dcda4@137.184.154.38:30303?discport=30303,enode://e4e3acda9dfcbdb3f79eec50a5928e625861ec700723298fd2f974715723af41888f40de3c0cb59f11fa9e86200c14cfa03ee2502d2412b0b88b45e6ac3f943b@143.198.96.216:30303?discport=30303,enode://07c5d3858c6b6a43dd7b0dcece57e7a4957fab5f5ebfeb45cda3c813d0e9bbb0feb704bbff09c127ce0a84af2cd8b6866992f49f2e7bcd1718c673547c2ec3f7@188.166.55.26:30303?discport=30303,enode://fbe3a8f93b5dacfd8fa29ed1e3734cff4e67416efa8fff69366b98509ee7cd0b2c4353c021dd823a906a1a8323f5a644b2d86184168f5403da22890d9e8753de@188.166.170.40:30303?discport=30303
               - --miner.gaslimit=45000000
               - --ethstats=localhost:5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd@ethstats.fusaka-devnet-ssl-7.yolkie.xyz
               - --rpc.allow-unprotected-txs
@@ -55,7 +55,7 @@ prysm-geth-001:
               - --no-downloader
               - --networkid=7017928245
               - --db.size.limit=500GB
-              - --bootnodes=enode://ffb9ee9820001b301b9467f64c9f0ca5800d41ef4a69a0723441f7feb6c1ef29de565e792df7e96c1a8f87c99fb017081d940583822f9f8ea228a60fbc3c1e9b@157.245.69.192:30303?discport=30303
+              - --bootnodes=enode://76bd9585beaaefdcc0f98f32cea6573f3d3b33b8c1aa3c714104074de105056130ff6e7b9042b921d92fabdae902234aaa0d330a6f4746556ab44df3f2c3f177@64.227.69.218:30303?discport=30303
               - --miner.gaslimit=45000000
               - --ethstats=localhost:5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd@ethstats.fusaka-devnet-ssl-7.yolkie.xyz
             ethereumjs:
@@ -63,7 +63,7 @@ prysm-geth-001:
             lodestar:
               - --paramsFile=/data/network-config/config.yaml
               - --genesisStateFile=/data/network-config/genesis.ssz
-              - --bootnodes=enr:-Iq4QFnW7-2NjL_VVFy0WaXOsOgVNqXQUlk6fj8H46AU9BeKe5blTKURg0oyQVwWxAilPCsT6ZtN5Y1HoaLSpLU0MsGGAZg0DC6ugmlkgnY0gmlwhJ31RcCJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QGsGQCaPfqCZ6IWIqxwvygLIC5XxM_ve9mMR2RAC2wRJegncAG9eJ7Lo6zJiTJXlrlTLTj9PIG2nZfIRR2S_PgkHh2F0dG5ldHOIAAAAGAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEnfVFwINuZmSEuuYW7IlzZWNwMjU2azGhAmMU8wcXuBtyz8cm4Dv-YYPBQFNTnu8VAF_M0D7gxG9vg3RjcIIjKIN1ZHCCIyg
+              - --bootnodes=enr:-Iq4QFCRkEtjRUZPmjwpdBAx-mXkDJ1KbK1dWsnxoh488RAdKsVJg7w45EACyLunrb3-dphmMuV4x8kPoHJZ7VA5_oWGAZhkg4_hgmlkgnY0gmlwhEDjRdqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QDNRHtb14RJpQpd1DWx-LqkcZiRexCOlypjA0Tk9vpYrCv9A_vwJZ9bGXJoVT8MtEGnlOdPc1ybQmR6haagUxSkHh2F0dG5ldHOIAAAMAAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEQONF2oNuZmSEuuYW7IlzZWNwMjU2azGhAtC_jhAGZZIXLrJFCs2PsvNobP2_Po9G0fyDc6KMadaSg3RjcIIjKIN1ZHCCIyg
               - --rest.namespace="*"
               - --network.connectToDiscv5Bootnodes
               - --nat=true
@@ -71,7 +71,7 @@ prysm-geth-001:
             teku:
               - --network=/data/network-config/config.yaml
               - --genesis-state=/data/network-config/genesis.ssz
-              - --p2p-discovery-bootnodes=enr:-Iq4QFnW7-2NjL_VVFy0WaXOsOgVNqXQUlk6fj8H46AU9BeKe5blTKURg0oyQVwWxAilPCsT6ZtN5Y1HoaLSpLU0MsGGAZg0DC6ugmlkgnY0gmlwhJ31RcCJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QGsGQCaPfqCZ6IWIqxwvygLIC5XxM_ve9mMR2RAC2wRJegncAG9eJ7Lo6zJiTJXlrlTLTj9PIG2nZfIRR2S_PgkHh2F0dG5ldHOIAAAAGAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEnfVFwINuZmSEuuYW7IlzZWNwMjU2azGhAmMU8wcXuBtyz8cm4Dv-YYPBQFNTnu8VAF_M0D7gxG9vg3RjcIIjKIN1ZHCCIyg
+              - --p2p-discovery-bootnodes=enr:-Iq4QFCRkEtjRUZPmjwpdBAx-mXkDJ1KbK1dWsnxoh488RAdKsVJg7w45EACyLunrb3-dphmMuV4x8kPoHJZ7VA5_oWGAZhkg4_hgmlkgnY0gmlwhEDjRdqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QDNRHtb14RJpQpd1DWx-LqkcZiRexCOlypjA0Tk9vpYrCv9A_vwJZ9bGXJoVT8MtEGnlOdPc1ybQmR6haagUxSkHh2F0dG5ldHOIAAAMAAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEQONF2oNuZmSEuuYW7IlzZWNwMjU2azGhAtC_jhAGZZIXLrJFCs2PsvNobP2_Po9G0fyDc6KMadaSg3RjcIIjKIN1ZHCCIyg
               - --p2p-peer-upper-bound=100
               - --data-storage-non-canonical-blocks-enabled=true
               - --data-storage-mode=PRUNE
@@ -91,11 +91,11 @@ prysm-geth-001:
               - --enable-debug-rpc-endpoints
               - --verbosity=debug
               - --subscribe-all-subnets
-              - --bootstrap-node=enr:-Iq4QFnW7-2NjL_VVFy0WaXOsOgVNqXQUlk6fj8H46AU9BeKe5blTKURg0oyQVwWxAilPCsT6ZtN5Y1HoaLSpLU0MsGGAZg0DC6ugmlkgnY0gmlwhJ31RcCJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
-              - --bootstrap-node=enr:-MC4QGsGQCaPfqCZ6IWIqxwvygLIC5XxM_ve9mMR2RAC2wRJegncAG9eJ7Lo6zJiTJXlrlTLTj9PIG2nZfIRR2S_PgkHh2F0dG5ldHOIAAAAGAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEnfVFwINuZmSEuuYW7IlzZWNwMjU2azGhAmMU8wcXuBtyz8cm4Dv-YYPBQFNTnu8VAF_M0D7gxG9vg3RjcIIjKIN1ZHCCIyg
+              - --bootstrap-node=enr:-Iq4QFCRkEtjRUZPmjwpdBAx-mXkDJ1KbK1dWsnxoh488RAdKsVJg7w45EACyLunrb3-dphmMuV4x8kPoHJZ7VA5_oWGAZhkg4_hgmlkgnY0gmlwhEDjRdqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
+              - --bootstrap-node=enr:-MC4QDNRHtb14RJpQpd1DWx-LqkcZiRexCOlypjA0Tk9vpYrCv9A_vwJZ9bGXJoVT8MtEGnlOdPc1ybQmR6haagUxSkHh2F0dG5ldHOIAAAMAAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEQONF2oNuZmSEuuYW7IlzZWNwMjU2azGhAtC_jhAGZZIXLrJFCs2PsvNobP2_Po9G0fyDc6KMadaSg3RjcIIjKIN1ZHCCIyg
             lighthouse:
               - --testnet-dir=/data/network-config
-              - --boot-nodes=enr:-Iq4QFnW7-2NjL_VVFy0WaXOsOgVNqXQUlk6fj8H46AU9BeKe5blTKURg0oyQVwWxAilPCsT6ZtN5Y1HoaLSpLU0MsGGAZg0DC6ugmlkgnY0gmlwhJ31RcCJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QGsGQCaPfqCZ6IWIqxwvygLIC5XxM_ve9mMR2RAC2wRJegncAG9eJ7Lo6zJiTJXlrlTLTj9PIG2nZfIRR2S_PgkHh2F0dG5ldHOIAAAAGAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEnfVFwINuZmSEuuYW7IlzZWNwMjU2azGhAmMU8wcXuBtyz8cm4Dv-YYPBQFNTnu8VAF_M0D7gxG9vg3RjcIIjKIN1ZHCCIyg
+              - --boot-nodes=enr:-Iq4QFCRkEtjRUZPmjwpdBAx-mXkDJ1KbK1dWsnxoh488RAdKsVJg7w45EACyLunrb3-dphmMuV4x8kPoHJZ7VA5_oWGAZhkg4_hgmlkgnY0gmlwhEDjRdqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QDNRHtb14RJpQpd1DWx-LqkcZiRexCOlypjA0Tk9vpYrCv9A_vwJZ9bGXJoVT8MtEGnlOdPc1ybQmR6haagUxSkHh2F0dG5ldHOIAAAMAAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEQONF2oNuZmSEuuYW7IlzZWNwMjU2azGhAtC_jhAGZZIXLrJFCs2PsvNobP2_Po9G0fyDc6KMadaSg3RjcIIjKIN1ZHCCIyg
             nimbus:
               - --network=/data/network-config
               - --validator-monitor-auto=false
@@ -105,8 +105,8 @@ prysm-geth-001:
               - --sync-light-client=false
               - --light-client-data-serve=false
               - --light-client-data-import-mode=none
-              - --bootstrap-node=enr:-Iq4QFnW7-2NjL_VVFy0WaXOsOgVNqXQUlk6fj8H46AU9BeKe5blTKURg0oyQVwWxAilPCsT6ZtN5Y1HoaLSpLU0MsGGAZg0DC6ugmlkgnY0gmlwhJ31RcCJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
-              - --bootstrap-node=enr:-MC4QGsGQCaPfqCZ6IWIqxwvygLIC5XxM_ve9mMR2RAC2wRJegncAG9eJ7Lo6zJiTJXlrlTLTj9PIG2nZfIRR2S_PgkHh2F0dG5ldHOIAAAAGAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEnfVFwINuZmSEuuYW7IlzZWNwMjU2azGhAmMU8wcXuBtyz8cm4Dv-YYPBQFNTnu8VAF_M0D7gxG9vg3RjcIIjKIN1ZHCCIyg
+              - --bootstrap-node=enr:-Iq4QFCRkEtjRUZPmjwpdBAx-mXkDJ1KbK1dWsnxoh488RAdKsVJg7w45EACyLunrb3-dphmMuV4x8kPoHJZ7VA5_oWGAZhkg4_hgmlkgnY0gmlwhEDjRdqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
+              - --bootstrap-node=enr:-MC4QDNRHtb14RJpQpd1DWx-LqkcZiRexCOlypjA0Tk9vpYrCv9A_vwJZ9bGXJoVT8MtEGnlOdPc1ybQmR6haagUxSkHh2F0dG5ldHOIAAAMAAAAAACDY2djBIRldGgykOG_GOFwkZMFAQAAAAAAAACCaWSCdjSCaXCEQONF2oNuZmSEuuYW7IlzZWNwMjU2azGhAtC_jhAGZZIXLrJFCs2PsvNobP2_Po9G0fyDc6KMadaSg3RjcIIjKIN1ZHCCIyg
 
 
   geth:
