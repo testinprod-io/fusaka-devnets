@@ -1,0 +1,16 @@
+grandine-geth-1.fusaka-devnet-ssl-7.yolkie.xyz
+grandine-geth-2.fusaka-devnet-ssl-7.yolkie.xyz
+grandine-geth-3.fusaka-devnet-ssl-7.yolkie.xyz
+grandine-geth-4.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-1.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-2.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-3.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-4.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-5.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-6.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-7.fusaka-devnet-ssl-7.yolkie.xyz
+lighthouse-geth-8.fusaka-devnet-ssl-7.yolkie.xyz
+prysm-geth-1.fusaka-devnet-ssl-7.yolkie.xyz
+prysm-geth-2.fusaka-devnet-ssl-7.yolkie.xyz
+prysm-geth-3.fusaka-devnet-ssl-7.yolkie.xyz
+prysm-geth-4.fusaka-devnet-ssl-7.yolkie.xyz
