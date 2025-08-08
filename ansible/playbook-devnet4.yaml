@@ -1,0 +1,211 @@
+- hosts: localhost
+  roles:
+    - role: ethpandaops.general.ethereum_genesis
+      tags: [ethereum_genesis]
+
+- import_playbook: ethpandaops.general.bootstrap_server
+  vars:
+    target: "all:!localhost"
+  tags: [init-server, bootstrap]
+
+- hosts: all:!localhost
+  serial: "{{ batch_count | default('100%') }}"
+  become: true
+  roles:
+    # - role: robertdebock.fail2ban
+    #   tags: [init-server, fail2ban]
+    - role: geerlingguy.docker
+      tags: [init-server, docker]
+    - role: geerlingguy.pip
+      pip_install_packages:
+        - name: docker
+          extra_args: --break-system-packages
+      tags: [init-server, pip]
+    - role: ethpandaops.general.docker_cleanup
+      tags: [init-server, docker_cleanup]
+    - role: ethpandaops.general.docker_network
+      tags: [init-server, docker_network]
+    - role: ethpandaops.general.node_exporter
+      tags: [init-server, node_exporter]
+    - role: ethpandaops.general.prometheus
+      tags: [init-server, prometheus]
+    # - role: ethpandaops.general.vector
+    #   tags: [init-server, vector]
+
+- hosts: bootnode
+  become: true
+  # pre_tasks:
+  #   - name: Ensure /etc/ethereum_metrics_exporter directory exists
+  #     file:
+  #       path: /etc/ethereum_metrics_exporter
+  #       state: directory
+  #       mode: '0755'
+  #     tags: [ethereum, ethereum_node]
+  #   - name: Create config.yaml for ethereum_metrics_exporter
+  #     tags: [ethereum, ethereum_node]
+  #     copy:
+  #       dest: /etc/ethereum_metrics_exporter/config.yaml
+  #       content: |
+  #         consensus:
+  #           enabled: true
+  #           url: "http://beacon:5052"
+  #           name: "consensus-client"
+  #           eventStream:
+  #             enabled: true
+  #             topics: 
+  #               - "head"
+  #               - "block"
+  #               - "block_gossip"
+  #               - "attestation"
+  #               - "single_attestation"
+  #               - "voluntary_exit"
+  #               - "bls_to_execution_change"
+  #               - "proposer_slashing"
+  #               - "attester_slashing"
+  #               - "finalized_checkpoint"
+  #               - "chain_reorg"
+  #               - "contribution_and_proof"
+  #               - "light_client_finality_update"
+  #               - "light_client_optimistic_update"
+  #               - "payload_attributes"
+  #               - "blob_sidecar"
+  #         execution:
+  #           enabled: true
+  #           url: "http://execution:8545"
+  #           name: "execution-client"
+  #           modules:
+  #             - "eth"
+  #             - "net"
+  #             - "web3"
+  #             - "txpool"
+  #         diskUsage:
+  #           enabled: false
+  #           interval: 60m
+  #           directories:
+  #             - /data/ethereum
+  #       mode: '0644'
+  roles:
+    - role: ethpandaops.general.cl_bootnode
+      tags: [cl_bootnode]
+    - role: ethpandaops.general.ethereum_testnet_config
+      tags: [ethereum, eth_testnet_config, ethereum_testnet_config]
+    - role: ethpandaops.general.validator_keys
+      when: ethereum_node_cl_validator_enabled == true
+      tags: [ethereum, validator_keys]
+    - role: ethpandaops.general.ethereum_node
+      tags: [ethereum, ethereum_node]
+    # - role: ethpandaops.general.xatu_cannon
+    #   tags: [xatu_cannon]
+    - role: ethpandaops.general.docker_nginx_proxy
+      tags: [docker_nginx_proxy]
+    - role: ethpandaops.general.generate_basic_auth_nginx
+      tags: [docker_nginx_proxy]
+
+- hosts: ethereum_node
+  serial: "{{ batch_count | default('100%') }}"
+  become: true
+  # pre_tasks:
+  #   - name: Ensure /etc/ethereum_metrics_exporter directory exists
+  #     file:
+  #       path: /etc/ethereum_metrics_exporter
+  #       state: directory
+  #       mode: '0755'
+  #     tags: [ethereum, ethereum_node]
+    # - name: Create config.yaml for ethereum_metrics_exporter
+    #   tags: [ethereum, ethereum_node]
+    #   copy:
+    #     dest: /etc/ethereum_metrics_exporter/config.yaml
+    #     content: |
+    #       consensus:
+    #         enabled: true
+    #         url: "http://beacon:5052"
+    #         name: "consensus-client"
+    #         eventStream:
+    #           enabled: true
+    #           topics: 
+    #             - "head"
+    #             - "block"
+    #             - "block_gossip"
+    #             - "attestation"
+    #             - "single_attestation"
+    #             - "voluntary_exit"
+    #             - "bls_to_execution_change"
+    #             - "proposer_slashing"
+    #             - "attester_slashing"
+    #             - "finalized_checkpoint"
+    #             - "chain_reorg"
+    #             - "contribution_and_proof"
+    #             - "light_client_finality_update"
+    #             - "light_client_optimistic_update"
+    #             - "payload_attributes"
+    #             - "blob_sidecar"
+    #       execution:
+    #         enabled: true
+    #         url: "http://execution:8545"
+    #         name: "execution-client"
+    #         modules:
+    #           - "eth"
+    #           - "net"
+    #           - "web3"
+    #           - "txpool"
+    #       diskUsage:
+    #         enabled: false
+    #         interval: 60m
+    #         directories:
+    #           - /data/ethereum
+    #     mode: '0644'
+  roles:
+    - role: ethpandaops.general.ethereum_testnet_config
+      tags: [ethereum, eth_testnet_config, ethereum_testnet_config]
+    - role: ethpandaops.general.validator_keys
+      when: ethereum_node_cl_validator_enabled == true
+      tags: [ethereum, validator_keys]
+    - role: ethpandaops.general.ethereum_node
+      tags: [ethereum, ethereum_node]
+    - role: ethpandaops.general.docker_nginx_proxy
+      tags: [docker_nginx_proxy]
+    - role: ethpandaops.general.generate_basic_auth_nginx
+      tags: [docker_nginx_proxy]  
+  # post_tasks:
+    # - name: Restart xatu sentry containers
+    #   tags: [restart_xatu]
+    #   community.docker.docker_container:
+    #     name: "xatu-sentry"
+    #     state: started
+    #     restart: true 
+
+- hosts: ethereum_node
+  become: true
+  strategy: free
+  roles:
+    - role: ethpandaops.general.ethereum_node
+      tags: [ethereum, ethereum_node]
+    - role: ethpandaops.general.traffic_control
+      when: ethereum_node_cl_supernode_enabled == False
+      vars:
+        traffic_control_rules:
+          - interface: eth0
+            rate_download: 100mbit
+            rate_upload: 50mbit
+      tags: [traffic_control]
+    - role: ethpandaops.general.traffic_control
+      when: ethereum_node_cl_supernode_enabled == True
+      vars:
+        traffic_control_rules:
+          - interface: eth0
+            rate_download: 1000mbit
+            rate_upload: 1000mbit
+      tags: [traffic_control]
+
+- hosts: bootnode
+  become: true
+  roles:
+    - role: ethpandaops.general.ethereum_inventory_web
+      tags: [eth_inventory_web, ethereum_inventory_web]
+
+- hosts: localhost
+  roles:
+    - role: ethpandaops.general.ethereum_post_network_setup
+      tags: [eth_post_network_setup, ethereum_post_network_setup]
+    - role: ethpandaops.general.generate_kubernetes_config
+      tags: [gen_kubernetes_config, generate_kubernetes_config]
