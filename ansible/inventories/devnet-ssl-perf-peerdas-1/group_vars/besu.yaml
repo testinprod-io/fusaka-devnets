@@ -36,7 +36,7 @@ besu_container_command_extra_args:
   - --bonsai-limit-trie-logs-enabled=false
   - --ethstats={{ inventory_hostname }}:{{ ethstats_secret }}@{{ ethstats_url }}:443
   - --tx-pool-max-prioritized-by-type="BLOB=72"
-  - --target-gas-limit=45000000
+  - --target-gas-limit=100000000
 besu_container_pull: true
 
 prometheus_config: |
@@ -51,7 +51,7 @@ prometheus_config: |
       testnet: "{{ ethereum_network_name }}"
       execution_client: "{{ ethereum_node_el }}"
       consensus_client: "{{ ethereum_node_cl }}"
-      #bandwidth_limit: "{{ bandwidth }}"
+      bandwidth_limit: "{{ bandwidth }}"
   remote_write:
     - queue_config:
         batch_send_deadline: 5s

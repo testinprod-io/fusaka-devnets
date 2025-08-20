@@ -42,7 +42,7 @@ nethermind_container_command_extra_args:
   #- --Seq.ServerUrl={{ nethermind_seq_server }}
   #- --Seq.ApiKey={{ nethermind_seq_api_key }}
   #- --Metrics.PushGatewayUrl={{ nethermind_push_gateway }}
-  - --Blocks.TargetBlockGasLimit=45000000
+  - --Blocks.TargetBlockGasLimit=100000000
 nethermind_container_pull: true
 
 prometheus_config: |
@@ -57,7 +57,7 @@ prometheus_config: |
       testnet: "{{ ethereum_network_name }}"
       execution_client: "{{ ethereum_node_el }}"
       consensus_client: "{{ ethereum_node_cl }}"
-      #bandwidth_limit: "{{ bandwidth }}"
+      bandwidth_limit: "{{ bandwidth }}"
   remote_write:
     - queue_config:
         batch_send_deadline: 5s

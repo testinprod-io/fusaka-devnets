@@ -42,8 +42,6 @@ grandine_container_command_extra_args:
   - --configuration-directory=/network-config/
   - --boot-nodes={{ ethereum_cl_bootnodes | join(',') }}
   - --graffiti={{ ansible_hostname }}
-  - --max-empty-slots=10000
-  #- --disable-rate-limiting
 grandine_validator_container_volumes:
   - "{{ grandine_validator_datadir }}:/validator-data"
   - "{{ eth_testnet_config_dir }}:/network-config:ro"

@@ -46,11 +46,9 @@ teku_container_command_extra_args:
   - --p2p-peer-upper-bound=100
   - --data-storage-non-canonical-blocks-enabled=true
   - --data-storage-mode=ARCHIVE
-  - --logging=debug
+  - --logging=info
   - --Xlog-include-p2p-warnings-enabled
   - --metrics-block-timing-tracking-enabled
-  - --ignore-weak-subjectivity-period-enabled
-  - --rest-api-docs-enabled
 
 # role: ethpandaops.general.geth
 geth_container_name: execution
