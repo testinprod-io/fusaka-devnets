@@ -125,6 +125,16 @@ tracoor-single:
             traceDisableMemory: true
             traceDisableStack: true
             traceDisableStorage: true
+      - name: nimbus-geth-1
+        ethereum:
+          overrideNetworkName: fusaka-devnet-ssl-perf-peerdas-1
+          beacon:
+            nodeAddress: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+          execution:
+            nodeAddress: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+            traceDisableMemory: true
+            traceDisableStack: true
+            traceDisableStorage: true
       - name: prysm-geth-1
         ethereum:
           overrideNetworkName: fusaka-devnet-ssl-perf-peerdas-1

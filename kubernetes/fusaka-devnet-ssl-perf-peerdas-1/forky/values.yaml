@@ -65,7 +65,7 @@ forky:
           spec:
             seconds_per_slot: 12
             slots_per_epoch: 32
-            genesis_time: 1755806274
+            genesis_time: 1756300236
       sources:
         - name: bootnode-1
           type: "beacon_node"
@@ -86,6 +86,11 @@ forky:
           type: "beacon_node"
           config:
             address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+            polling_interval: "12s"
+        - name: nimbus-geth-1
+          type: "beacon_node"
+          config:
+            address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
             polling_interval: "12s"
         - name: prysm-geth-1
           type: "beacon_node"

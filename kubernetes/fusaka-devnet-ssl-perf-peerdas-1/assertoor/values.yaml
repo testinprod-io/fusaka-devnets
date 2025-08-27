@@ -59,15 +59,21 @@ assertoor:
     - name:  lighthouse-geth-3
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    - name:  lighthouse-geth-4
-      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     - name:  lodestar-geth-1
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     - name:  lodestar-geth-2
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    - name:  nimbus-geth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    - name:  nimbus-geth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    - name:  nimbus-geth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     - name:  prysm-geth-1
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
@@ -77,9 +83,6 @@ assertoor:
     - name:  prysm-geth-3
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    - name:  prysm-geth-4
-      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     - name:  teku-geth-1
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
@@ -89,9 +92,6 @@ assertoor:
     - name:  teku-geth-3
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    - name:  teku-geth-4
-      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
 
   validatorNamesInventory: https://config.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz/api/v1/nodes/validator-ranges
   globalVariables:
@@ -103,32 +103,32 @@ assertoor:
       - lighthouse-geth-1
       - lighthouse-geth-2
       - lighthouse-geth-3
-      - lighthouse-geth-4
       - lodestar-geth-1
       - lodestar-geth-2
+      - nimbus-geth-1
+      - nimbus-geth-2
+      - nimbus-geth-3
       - prysm-geth-1
       - prysm-geth-2
       - prysm-geth-3
-      - prysm-geth-4
       - teku-geth-1
       - teku-geth-2
       - teku-geth-3
-      - teku-geth-4
     validatorPairNames:
       - grandine-geth-1
       - grandine-geth-2
       - lighthouse-geth-1
       - lighthouse-geth-2
       - lighthouse-geth-3
-      - lighthouse-geth-4
       - lodestar-geth-1
       - lodestar-geth-2
+      - nimbus-geth-1
+      - nimbus-geth-2
+      - nimbus-geth-3
       - prysm-geth-2
       - prysm-geth-3
-      - prysm-geth-4
       - teku-geth-1
       - teku-geth-2
       - teku-geth-3
-      - teku-geth-4
 
   assertoorTests: []

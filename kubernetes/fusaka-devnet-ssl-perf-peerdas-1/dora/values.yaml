@@ -31,7 +31,7 @@ dora:
       value: "true"
     - name: FRONTEND_SHOW_SENSITIVE_PEER_INFOS
       value: "true"
-    - name: API_ENABLED
+    - name: API_ENABLED:
       value: "true"
     - name: API_CORS_ORIGINS
       value: "*"
@@ -76,15 +76,20 @@ dora:
     name: lighthouse-geth-3
     priority: -1
     archive: true
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    name: lighthouse-geth-4
-    priority: -1
-    archive: true
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: lodestar-geth-1
     priority: -1
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lodestar-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: lodestar-geth-2
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    name: nimbus-geth-1
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    name: nimbus-geth-2
+    priority: -1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.nimbus-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    name: nimbus-geth-3
     priority: -1
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: prysm-geth-1
@@ -95,9 +100,6 @@ dora:
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: prysm-geth-3
     priority: -1
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    name: prysm-geth-4
-    priority: -1
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: teku-geth-1
     priority: -1
@@ -106,9 +108,6 @@ dora:
     priority: -1
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: teku-geth-3
-    priority: -1
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.teku-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    name: teku-geth-4
     priority: -1
   executionEndpoints:
   # Rpc
@@ -140,16 +139,24 @@ dora:
     name: lighthouse-geth-3
     priority: -1
     archive: false
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    name: lighthouse-geth-4
-    priority: -1
-    archive: false
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: lodestar-geth-1
     priority: -1
     archive: false
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lodestar-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: lodestar-geth-2
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    name: nimbus-geth-1
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-2.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    name: nimbus-geth-2
+    priority: -1
+    archive: false
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.nimbus-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
+    name: nimbus-geth-3
     priority: -1
     archive: false
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
@@ -164,10 +171,6 @@ dora:
     name: prysm-geth-3
     priority: -1
     archive: false
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    name: prysm-geth-4
-    priority: -1
-    archive: false
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-1.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: teku-geth-1
     priority: -1
@@ -178,9 +181,5 @@ dora:
     archive: false
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-3.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
     name: teku-geth-3
-    priority: -1
-    archive: false
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.teku-geth-4.fusaka-devnet-ssl-perf-peerdas-1.yolkie.xyz
-    name: teku-geth-4
     priority: -1
     archive: false
