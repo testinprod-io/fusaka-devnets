@@ -1,0 +1,147 @@
+ethereum_cl_bootnodes: 
+  - enr:-Iq4QEWBhcnYqug2ym2cTK-BcIjypx1tWTxJrgh4aMGYJx2LcbBCLtTSReAu1MOuApKc_uOLcxl0cUvU3ZVunxAzdw6GAZkvcLhxgmlkgnY0gmlwhKXjwcWJc2VjcDI1NmsxoQJJ3h8aUO3GJHv-bdvHtsQZ2OEisutelYfGjXO4lSg8BYN1ZHCCIzI
+  - enr:-Nm4QG0Mj9m3ANrFw88wxZR13bTqw8IOwJNhdzwp1Q7vJtxdCR2ePitE2HM123agptSMdpZcGvyM_xtxnxOwzd65WRSGAZkv56oyh2F0dG5ldHOIAAAMAAAAAACDY2djgYCEZXRoMpChxFwOcHQ4dAABAAAAAAAAgmlkgnY0gmlwhKXjwcWDbmZkhLwpgruEcXVpY4IyyIlzZWNwMjU2azGhA-Oq_o1CrsPKYZ3J2r4l79j2qUfdG-Ejb-FK-w82o4NwiHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo
+  - enr:-Nm4QAF1BdNm92P2TXdRyLTlAh5Hk5NIBwPwIwc5ofC-_RKaDUzZyUCWsT06H_HHOpBXzvWEnTR3o-jfnNBV-nM-d3iGAZkv54Gch2F0dG5ldHOIAAAAwAAAAACDY2djgYCEZXRoMpChxFwOcHQ4dAABAAAAAAAAgmlkgnY0gmlwhJ31IdeDbmZkhLwpgruEcXVpY4IyyIlzZWNwMjU2azGhAvW9oqRrhLsqBMTy3AufYVkpUbDUP7-x229AKkjb_BpIiHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo
+  - enr:-Nm4QLTxgbj6KQfDWWAp0YtBf1_EDIZk4tpYf5jkzRKyh7jcFBM1_TV29ImUS2OSxuijMjRYUH50S4n0oFG45DdskdiGAZkv576-h2F0dG5ldHOIABgAAAAAAACDY2djgYCEZXRoMpChxFwOcHQ4dAABAAAAAAAAgmlkgnY0gmlwhGiDFV-DbmZkhLwpgruEcXVpY4IyyIlzZWNwMjU2azGhA0BYjZd7oqWnXzQ_DaeRoLRaEpACiU3epyl6iaUnJ99hiHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo
+  - enr:-Nm4QPrdyGfzA9UJ7CDORURzyCoFoItVnHHCoquNt83I5vYFI4x5TZMg4xneoq3SRIPqX_ZnnDgkCfytZ8RwwQ9ZfXmGAZkv50ghh2F0dG5ldHOIAAAAMAAAAACDY2djgYCEZXRoMpChxFwOcHQ4dAABAAAAAAAAgmlkgnY0gmlwhKdjK26DbmZkhLwpgruEcXVpY4IyyIlzZWNwMjU2azGhAsHIe-TRPYjtPCTZxReZ0JI_JSxEwZqXK7WnInT2iFO4iHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo
+  - enr:-Nm4QIDR5fYMjkSPYM5Dn2MoucOLcaPaFVcT_fi8w6fOPNQoRSrktWLKuoJTPSs4G96SmzfNdd6xoByVGBtg7JqRo3SGAZkv535Dh2F0dG5ldHOIAAAwAAAAAACDY2djgYCEZXRoMpChxFwOcHQ4dAABAAAAAAAAgmlkgnY0gmlwhGj4_EODbmZkhLwpgruEcXVpY4IyyIlzZWNwMjU2azGhA1gH9lM5a2QGgH8Z8AQYofvvx01tpH5si7d0jP34e0fXiHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo
+  - enr:-QEauECQvlRG3EyZunMe7tD7sxjnf_0YaTUI7HgZg44Ki854M3mOz0zhD2Wd9_pWTAUbYuYE1VU0CLM1sz9Fz9wGKNzSA4dhdHRuZXRziAAAAAAAABgAg2NnY4GAhmNsaWVudNGKTGlnaHRob3VzZYU3LjEuMIRldGgykKHEXA5wdDh0AAEAAAAAAACCaWSCdjSCaXCEsoDsjoNpcDaQJgSogAytANAAAAAA-OpQAYNuZmSEvCmCu4RxdWljgiMphXF1aWM2giMpiXNlY3AyNTZrMaEC0_sTritXJbCcr7vYwWmEOlcPVM6osL5VuRbQFC5ldU2Ic3luY25ldHMAg3RjcIIjKIR0Y3A2giMog3VkcIIjKIR1ZHA2giMo
+  - enr:-QEauEBgwg98fURQ7JqxaDKFLAxmPw_1msiwOQnuEeDK_SvoaFfEtuhyuIOlhKH1B0MigDQ6ErnZfBsmVIZNy1opBnj2A4dhdHRuZXRziAAAAAAAYAAAg2NnY4GAhmNsaWVudNGKTGlnaHRob3VzZYU3LjEuMIRldGgykKHEXA5wdDh0AAEAAAAAAACCaWSCdjSCaXCEpRbSY4NpcDaQJABhgAEAANAAAAAAtoXgAYNuZmSEvCmCu4RxdWljgiMphXF1aWM2giMpiXNlY3AyNTZrMaECND4kbLxnjw5lUwuWqvA0-5o2zxnJY3442xeryepZBpeIc3luY25ldHMAg3RjcIIjKIR0Y3A2giMog3VkcIIjKIR1ZHA2giMo
+  - enr:-QEauEAKA-huVfNrARI7e-ixvGEDkJeXSruznWvhxYFpsKWX1DOnXNBr9VYqMkKKrzo7LpDvtboxqRU6fpn_CItgTr47A4dhdHRuZXRziAAAAAAAAAAMg2NnY4GAhmNsaWVudNGKTGlnaHRob3VzZYU3LjEuMIRldGgykKHEXA5wdDh0AAEAAAAAAACCaWSCdjSCaXCEkr6odoNpcDaQJgSogAAEAdAAAAAA9qIwAINuZmSEvCmCu4RxdWljgiMphXF1aWM2giMpiXNlY3AyNTZrMaECDwpPAw0tZXcgORNIMjkHYaxbw6wnDDCoEIENo3AP6wWIc3luY25ldHMAg3RjcIIjKIR0Y3A2giMog3VkcIIjKIR1ZHA2giMo
+  - enr:-QEauEAVThNdpymqbPTD_Ow5WzSmYfS0GEnTCxpU3KRv0w7sNgXWnMp_TlW9PuKRpZnjWjnqhFRhUhhQY-7mEboCpoSNA4dhdHRuZXRziAAAAAAAAAAGg2NnY4GAhmNsaWVudNGKTGlnaHRob3VzZYU3LjEuMIRldGgykKHEXA5wdDh0AAEAAAAAAACCaWSCdjSCaXCEqkCHGoNpcDaQJABhgAAQAgAAAAAAdBJQAINuZmSEvCmCu4RxdWljgiMphXF1aWM2giMpiXNlY3AyNTZrMaEDp4SGrHDdx_CznggHHQD8JDIZSDbQ84A9rneeBjyCQMyIc3luY25ldHMAg3RjcIIjKIR0Y3A2giMog3VkcIIjKIR1ZHA2giMo
+  - enr:-QEauECLO9GE0YyTYzZKZekEAP7z2CSVi594zqro6z1Sgsx6ZSjXazbRmjOdENR6KBGDZjXAjjwV58mzBJRdRfXPqCr6A4dhdHRuZXRziACAAQAAAAAAg2NnY4GAhmNsaWVudNGKTGlnaHRob3VzZYU3LjEuMIRldGgykKHEXA5wdDh0AAEAAAAAAACCaWSCdjSCaXCERLeDVYNpcDaQJgSogAQAANEAAAACy0kgAYNuZmSEvCmCu4RxdWljgiMphXF1aWM2giMpiXNlY3AyNTZrMaECfTwnxd5n3kwuJCSZgljI-90eAap0xHzO5q5VkbsSa4WIc3luY25ldHMAg3RjcIIjKIR0Y3A2giMog3VkcIIjKIR1ZHA2giMo
+ethereum_el_bootnodes:
+  - enode://62e29622b60b30972b015695cacb25c218da45fa12a03842cb21c7471e4c5011e00cec7fa85dd7f45c277d75e1a70049d60b6b4ec0a07a1d0b25165ddb99cf49@165.227.193.197:30303?discport=30303
+  - enode://6b056d4f47362e2ec42bf1206a8876bbbc6be5298ef48fdebf35c8c9e02f6a9c9c067e8e9aa9754706d1f8acca0c4e2cff982ddb1f81166009c9cc8606404c05@157.245.33.215:30303?discport=30303
+  - enode://4783fb9cfc33877ca5d47f03db417abc59279d83d1457e52c6d2b5ff3d7315b44e0dfd0eb6a837095734f055e8a5e6e386f79caca1e5561df7627ecdb9e358da@104.131.21.95:30303?discport=30303
+  - enode://7524c1e6dec56648aedbb3ddb70dc7c578baf6faab4449374a64f25fdd32a35114695dcac44fdbb6ce13a7e9189df38c33ec53bbef349faf5e4e20aae7d4a918@167.99.43.110:30303?discport=30303
+  - enode://80b92f6ed14a80d606daae1aecff2c280fc46dd277fd1ae9a3158889b95d76a76e135a1ca86ae86d4cb767a43db143fa73b9615ec587b112d5818b485ee2603d@104.248.252.67:30303?discport=30303
+  - enode://1fa8390772ea1588a0020f7bab45a3e3c3d0623a3872b8b24e19b4cab80f305730cd88d1686c6f95dba1de933eac82bbca8365e5abd1f9e43ad05e3536bbb700@178.128.236.142:30303?discport=30303
+  - enode://62482553df5b3e97367e2ce3f43ab2dda70cae71e2651c64c0ceb3c278161436ec5e2a2417ce6e75eced877d96005ca2c3d52ad951db8eb0ea93dfba7db00a8d@165.22.210.99:30303?discport=30303
+  - enode://46a96d4220665538dd748826a418ed6bbbeed073643b91eaf44c1b7673105e78dff5dbbbadb8da0ee42ea859e4a381938c3827976f70afcb38501a63f0ebed5d@146.190.168.118:30303?discport=30303
+  - enode://aaf0e7a826114b2935ce344332c9129edf23e9bb3ea8ec0eb5082a71326c6fb1e78297dc0f7194c4f65352f69752231a894eb414775e05b6174f5138b93376ab@170.64.135.26:30303?discport=30303
+  - enode://1f4cdd20c18241e7f9db52f8288e152ca4c4cb211e4de8fdc9d266a285ba35cb3baf72f9d3f0879fd5cd502652135f2407fd5dc8006e494bb903f6d30a405ffa@68.183.131.85:30303?discport=30303
+
+# role: ethpandaops.general.prometheus
+prometheus_remote_push_url: "{{ secret_prometheus_remote_write.endpoint }}"
+prometheus_remote_write_username: "{{ secret_prometheus_remote_write.username }}"
+prometheus_remote_write_password: "{{ secret_prometheus_remote_write.password }}"
+
+prometheus_remote_ef_push_url: "{{ secret_prometheus_remote_write_ef.endpoint }}"
+prometheus_remote_ef_write_username: "{{ secret_prometheus_remote_write_ef.username }}"
+prometheus_remote_ef_write_password: "{{ secret_prometheus_remote_write_ef.password }}"
+
+prometheus_config: |
+  global:
+    scrape_interval: 30s
+    evaluation_interval: 30s
+    scrape_timeout: 10s
+    external_labels:
+      origin: "sunnyside"
+      instance: "{{ ethereum_network_name }}-ssl-{{ inventory_hostname }}"
+      ip_address: "{{ ansible_host }}"
+      network: "{{ ethereum_network_name }}"
+      testnet: "{{ ethereum_network_name }}"
+      execution_client: "{{ ethereum_node_el }}"
+      consensus_client: "{{ ethereum_node_cl }}"
+      supernode: "{{ ethereum_node_cl_supernode_enabled | bool }}"
+  remote_write:
+    # - queue_config:
+    #     batch_send_deadline: 5s
+    #     max_backoff: 500ms
+    #     max_samples_per_send: 500
+    #     min_backoff: 50ms
+    #     max_shards: 100
+    #   url: {{ prometheus_remote_push_url }}
+    #   remote_timeout: 10s
+    #   headers:
+    #     x-api-key: {{ prometheus_remote_write_password }}
+    - url: {{ prometheus_remote_ef_push_url }}
+      queue_config:
+        batch_send_deadline: 5s
+        max_samples_per_send: 3000
+        max_shards: 20
+      remote_timeout: 10s
+      basic_auth:
+        username: {{ prometheus_remote_ef_write_username }}
+        password: {{ prometheus_remote_ef_write_password }}
+  scrape_configs:
+    - job_name: "prometheus"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["localhost:9090"]
+          labels:
+            instance: "ssl-{{ inventory_hostname }}"
+    - job_name: "node"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["172.17.0.1:9100"]
+          labels:
+            instance: "ssl-{{ inventory_hostname }}"
+    - job_name: "exporter"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["ethereum-metrics-exporter:9090"]
+          labels:
+            instance: "ssl-{{ inventory_hostname }}"
+    - job_name: "consensus_node"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["{{ vars[ethereum_node_cl + '_container_name'] }}:{{ ethereum_node_cl_ports_metrics }}"]
+          labels:
+            instance: "ssl-{{ inventory_hostname }}"
+            supernode: "{{ ethereum_node_cl_supernode_enabled | bool }}"
+
+# role: ethpandaops.general.xatu_sentry
+# --limit lighthouse-geth-1,lighthouse-geth-3,lighthouse-geth-12,lighthouse-geth-28,lighthouse-geth-45,lighthouse-geth-63,lighthouse-geth-79,lighthouse-geth-84,lighthouse-geth-91,lighthouse-geth-106,lighthouse-geth-117,lighthouse-geth-123,lighthouse-geth-139,lighthouse-geth-146,lighthouse-geth-158,lighthouse-geth-169,lighthouse-geth-177,lighthouse-geth-182,lighthouse-geth-194,lighthouse-geth-201,lighthouse-geth-214,lighthouse-geth-219,lighthouse-geth-225,lighthouse-geth-227,lighthouse-geth-228,prysm-geth-1,prysm-geth-3,prysm-geth-8,prysm-geth-15,prysm-geth-19,prysm-geth-26,prysm-geth-41,prysm-geth-52,prysm-geth-64,prysm-geth-69,prysm-geth-74,prysm-geth-85,prysm-geth-88,prysm-geth-93,prysm-geth-98,prysm-geth-101,prysm-geth-112,prysm-geth-118,prysm-geth-129,prysm-geth-133,prysm-geth-144,prysm-geth-151,prysm-geth-156,prysm-geth-163,prysm-geth-166
+ethereum_node_xatu_sentry_enabled: false
+xatu_sentry_container_image: "{{ default_tooling_images.xatu_sentry }}"
+xatu_sentry_config_name: "{{ ethereum_network_name }}-ssl-{{ inventory_hostname }}"
+xatu_sentry_config_server_address: "{{ secret_xatu_sentry.server_address }}"
+xatu_sentry_config_server_auth_user: "{{ secret_xatu_sentry.user }}"
+xatu_sentry_config_server_auth_password: "{{ secret_xatu_sentry.password }}"
+
+xatu_sentry_config_server_ef_address: "{{ secret_xatu_sentry_ef.server_address }}"
+xatu_sentry_config_server_ef_auth_user: "{{ secret_xatu_sentry_ef.user }}"
+xatu_sentry_config_server_ef_auth_password: "{{ secret_xatu_sentry_ef.password }}"
+
+xatu_sentry_config_network_name_override: "{{ ethereum_network_name }}"
+xatu_sentry_config: |
+  logging: "info"
+  metricsAddr: ":9090"
+  name: "{{ xatu_sentry_config_name }}"
+  ethereum:
+    beaconNodeAddress: {{ xatu_sentry_config_beacon_uri }}
+    overrideNetworkName: {{ xatu_sentry_config_network_name_override }}
+    beaconSubscriptions:
+    - attestation
+    - block
+    - block_gossip
+    - chain_reorg
+    - finalized_checkpoint
+    - head
+    - voluntary_exit
+    - contribution_and_proof
+    - blob_sidecar
+    - data_column_sidecar
+  attestationData:
+    enabled: false
+  beaconCommittees:
+    enabled: false
+  forkChoice:
+    enabled: false
+  outputs:
+  - name: grpc-ef
+    type: xatu
+    config:
+      address: {{ xatu_sentry_config_server_ef_address }}
+      tls: false
+      headers:
+        authorization: "Basic {{ (xatu_sentry_config_server_ef_auth_user + ":" + xatu_sentry_config_server_ef_auth_password) | b64encode }}"
+  # - name: grpc
+  #   type: xatu
+  #   config:
+  #     address: {{ xatu_sentry_config_server_address }}
+  #     tls: false
+  #     headers:
+  #       authorization: "Basic {{ (xatu_sentry_config_server_auth_user + ":" + xatu_sentry_config_server_auth_password) | b64encode }}"
