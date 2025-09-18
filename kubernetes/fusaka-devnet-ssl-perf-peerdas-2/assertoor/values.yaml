@@ -1,0 +1,134 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-1.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-1.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-10
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-10.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-10.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-11
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-11.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-11.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-12
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-12.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-12.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-13
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-13.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-13.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-14
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-14.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-14.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-15
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-15.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-15.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-16
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-16.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-16.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-2.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-2.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-3.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-3.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-4.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-4.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-5.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-5.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-6.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-6.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-7
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-7.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-7.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-8
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-8.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-8.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+    - name:  prysm-geth-9
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-9.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-9.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - prysm-geth-1
+      - prysm-geth-10
+      - prysm-geth-11
+      - prysm-geth-12
+      - prysm-geth-13
+      - prysm-geth-14
+      - prysm-geth-15
+      - prysm-geth-16
+      - prysm-geth-2
+      - prysm-geth-3
+      - prysm-geth-4
+      - prysm-geth-5
+      - prysm-geth-6
+      - prysm-geth-7
+      - prysm-geth-8
+      - prysm-geth-9
+    validatorPairNames:
+      - prysm-geth-10
+      - prysm-geth-11
+      - prysm-geth-12
+      - prysm-geth-13
+      - prysm-geth-14
+      - prysm-geth-15
+      - prysm-geth-16
+      - prysm-geth-2
+      - prysm-geth-3
+      - prysm-geth-4
+      - prysm-geth-5
+      - prysm-geth-6
+      - prysm-geth-7
+      - prysm-geth-8
+      - prysm-geth-9
+
+  assertoorTests: []
