@@ -8,9 +8,9 @@ prysm-geth-001:
       rpcEndpoint: http://geth-prysm-001:8545
       beaconEndpoint: http://prysm-geth-001:5052
     checkpointSync:
-      enabled: false
+      enabled: true
       addresses:
-        fusaka-devnet-ssl-perf-peerdas-2: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.68.183.10.74
+        fusaka-devnet-ssl-perf-peerdas-2: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
     clientArgs:
       networks:
         fusaka-devnet-ssl-perf-peerdas-2:
@@ -62,7 +62,7 @@ prysm-geth-001:
             lodestar:
               - --paramsFile=/data/network-config/config.yaml
               - --genesisStateFile=/data/network-config/genesis.ssz
-              - --bootnodes=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QHOrpY1gCwfT2wMTdxKQM9SQNOEkJxQo68CklMWFSAGCUyjRo4Zg56dpWIGxn0llq6aIz_tIFmngTmVXTXDd3uUHh2F0dG5ldHOIAAAADAAAAACDY2djBIRldGgykML5WH5wYIlkAQAAAAAAAACCaWSCdjSCaXCERLcKSoNuZmSE9P634IlzZWNwMjU2azGhAl2L8Jvbz7KZTUWrqK9oNAPWYnSskFz351Am_DDOOsU_g3RjcIIjKIN1ZHCCIyg
+              - --bootnodes=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-Kq4QPLawsvcJ3hekcFgYBTfkJiOw_B7w2lLVOVkTkk8Pm5cF2pp_mU4i3AKqwbZBx4m8n8rAZjASNwAhrRn8zCHQyUYhGV0aDKQ7_XGOXBgiWT__________4JpZIJ2NIJpcIREtwpKg25mZIQAAAAAiXNlY3AyNTZrMaECXYvwm9vPsplNRauor2g0A9ZidKyQXPfnUCb8MM46xT-DdGNwgiMog3VkcIIjKA
               - --rest.namespace="*"
               - --network.connectToDiscv5Bootnodes
               - --nat=true
@@ -70,7 +70,7 @@ prysm-geth-001:
             teku:
               - --network=/data/network-config/config.yaml
               - --genesis-state=/data/network-config/genesis.ssz
-              - --p2p-discovery-bootnodes=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QHOrpY1gCwfT2wMTdxKQM9SQNOEkJxQo68CklMWFSAGCUyjRo4Zg56dpWIGxn0llq6aIz_tIFmngTmVXTXDd3uUHh2F0dG5ldHOIAAAADAAAAACDY2djBIRldGgykML5WH5wYIlkAQAAAAAAAACCaWSCdjSCaXCERLcKSoNuZmSE9P634IlzZWNwMjU2azGhAl2L8Jvbz7KZTUWrqK9oNAPWYnSskFz351Am_DDOOsU_g3RjcIIjKIN1ZHCCIyg
+              - --p2p-discovery-bootnodes=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-Kq4QPLawsvcJ3hekcFgYBTfkJiOw_B7w2lLVOVkTkk8Pm5cF2pp_mU4i3AKqwbZBx4m8n8rAZjASNwAhrRn8zCHQyUYhGV0aDKQ7_XGOXBgiWT__________4JpZIJ2NIJpcIREtwpKg25mZIQAAAAAiXNlY3AyNTZrMaECXYvwm9vPsplNRauor2g0A9ZidKyQXPfnUCb8MM46xT-DdGNwgiMog3VkcIIjKA
               - --p2p-peer-upper-bound=100
               - --data-storage-non-canonical-blocks-enabled=true
               - --data-storage-mode=PRUNE
@@ -89,10 +89,10 @@ prysm-geth-001:
               - --verbosity=debug
               - --subscribe-all-subnets
               - --bootstrap-node=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
-              - --bootstrap-node=enr:-MC4QHOrpY1gCwfT2wMTdxKQM9SQNOEkJxQo68CklMWFSAGCUyjRo4Zg56dpWIGxn0llq6aIz_tIFmngTmVXTXDd3uUHh2F0dG5ldHOIAAAADAAAAACDY2djBIRldGgykML5WH5wYIlkAQAAAAAAAACCaWSCdjSCaXCERLcKSoNuZmSE9P634IlzZWNwMjU2azGhAl2L8Jvbz7KZTUWrqK9oNAPWYnSskFz351Am_DDOOsU_g3RjcIIjKIN1ZHCCIyg
+              - --bootstrap-node=enr:-Kq4QPLawsvcJ3hekcFgYBTfkJiOw_B7w2lLVOVkTkk8Pm5cF2pp_mU4i3AKqwbZBx4m8n8rAZjASNwAhrRn8zCHQyUYhGV0aDKQ7_XGOXBgiWT__________4JpZIJ2NIJpcIREtwpKg25mZIQAAAAAiXNlY3AyNTZrMaECXYvwm9vPsplNRauor2g0A9ZidKyQXPfnUCb8MM46xT-DdGNwgiMog3VkcIIjKA
             lighthouse:
               - --testnet-dir=/data/network-config
-              - --boot-nodes=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MC4QHOrpY1gCwfT2wMTdxKQM9SQNOEkJxQo68CklMWFSAGCUyjRo4Zg56dpWIGxn0llq6aIz_tIFmngTmVXTXDd3uUHh2F0dG5ldHOIAAAADAAAAACDY2djBIRldGgykML5WH5wYIlkAQAAAAAAAACCaWSCdjSCaXCERLcKSoNuZmSE9P634IlzZWNwMjU2azGhAl2L8Jvbz7KZTUWrqK9oNAPWYnSskFz351Am_DDOOsU_g3RjcIIjKIN1ZHCCIyg
+              - --boot-nodes=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-Kq4QPLawsvcJ3hekcFgYBTfkJiOw_B7w2lLVOVkTkk8Pm5cF2pp_mU4i3AKqwbZBx4m8n8rAZjASNwAhrRn8zCHQyUYhGV0aDKQ7_XGOXBgiWT__________4JpZIJ2NIJpcIREtwpKg25mZIQAAAAAiXNlY3AyNTZrMaECXYvwm9vPsplNRauor2g0A9ZidKyQXPfnUCb8MM46xT-DdGNwgiMog3VkcIIjKA
             nimbus:
               - --network=/data/network-config
               - --validator-monitor-auto=false
@@ -103,7 +103,7 @@ prysm-geth-001:
               - --light-client-data-serve=false
               - --light-client-data-import-mode=none
               - --bootstrap-node=enr:-Iq4QLQym3OeaMjYVw3r4QNVmWF1VD72G0rbc3_Bjrwdkr2FIENADcklS_5IHoeZmd-WJZTrLeF1z0UFVKlZ0wU_oU-GAZmW4lcVgmlkgnY0gmlwhES3CkqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
-              - --bootstrap-node=enr:-MC4QHOrpY1gCwfT2wMTdxKQM9SQNOEkJxQo68CklMWFSAGCUyjRo4Zg56dpWIGxn0llq6aIz_tIFmngTmVXTXDd3uUHh2F0dG5ldHOIAAAADAAAAACDY2djBIRldGgykML5WH5wYIlkAQAAAAAAAACCaWSCdjSCaXCERLcKSoNuZmSE9P634IlzZWNwMjU2azGhAl2L8Jvbz7KZTUWrqK9oNAPWYnSskFz351Am_DDOOsU_g3RjcIIjKIN1ZHCCIyg
+              - --bootstrap-node=enr:-Kq4QPLawsvcJ3hekcFgYBTfkJiOw_B7w2lLVOVkTkk8Pm5cF2pp_mU4i3AKqwbZBx4m8n8rAZjASNwAhrRn8zCHQyUYhGV0aDKQ7_XGOXBgiWT__________4JpZIJ2NIJpcIREtwpKg25mZIQAAAAAiXNlY3AyNTZrMaECXYvwm9vPsplNRauor2g0A9ZidKyQXPfnUCb8MM46xT-DdGNwgiMog3VkcIIjKA
 
 
   geth:
@@ -191,9 +191,9 @@ prysm-geth-001:
 
   prysm:
     checkpointSync:
-      enabled: false
+      enabled: true
       addresses:
-        fusaka-devnet-ssl-perf-peerdas-2: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.68.183.10.74
+        fusaka-devnet-ssl-perf-peerdas-2: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-perf-peerdas-2.yolkie.xyz
     enabled: true
     fullnameOverride: prysm-geth-001
     image:
