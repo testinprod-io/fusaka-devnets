@@ -1,0 +1,57 @@
+xatu-mimicry:
+  enabled: true
+  fullnameOverride: xatu-mimicry
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/xatu
+    tag: latest
+    pullPolicy: Always
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2000Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  config:
+    logging: "info"
+    metricsAddr: ":9090"
+    name: "fusaka-devnet-ssl-perf-peerdas-3-xatu-mimicry"
+    captureDelay: 3m
+    ntpServer: time.google.com
+    ethereum:
+      overrideNetworkName: "fusaka-devnet-ssl-perf-peerdas-3"
+    coordinator:
+      type: static
+      config:
+        retryInterval: 60s
+        nodeRecords:
+          - enode://a0923c350d1b7b4da2726ea2bc12a638704fd1afd87698705226c601e1c603e23e7c94f9e2c27957017852dcd93b7e4cf5b0ef90f4f95f5bc48ac80c070730e1@161.35.81.150:30303?discport=30303
+          - enode://5a9638a23432de1848407873dcbe4a1535faa634bcce6ce834f299d30b05cc7daeba4abc3c2bfe28cf0039618402d432cdea9812a4a243ee1df2ebe21ad90ff4@174.138.39.1:30303?discport=30303
+          - enode://cc9dffc101a22a1f3c9e830a2aa20e654fb033786b97f33864910308071c595d2217d4458d94b8cf6eb41dab7fdd5e07cdc8c7439c85f71eec4edce12319f9aa@143.198.234.210:30303?discport=30303
+          - enode://07cb8eb7cf63447a2461dd128ad7e3118e59ed873a8345c81591a5e95fc297e8476477f72791878af42e67abc42ba3e917af6cd4ab77918560687ce2307400e9@174.138.11.212:30303?discport=30303
+          - enode://c180476d41ceb35743e28edb853bff83042c9f514b380ed6e83a68993fa8d3b1a435a0a279a086a0619629f931c3e36d1f7235b10f286530e0aa50e1a7fdb59f@167.99.89.154:30303?discport=30303
+          - enode://66cf6d58c07618da3a313751e2ba180713164eb1b6807ddafe6d1c3e48a9aeb7f4a571dc409ed97af815a2a39de69d96742859a7e6466e43ae662d922e357cee@46.101.250.64:30303?discport=30303
+          - enode://5366aab7954b45de2de72efbed55a853c951ac4b4d6e8267bc612d3e2855817e51d7cd06578e3638fceb33d6087de47f5422fc70ff6c6f2faa2c40d06baf3329@159.203.23.226:30303?discport=30303
+          - enode://a8b5247e03d00839cd43ed527197e72de1057f5f59c01d68e9f9db671af532c6a265aff0382a8f2a6114d7483d300f20f80e8745442c5b8b3fa9839f50b25b59@143.110.183.202:30303?discport=30303
+          - enode://282f4646a10aa3e272e24133ba4e98fa01e66522e3ddac82ba3fd31668658bf73f4587ab885c9c776b1e71bc414430b6a37bc90d5b576f5ce827976ac74c312c@209.38.19.180:30303?discport=30303
+          - enode://b18beae633b4a209c25c4f8abadad181779bbdb41993c893f1fa3d45a8c48282fc93445595dec71b6af0b06e80e3ec83f74480b1ddf04f9ed9995579fd539fa0@165.232.141.99:30303?discport=30303
+          - enode://31166b7b2c69aa6fd1035c554b8caf2c20380b2aef73e2f1f7af2bb3b97f81abc30ceb97162482d73871d8303a2171f274486da329ee6715cf77faa8308b938b@159.223.3.110:30303?discport=30303
+          - enode://758ee6258c7ccb4fae04786f1fa53deaa7f0507739ea98998221db9ba6bbe2a468c7faa7dc3896297f4fde56be2d8528e32d3a93395fa0a1f2649587d8848fcf@138.68.136.120:30303?discport=30303
+          - enode://6ecef565baa18b62cc220cf7019528cd91d4df4974e7e640644766e60f03c31282269251138db7430758c9ad225ce79222647284d5087104c74fc30f85b764e4@161.35.214.147:30303?discport=30303
+          - enode://403c20ada42ede977dc8f742832fd2ab5ae2444a2e90cf4b0e3156e5d3c501963d7e9e12e3e763050e9086b1ec4b4eba7c178db929c641fe53e0ebbfe23c7082@165.22.234.171:30303?discport=30303
+          - enode://9e75c75caffd66f62621e0fcdd2d5aa8cdde064091b54160c141a8effe18e466d6088c3fe86a672bab73ea9813ceb5f80a85cfa9cade4d43e89d41a7a3aa3be1@68.183.80.128:30303?discport=30303
+          - enode://0dca9910c532b133fa329b9e360cc8f7b4581057857078007e97b083e0dc0fe1888788aa64140a12d3d52e60a78ae518e54aa5892e8806b606776238dfc0fdf2@170.64.213.4:30303?discport=30303
+          - enode://807cd707de4334f1d5d9436cc793f0f48a6f4fc789bd09c07623605b74d14185acb2754f010762314d45f6b237f2e899fa4a0eff4721b17e9e96cea38bfc03d8@104.248.121.140:30303?discport=30303
+    outputs:
+    - name: grpc
+      type: xatu
+      config:
+        address: server.xatu-experimental.ethpandaops.io:443
+        maxQueueSize: 51200
+        tls: true
+        headers:
+          authorization: "Basic <path:/secrets/services/services.enc.yaml#xatu | jsonPath {.experimental.event_ingester_auth}>"
+        batchTimeout: 5s
+        exportTimeout: 30s
+        maxExportBatchSize: 512
