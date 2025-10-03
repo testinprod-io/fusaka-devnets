@@ -52,6 +52,9 @@ dora:
   postgresql:
     name: "dora-postgresql"
     fullnameOverride: "dora-postgresql"
+    image:
+      repository: bitnamilegacy/postgresql
+      tag: 15.4.0-debian-11-r10
 
   mevRelays:
     - index: 0
