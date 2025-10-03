@@ -52,8 +52,6 @@ dora:
   postgresql:
     name: "dora-postgresql"
     fullnameOverride: "dora-postgresql"
-    image:
-      repository: bitnamilegacy/postgresql
 
   mevRelays:
     - index: 0
