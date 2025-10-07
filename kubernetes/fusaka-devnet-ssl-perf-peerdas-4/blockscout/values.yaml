@@ -44,6 +44,8 @@ blockscout-stack:
       SUBNETWORK: fusaka-devnet-ssl-perf-peerdas-4
       POOL_SIZE: "15"
       CHAIN_SPEC_PATH: /config-update/chainspec.json
+      FIRST_BLOCK: "0"
+      TRACE_FIRST_BLOCK: "0"
 
     service:
       type: ClusterIP

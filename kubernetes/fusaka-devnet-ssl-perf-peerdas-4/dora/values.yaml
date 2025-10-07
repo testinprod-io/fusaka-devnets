@@ -11,8 +11,8 @@ dora:
       cpu: 500m
       memory: 1Gi
     limits:
-      cpu: 1000m
-      memory: 2Gi
+      cpu: 1500m
+      memory: 3Gi
   ingress:
     enabled: true
     className: ingress-nginx-public
@@ -25,30 +25,25 @@ dora:
   name: fusaka-devnet-ssl-perf-peerdas-4
   configPath: "https://config.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz/cl/config.yaml"
   validatorNamesInventory: "https://config.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz/api/v1/nodes/validator-ranges"
+  ethExplorerLink: "https://explorer.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz"
+  publicRpcUrl: "https://rpc.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz"
+  rainbowkitProjectId: ""
+  executionGenesisConfig: "https://config.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz/el/genesis.json"
+  apiRequireAuth: False
+  apiAuthSecret: "<path:/secrets/services/services.enc.yaml#dora | jsonPath {.api_secret}>"
+  apiWhitelistedIPs: []
+  apiDefaultRateLimit: 60
+  apiDisableDefaultRateLimit: false
   proxyCount: 2
   extraEnv:
     - name: FRONTEND_PPROF
       value: "true"
     - name: FRONTEND_SHOW_SENSITIVE_PEER_INFOS
       value: "true"
-    - name: FRONTEND_SHOW_VALIDATOR_SUMMARY
-      value: "true"
-    - name: API_ENABLED
-      value: "true"
     - name: API_CORS_ORIGINS
       value: "*"
-    - name: FRONTEND_SHOW_PEER_DAS_INFOS
+    - name: FRONTEND_ENABLE_DAS_GUARDIAN_MASS_SCAN
       value: "true"
-    - name: FRONTEND_ETH_EXPLORER_LINK
-      value: "https://explorer.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz"
-    - name: FRONTEND_PUBLIC_RPC_URL
-      value: "https://rpc.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz"
-    - name: FRONTEND_SHOW_SUBMIT_DEPOSIT
-      value: "true"
-    - name: FRONTEND_SHOW_SUBMIT_EL_REQUESTS
-      value: "true"
-    - name: EXECUTIONAPI_GENESIS_CONFIG
-      value: "https://config.fusaka-devnet-ssl-perf-peerdas-4.yolkie.xyz/el/genesis.json"
   postgresql:
     name: "dora-postgresql"
     fullnameOverride: "dora-postgresql"
