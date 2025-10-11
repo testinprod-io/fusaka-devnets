@@ -1,0 +1,260 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/ethereum-node.yaml.j2
+
+prysm-geth-001:
+  global:
+    main:
+      network: fusaka-devnet-ssl-chaos-6
+      engineEndpoint: http://geth-prysm-001:8551
+      rpcEndpoint: http://geth-prysm-001:8545
+      beaconEndpoint: http://prysm-geth-001:5052
+    checkpointSync:
+      enabled: false
+      addresses:
+        fusaka-devnet-ssl-chaos-6: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+    clientArgs:
+      networks:
+        fusaka-devnet-ssl-chaos-6:
+          execution:
+            besu:
+              - --genesis-file=/data/network-config/besu.json
+              - --bootnodes=enode://e01d5b5f49a502914a6610bf0f094bcdce1997ab832f9cc4f700db6c5469099e67c1e4c1c25a0c8e265b52be1fc2ec07e3b64d6bf84d23d91bc6caf390eda224@104.248.198.10:30303?discport=30303
+              - --rpc-http-api=ADMIN,DEBUG,ETH,MINER,NET,TRACE,TXPOOL,WEB3
+              - --sync-mode=FULL
+              - --data-storage-format=BONSAI
+              - --bonsai-limit-trie-logs-enabled=false
+              - --ethstats=localhost:5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd@ethstats.fusaka-devnet-ssl-chaos-6.yolkie.xyz:443
+              - --tx-pool-max-prioritized-by-type="BLOB=72"
+              - --target-gas-limit=60000000
+            nethermind:
+              - --Init.ChainSpecPath=/data/network-config/chainspec.json
+              - --JsonRpc.EnabledModules=Eth,Subscribe,Trace,TxPool,Web3,Personal,Proof,Net,Parity,Health,Rpc,Debug,Admin
+              - --Discovery.Bootnodes=enode://e01d5b5f49a502914a6610bf0f094bcdce1997ab832f9cc4f700db6c5469099e67c1e4c1c25a0c8e265b52be1fc2ec07e3b64d6bf84d23d91bc6caf390eda224@104.248.198.10:30303?discport=30303
+              - --Init.IsMining=false
+              - --Pruning.Mode=None
+              - --config=none
+              - --EthStats.Enabled=true
+              - --EthStats.Name=localhost
+              - --EthStats.Secret=5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd
+              - --EthStats.Server=wss://ethstats.fusaka-devnet-ssl-chaos-6.yolkie.xyz/api/
+              - --log=INFO
+              - --Seq.MinLevel=Info
+              - --Blocks.TargetBlockGasLimit=60000000
+            geth:
+              - --http.api=eth,net,web3,debug,admin
+              - --http.vhosts=*
+              - --networkid=7074266045
+              - --syncmode=full
+              - --bootnodes=enode://e01d5b5f49a502914a6610bf0f094bcdce1997ab832f9cc4f700db6c5469099e67c1e4c1c25a0c8e265b52be1fc2ec07e3b64d6bf84d23d91bc6caf390eda224@104.248.198.10:30303?discport=30303,enode://1fb8740006d0a0212bf39df71b4c4bc787cd45d42fc3de0a2cef29dbd157f5b73dfff3f3c3aa3f1021b8366ee559e8111ebfd92bc3f1d49ffa13aa0ea2dfa318@64.227.6.51:30303?discport=30303,enode://90f1837221722b1b2fa54fe67b03bc38314fd3b835efab44384f7af5956f99acc73ef2e0b956b42219f2519c07fc3a2fe68032e763bd3f796b6b46dc0731084a@143.198.56.117:30303?discport=30303,enode://0a9afc379c843a570af293d6361f3cc8d323e4f6c41da62a1e3cf8f24aefa10bb30965f011a15cbce44ac00692eaca3e1b4cc7b49bbd4b479c363c60d43d516f@178.62.208.115:30303?discport=30303,enode://8098538efb2c0ae05ae7acdc6a92bc30ab3fbe36f0dc8df928d93479b218b28fedfcf2eca7973aedf385749ef01496b54f2e7273994a62cd1fd64910a2422dbe@178.62.53.180:30303?discport=30303,enode://d4f8643d0f5ad5ed39816b3796ce6c82c2aced1be792c757f51a56027162cd5dd3b9b96fc4c5e8d112b93ad484d59fc22ae4487c9689192c2108b435295d798f@164.90.189.34:30303?discport=30303,enode://9f721c42e4bbb2035d449a249119b5f4357b0a06e0f7058b6e7afc4f4053d16760c92025bd1226bfde7242d61521fd99003c158f13e215d699edad581e3f111a@167.99.232.15:30303?discport=30303,enode://ec59ef0806bf9898f311e724de1cf9b9132a0db8c84d4efee7d63f7f9e275736b1646c4e407ed99b86a3e9e35a5420f0f68f3702068c88ac4fd10802d4ee256f@143.198.236.146:30303?discport=30303,enode://cbf3b8124134841807f09bead9a8c4b5506f6092766994590b38a079cfe075763cdf667523ca1d57ea1f03cb0914e79f31e7d3d60e81ce95e3f4ec0ea4966674@178.128.241.250:30303?discport=30303,enode://0d2007a251b7a883d745c3e38b0f2e6beda81077f54d721e656b6dc28c1b311d28fe55d1f665a6940f1b059a759152abc6d9c214620a7a4feb40dbd4d5ebb5f9@178.62.109.222:30303?discport=30303,enode://7ca9c533bf345fe1d866343263011e99a556dd8ca47683092417730d424862d2c047f0681027c7a0e94e0dd39141fac49bbf0db931c847c588cb4a06208fc7f6@209.38.239.23:30303?discport=30303
+              - --miner.gaslimit=60000000
+              - --rpc.allow-unprotected-txs
+            erigon:
+              - --http.api=eth,erigon,engine,web3,net,debug,trace,txpool,admin
+              - --http.vhosts=*
+              - --ws
+              - --no-downloader
+              - --networkid=7074266045
+              - --db.size.limit=500GB
+              - --bootnodes=enode://e01d5b5f49a502914a6610bf0f094bcdce1997ab832f9cc4f700db6c5469099e67c1e4c1c25a0c8e265b52be1fc2ec07e3b64d6bf84d23d91bc6caf390eda224@104.248.198.10:30303?discport=30303
+              - --miner.gaslimit=60000000
+              - --ethstats=localhost:5712f4ec14f9c0923308087b63f8fe638f3eb39813be25836f6b6e10716842bd@ethstats.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+            ethereumjs:
+          consensus:
+            lodestar:
+              - --paramsFile=/data/network-config/config.yaml
+              - --genesisStateFile=/data/network-config/genesis.ssz
+              - --bootnodes=enr:-Iq4QBDDTOgJV8dvWvpqL53CEd4HtwqBGorxnNayib7_VGwEQKLRR8J9cf9pGxvgD0WUMfe4Bg3Pl8mx8lYmp8AyTmaGAZnUZx5QgmlkgnY0gmlwhGj4xgqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MG4QOyitTzjZFG8_hdb3-b-LhALjDTUl46Wo23fl5a5KPsvQTQ-XAXUMXbm-ymJxEd5tOF6vnjwCNEuHfAzMOToYCwHh2F0dG5ldHOIAAAAAAMAAACDY2djgYCEZXRoMpCahNEjcGAgeAEAAAAAAAAAgmlkgnY0gmlwhGj4xgqDbmZkhO9O7cqJc2VjcDI1NmsxoQLfdPq4n5NrXfHFA6xq71lS9WjTRTkt-XQ0CnPuY4a2A4N0Y3CCIyiDdWRwgiMo
+              - --rest.namespace="*"
+              - --network.connectToDiscv5Bootnodes
+              - --nat=true
+              - --logLevel=debug
+            teku:
+              - --network=/data/network-config/config.yaml
+              - --genesis-state=/data/network-config/genesis.ssz
+              - --p2p-discovery-bootnodes=enr:-Iq4QBDDTOgJV8dvWvpqL53CEd4HtwqBGorxnNayib7_VGwEQKLRR8J9cf9pGxvgD0WUMfe4Bg3Pl8mx8lYmp8AyTmaGAZnUZx5QgmlkgnY0gmlwhGj4xgqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MG4QOyitTzjZFG8_hdb3-b-LhALjDTUl46Wo23fl5a5KPsvQTQ-XAXUMXbm-ymJxEd5tOF6vnjwCNEuHfAzMOToYCwHh2F0dG5ldHOIAAAAAAMAAACDY2djgYCEZXRoMpCahNEjcGAgeAEAAAAAAAAAgmlkgnY0gmlwhGj4xgqDbmZkhO9O7cqJc2VjcDI1NmsxoQLfdPq4n5NrXfHFA6xq71lS9WjTRTkt-XQ0CnPuY4a2A4N0Y3CCIyiDdWRwgiMo
+              - --p2p-peer-upper-bound=100
+              - --data-storage-non-canonical-blocks-enabled=true
+              - --data-storage-mode=PRUNE
+              - --logging=debug
+              - --Xlog-include-p2p-warnings-enabled
+              - --metrics-block-timing-tracking-enabled
+              - --rest-api-docs-enabled
+              - --ignore-weak-subjectivity-period-enabled
+            prysm:
+              - --grpc-gateway-corsdomain=*
+              - --chain-config-file=/data/network-config/config.yaml
+              - --genesis-state=/data/network-config/genesis.ssz
+              - --contract-deployment-block=0
+              - --min-sync-peers=1
+              - --pprof
+              - --enable-debug-rpc-endpoints
+              - --verbosity=debug
+              - --bootstrap-node=enr:-Iq4QBDDTOgJV8dvWvpqL53CEd4HtwqBGorxnNayib7_VGwEQKLRR8J9cf9pGxvgD0WUMfe4Bg3Pl8mx8lYmp8AyTmaGAZnUZx5QgmlkgnY0gmlwhGj4xgqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
+              - --bootstrap-node=enr:-MG4QOyitTzjZFG8_hdb3-b-LhALjDTUl46Wo23fl5a5KPsvQTQ-XAXUMXbm-ymJxEd5tOF6vnjwCNEuHfAzMOToYCwHh2F0dG5ldHOIAAAAAAMAAACDY2djgYCEZXRoMpCahNEjcGAgeAEAAAAAAAAAgmlkgnY0gmlwhGj4xgqDbmZkhO9O7cqJc2VjcDI1NmsxoQLfdPq4n5NrXfHFA6xq71lS9WjTRTkt-XQ0CnPuY4a2A4N0Y3CCIyiDdWRwgiMo
+            lighthouse:
+              - --testnet-dir=/data/network-config
+              - --boot-nodes=enr:-Iq4QBDDTOgJV8dvWvpqL53CEd4HtwqBGorxnNayib7_VGwEQKLRR8J9cf9pGxvgD0WUMfe4Bg3Pl8mx8lYmp8AyTmaGAZnUZx5QgmlkgnY0gmlwhGj4xgqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI,enr:-MG4QOyitTzjZFG8_hdb3-b-LhALjDTUl46Wo23fl5a5KPsvQTQ-XAXUMXbm-ymJxEd5tOF6vnjwCNEuHfAzMOToYCwHh2F0dG5ldHOIAAAAAAMAAACDY2djgYCEZXRoMpCahNEjcGAgeAEAAAAAAAAAgmlkgnY0gmlwhGj4xgqDbmZkhO9O7cqJc2VjcDI1NmsxoQLfdPq4n5NrXfHFA6xq71lS9WjTRTkt-XQ0CnPuY4a2A4N0Y3CCIyiDdWRwgiMo
+            nimbus:
+              - --network=/data/network-config
+              - --validator-monitor-auto=false
+              - --doppelganger-detection=off
+              - --log-level=DEBUG
+              - --light-client-data-serve=false
+              - --sync-light-client=false
+              - --light-client-data-serve=false
+              - --light-client-data-import-mode=none
+              - --bootstrap-node=enr:-Iq4QBDDTOgJV8dvWvpqL53CEd4HtwqBGorxnNayib7_VGwEQKLRR8J9cf9pGxvgD0WUMfe4Bg3Pl8mx8lYmp8AyTmaGAZnUZx5QgmlkgnY0gmlwhGj4xgqJc2VjcDI1NmsxoQJtuukir45CAVRyhmqJKcRS2934t-LXmAxJ-k6iZONGlYN1ZHCCIzI
+              - --bootstrap-node=enr:-MG4QOyitTzjZFG8_hdb3-b-LhALjDTUl46Wo23fl5a5KPsvQTQ-XAXUMXbm-ymJxEd5tOF6vnjwCNEuHfAzMOToYCwHh2F0dG5ldHOIAAAAAAMAAACDY2djgYCEZXRoMpCahNEjcGAgeAEAAAAAAAAAgmlkgnY0gmlwhGj4xgqDbmZkhO9O7cqJc2VjcDI1NmsxoQLfdPq4n5NrXfHFA6xq71lS9WjTRTkt-XQ0CnPuY4a2A4N0Y3CCIyiDdWRwgiMo
+
+
+  geth:
+    enabled: true
+    fullnameOverride: geth-prysm-001
+    image:
+      repository: ethereum/client-go
+      tag: v1.16.4
+      pullPolicy: Always
+    p2pNodePort:
+      enabled: true
+      port: 31490
+    persistence:
+      enabled: true
+      size: 100Gi
+    podLabels:
+      network: fusaka-devnet-ssl-chaos-6
+      testnet: fusaka-devnet-ssl-chaos-6
+      ethereum_network: fusaka-devnet-ssl-chaos-6
+      ethereum_role: execution
+      consensus_client: prysm
+      execution_client: geth
+      ethereum_instance: geth-prysm-001
+    resources:
+      requests:
+        cpu: 2000m
+        memory: 5Gi
+      limits:
+        cpu: 3000m
+        memory: 7Gi
+    initContainers:
+      - name: init-config
+        image: alpine:latest
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsNonRoot: false
+          runAsUser: 0
+        command:
+          - sh
+          - -ace
+          - >
+            CHAINSPEC_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/el/chainspec.json;
+            GENESIS_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/el/genesis.json;
+            BESU_GENESIS_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/el/besu.json;
+            ENODES_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/el/enodes.txt;
+            mkdir -p /data/network-config;
+            if ! [ -f /data/network_config_init_done ];
+            then
+              apk update && apk add curl jq;
+              wget -O /data/network-config/chainspec.json $CHAINSPEC_URI;
+              wget -O /data/network-config/genesis.json $GENESIS_URI;
+              wget -O /data/network-config/besu.json $BESU_GENESIS_URI;
+              wget -O /data/network-config/enodes.txt $ENODES_URI;
+              cat /data/network-config/genesis.json | jq -r '.config.chainId' > /data/network-config/chainid.txt;
+              touch /data/network_config_init_done;
+              echo "network config init done";
+            else
+              echo "network config already present";
+            fi;
+            echo "bootnode init done: $(cat /data/network-config/enodes.txt)";
+        volumeMounts:
+          - name: storage
+            mountPath: "/data"
+      - name: init-genesis
+        image: ethereum/client-go:v1.16.4
+        imagePullPolicy: Always
+        securityContext:
+          runAsNonRoot: false
+          runAsUser: 0
+        command:
+          - sh
+          - -ace
+          - >
+            if ! [ -f /data/genesis_init_done ];
+            then
+              geth init --datadir /data /data/network-config/genesis.json;
+              touch /data/genesis_init_done;
+              echo "genesis init done";
+            else
+              echo "genesis is already initialized";
+            fi;
+        volumeMounts:
+          - name: storage
+            mountPath: "/data"
+
+  prysm:
+    checkpointSync:
+      enabled: false
+      addresses:
+        fusaka-devnet-ssl-chaos-6: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.peerdas-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+    enabled: true
+    fullnameOverride: prysm-geth-001
+    image:
+      repository: gcr.io/offchainlabs/prysm/beacon-chain
+      tag: v6.1.1
+      pullPolicy: Always
+    mode: "beacon"
+    p2pNodePort:
+      enabled: true
+      port: 32490
+    podLabels:
+      network: fusaka-devnet-ssl-chaos-6
+      testnet: fusaka-devnet-ssl-chaos-6
+      ethereum_network: fusaka-devnet-ssl-chaos-6
+      ethereum_role: consensus
+      consensus_client: prysm
+      execution_client: geth
+      ethereum_instance: prysm-geth-001
+    resources:
+      requests:
+        cpu: 2000m
+        memory: 5Gi
+      limits:
+        cpu: 3000m
+        memory: 7Gi
+    persistence:
+      enabled: true
+      size: 200Gi
+    initContainers:
+    - name: init-genesis
+      image: alpine:latest
+      imagePullPolicy: IfNotPresent
+      securityContext:
+        runAsNonRoot: false
+        runAsUser: 0
+      command:
+        - sh
+        - -ace
+        - >
+          apk add jq curl sed;
+          DEPOSIT_CONTRACT_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/cl/deposit_contract.txt;
+          DEPOSIT_CONTRACT_BLOCK_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/cl/deposit_contract_block.txt;
+          DEPOSIT_CONTRACT_BLOCK_HASH_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/cl/deposit_contract_block_hash.txt;
+          GENESIS_CONFIG_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/cl/config.yaml;
+          GENESIS_SSZ_URI=https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/cl/genesis.ssz;
+          mkdir -p /data/network-config;
+          curl -s https://config.fusaka-devnet-ssl-chaos-6.yolkie.xyz/api/v1/nodes/inventory | jq -r '.ethereum_pairs[] | .consensus.enr' > /data/network-config/bootstrap_nodes.txt;
+          if ! [ -f /data/network-config/genesis.ssz ];
+          then
+            wget -O /data/network-config/deposit_contract.txt $DEPOSIT_CONTRACT_URI;
+            wget -O /data/network-config/deposit_contract_block.txt $DEPOSIT_CONTRACT_BLOCK_URI;
+            wget -O /data/network-config/deposit_contract_block_hash.txt $DEPOSIT_CONTRACT_BLOCK_HASH_URI;
+            wget -O /data/network-config/config.yaml $GENESIS_CONFIG_URI;
+            wget -O /data/network-config/genesis.ssz $GENESIS_SSZ_URI;
+            echo "genesis init done";
+          else
+            echo "genesis exists. skipping...";
+          fi;
+          (tr '\n' ',' < /data/network-config/bootstrap_nodes.txt | sed 's/[^,]*/"&"/g') > /data/network-config/bootstrap_nodes2.txt;
+          mv /data/network-config/bootstrap_nodes2.txt /data/network-config/bootstrap_nodes.txt;
+          echo "bootnode init done: $(cat /data/network-config/bootstrap_nodes.txt)";
+      volumeMounts:
+        - name: storage
+          mountPath: "/data"

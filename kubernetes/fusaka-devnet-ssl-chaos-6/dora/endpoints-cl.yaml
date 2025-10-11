@@ -1,0 +1,53 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dora-endpoints-cl.yaml.j2
+# Consensus layer endpoints
+
+- url: http://prysm-geth-001:5052
+  name: rpc-prysm-geth-001
+  authGroup: pandaops
+  archive: true
+  priority: 1
+- url: https://bn-bootnode-1.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: bootnode-1
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-geth-1.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-geth-1
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-geth-2.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-geth-2
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-geth-3.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-geth-3
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-geth-4.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-geth-4
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-geth-5.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-geth-5
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-nethermind-1.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-nethermind-1
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-nethermind-2.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-nethermind-2
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-nethermind-3.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-nethermind-3
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-nethermind-4.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-nethermind-4
+  authGroup: pandaops
+  priority: -1
+- url: https://bn-prysm-nethermind-5.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+  name: prysm-nethermind-5
+  authGroup: pandaops
+  priority: -1
+

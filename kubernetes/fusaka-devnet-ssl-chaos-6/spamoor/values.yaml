@@ -1,0 +1,45 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/spamoor.yaml.j2
+
+spamoor:
+  fullnameOverride: spamoor
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/spamoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 250m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: spamoor.fusaka-devnet-ssl-chaos-6.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  customArgs:
+    - --fulu-activation=1760205674
+
+  persistence:
+    enabled: true
+
+  privateKey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.spamoor_private_key}>"
+  rpcEndpoints:
+  # Rpc
+  - "http://geth-prysm-001:8545"
+  - "name(bootnode-1)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-bootnode-1.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-geth-1)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-geth-1.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-geth-2)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-geth-2.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-geth-3)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-geth-3.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-geth-4)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-geth-4.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-geth-5)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-geth-5.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-nethermind-1)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-nethermind-1.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-nethermind-2)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-nethermind-2.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-nethermind-3)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-nethermind-3.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-nethermind-4)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-nethermind-4.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+  - "name(prysm-nethermind-5)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc-prysm-nethermind-5.srv.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
