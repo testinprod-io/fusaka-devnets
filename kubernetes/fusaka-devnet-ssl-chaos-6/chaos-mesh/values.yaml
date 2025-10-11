@@ -13,10 +13,10 @@ chaos-mesh:
         external-dns.alpha.kubernetes.io/hostname: chaos-mesh.fusaka-devnet-ssl-chaos-6.yolkie.xyz
       hosts:
         - name: chaos-mesh.fusaka-devnet-ssl-chaos-6.yolkie.xyz
-          paths:
-            - path: /
-              pathType: Prefix
-  
+          tls: true
+      paths: ["/"]
+      ingressClassName: ""
+          
   # Controller Manager configuration
   controllerManager:
     replicaCount: 1
