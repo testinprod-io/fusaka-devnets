@@ -2,22 +2,28 @@
 
 # Configuration for the official chaos-mesh chart
 chaos-mesh:
-  # Dashboard configuration
+  fullnameOverride: "fusaka-devnet-ssl-chaos-mesh-6"
+  webhook:
+    certManager:
+      enabled: false
+    FailurePolicy: Ignore
+    timeoutSeconds: 2
   dashboard:
     create: true
-    securityMode: False
+    securityMode: false
+    persistentVolume:
+      enabled: true
+      storageClassName: "do-block-storage"
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/ingress.class: ingress-nginx-public
+        kubernetes.io/ingress.class: nginx
         external-dns.alpha.kubernetes.io/hostname: chaos-mesh.fusaka-devnet-ssl-chaos-6.yolkie.xyz
       hosts:
         - name: chaos-mesh.fusaka-devnet-ssl-chaos-6.yolkie.xyz
-          tls: false
       paths: ["/"]
-      ingressClassName: ""
-          
-  # Controller Manager configuration
+      ingressClassName: nginx
+      
   controllerManager:
     replicaCount: 1
     # Disable mTLS for physical machine connections
