@@ -19,6 +19,7 @@ chaos-mesh:
         storageClassName: "do-block-storage"
       ingress:
         enabled: true
+        apiVersionOverrides: "networking.k8s.io/v1"  # Add this line
         annotations:
           kubernetes.io/ingress.class: nginx
           external-dns.alpha.kubernetes.io/hostname: chaos-mesh.fusaka-devnet-ssl-chaos-6.yolkie.xyz
