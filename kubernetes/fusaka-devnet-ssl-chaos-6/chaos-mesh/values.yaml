@@ -1,25 +1,17 @@
 # Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/chaos-mesh.yaml.j2
 
 # Configuration for the official chaos-mesh chart
-
-
 chaos-mesh:
   chaos-mesh:
-    fullnameOverride: "fusaka-devnet-ssl-chaos-mesh-6"
-    webhook:
-      certManager:
-        enabled: false
-      FailurePolicy: Ignore
-      timeoutSeconds: 2
+    # Dashboard configuration
+    fullnameOverride: fusaka-devnet-ssl-chaos-6
+    
     dashboard:
       create: true
-      securityMode: false
-      persistentVolume:
-        enabled: true
-        storageClassName: "do-block-storage"
+      securityMode: False
       ingress:
         enabled: true
-        apiVersionOverrides: "networking.k8s.io/v1"  # Add this line
+        apiVersionOverrides: "networking.k8s.io/v1"  
         annotations:
           kubernetes.io/ingress.class: nginx
           external-dns.alpha.kubernetes.io/hostname: chaos-mesh.fusaka-devnet-ssl-chaos-6.yolkie.xyz
@@ -27,7 +19,8 @@ chaos-mesh:
           - name: chaos-mesh.fusaka-devnet-ssl-chaos-6.yolkie.xyz
         paths: ["/"]
         ingressClassName: nginx
-        
+          
+    # Controller Manager configuration
     controllerManager:
       replicaCount: 1
       # Disable mTLS for physical machine connections
@@ -37,99 +30,99 @@ chaos-mesh:
     chaosDaemon:
       runtime: containerd
       socketPath: /run/containerd/containerd.sock
-  
+
   # Custom physical machines configuration (not supported by upstream chart)
   # These will be created by our custom template
   physicalMachines:
     enabled: true
     machines:
-      - name: prysm-geth-1
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: geth
-          nodename: prysm-geth-1
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Geth node"
-      - name: prysm-geth-2
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: geth
-          nodename: prysm-geth-2
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Geth node"
-      - name: prysm-geth-3
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: geth
-          nodename: prysm-geth-3
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Geth node"
-      - name: prysm-geth-4
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: geth
-          nodename: prysm-geth-4
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Geth node"
-      - name: prysm-geth-5
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: geth
-          nodename: prysm-geth-5
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Geth node"
-      - name: prysm-nethermind-1
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: nethermind
-          nodename: prysm-nethermind-1
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Nethermind node"
-      - name: prysm-nethermind-2
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: nethermind
-          nodename: prysm-nethermind-2
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Nethermind node"
-      - name: prysm-nethermind-3
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: nethermind
-          nodename: prysm-nethermind-3
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Nethermind node"
-      - name: prysm-nethermind-4
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: nethermind
-          nodename: prysm-nethermind-4
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Nethermind node"
-      - name: prysm-nethermind-5
-        address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
-        labels:
-          consensus: prysm
-          execution: nethermind
-          nodename: prysm-nethermind-5
-          network: fusaka-devnet-ssl-chaos-6
-        annotations:
-          description: "Prysm + Nethermind node"
+    - name: prysm-geth-1
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: geth
+        nodename: prysm-geth-1
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Geth node"
+    - name: prysm-geth-2
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: geth
+        nodename: prysm-geth-2
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Geth node"
+    - name: prysm-geth-3
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: geth
+        nodename: prysm-geth-3
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Geth node"
+    - name: prysm-geth-4
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: geth
+        nodename: prysm-geth-4
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Geth node"
+    - name: prysm-geth-5
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: geth
+        nodename: prysm-geth-5
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Geth node"
+    - name: prysm-nethermind-1
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: nethermind
+        nodename: prysm-nethermind-1
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Nethermind node"
+    - name: prysm-nethermind-2
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: nethermind
+        nodename: prysm-nethermind-2
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Nethermind node"
+    - name: prysm-nethermind-3
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: nethermind
+        nodename: prysm-nethermind-3
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Nethermind node"
+    - name: prysm-nethermind-4
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: nethermind
+        nodename: prysm-nethermind-4
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Nethermind node"
+    - name: prysm-nethermind-5
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      labels:
+        consensus: prysm
+        execution: nethermind
+        nodename: prysm-nethermind-5
+        network: fusaka-devnet-ssl-chaos-6
+      annotations:
+        description: "Prysm + Nethermind node"
