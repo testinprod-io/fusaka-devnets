@@ -60,6 +60,14 @@
     "eip7251TransitionTimestamp": "0x0",
     "eip7623TransitionTimestamp": "0x0",
     "eip7702TransitionTimestamp": "0x0",
+    "eip7594TransitionTimestamp": "0x68f61e8e",
+    "eip7823TransitionTimestamp": "0x68f61e8e",
+    "eip7825TransitionTimestamp": "0x68f61e8e",
+    "eip7883TransitionTimestamp": "0x68f61e8e",
+    "eip7918TransitionTimestamp": "0x68f61e8e",
+    "eip7934TransitionTimestamp": "0x68f61e8e",
+    "eip7939TransitionTimestamp": "0x68f61e8e",
+    "eip7951TransitionTimestamp": "0x68f61e8e",
     "blobSchedule": [
       {
         "timestamp": "0x0",
@@ -68,38 +76,30 @@
         "baseFeeUpdateFraction": "0x4c6964"
       },
       {
-        "timestamp": "0x68eab7ea",
+        "timestamp": "0x68f63b0e",
         "target": 72,
         "max": 72,
         "baseFeeUpdateFraction": "0x2634b21"
       },
       {
-        "timestamp": "0x68ead5ea",
+        "timestamp": "0x68f6590e",
         "target": 48,
         "max": 48,
         "baseFeeUpdateFraction": "0x197876b"
       },
       {
-        "timestamp": "0x68eb11ea",
+        "timestamp": "0x68f6950e",
         "target": 60,
         "max": 60,
         "baseFeeUpdateFraction": "0x1fd6946"
       },
       {
-        "timestamp": "0x68eb2fea",
+        "timestamp": "0x68f6b30e",
         "target": 72,
         "max": 72,
         "baseFeeUpdateFraction": "0x2634b21"
       }
-    ],
-    "eip7594TransitionTimestamp": "0x68ea9b6a",
-    "eip7823TransitionTimestamp": "0x68ea9b6a",
-    "eip7825TransitionTimestamp": "0x68ea9b6a",
-    "eip7883TransitionTimestamp": "0x68ea9b6a",
-    "eip7918TransitionTimestamp": "0x68ea9b6a",
-    "eip7934TransitionTimestamp": "0x68ea9b6a",
-    "eip7939TransitionTimestamp": "0x68ea9b6a",
-    "eip7951TransitionTimestamp": "0x68ea9b6a"
+    ]
   },
   "genesis": {
     "seal": {
@@ -110,7 +110,7 @@
     },
     "difficulty": "0x0",
     "author": "0x0000000000000000000000000000000000000000",
-    "timestamp": "0x68ea9602",
+    "timestamp": "0x68f61926",
     "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
     "extraData": "",
     "gasLimit": "0x2aea540"

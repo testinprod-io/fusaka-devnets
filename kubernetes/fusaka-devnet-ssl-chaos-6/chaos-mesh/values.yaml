@@ -38,6 +38,8 @@ chaos-mesh:
     machines:
     - name: prysm-geth-1
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-geth-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "143.198.126.146"
       labels:
         consensus: prysm
         execution: geth
@@ -47,6 +49,8 @@ chaos-mesh:
         description: "Prysm + Geth node"
     - name: prysm-geth-2
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-geth-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "146.190.48.104"
       labels:
         consensus: prysm
         execution: geth
@@ -56,6 +60,8 @@ chaos-mesh:
         description: "Prysm + Geth node"
     - name: prysm-geth-3
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-geth-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "167.172.47.183"
       labels:
         consensus: prysm
         execution: geth
@@ -65,6 +71,8 @@ chaos-mesh:
         description: "Prysm + Geth node"
     - name: prysm-geth-4
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-geth-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "165.232.39.82"
       labels:
         consensus: prysm
         execution: geth
@@ -74,6 +82,8 @@ chaos-mesh:
         description: "Prysm + Geth node"
     - name: prysm-geth-5
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-geth-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "68.183.69.124"
       labels:
         consensus: prysm
         execution: geth
@@ -83,6 +93,8 @@ chaos-mesh:
         description: "Prysm + Geth node"
     - name: prysm-nethermind-1
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-nethermind-1.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "206.189.195.223"
       labels:
         consensus: prysm
         execution: nethermind
@@ -92,6 +104,8 @@ chaos-mesh:
         description: "Prysm + Nethermind node"
     - name: prysm-nethermind-2
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-nethermind-2.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "137.184.229.215"
       labels:
         consensus: prysm
         execution: nethermind
@@ -101,6 +115,8 @@ chaos-mesh:
         description: "Prysm + Nethermind node"
     - name: prysm-nethermind-3
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-nethermind-3.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "159.223.213.150"
       labels:
         consensus: prysm
         execution: nethermind
@@ -110,6 +126,8 @@ chaos-mesh:
         description: "Prysm + Nethermind node"
     - name: prysm-nethermind-4
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-nethermind-4.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "143.110.161.52"
       labels:
         consensus: prysm
         execution: nethermind
@@ -119,6 +137,8 @@ chaos-mesh:
         description: "Prysm + Nethermind node"
     - name: prysm-nethermind-5
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-nethermind-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz/chaosd/"
+      hostname: "prysm-nethermind-5.fusaka-devnet-ssl-chaos-6.yolkie.xyz"
+      ip: "46.101.210.173"
       labels:
         consensus: prysm
         execution: nethermind

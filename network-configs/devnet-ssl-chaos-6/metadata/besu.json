@@ -27,11 +27,6 @@
         "max": 9,
         "baseFeeUpdateFraction": 5007716
       },
-      "osaka": {
-        "target": 9,
-        "max": 9,
-        "baseFeeUpdateFraction": 5007716
-      },
       "bpo1": {
         "target": 72,
         "max": 72,
@@ -57,11 +52,11 @@
     "withdrawalRequestContractAddress": "0x00000961Ef480Eb55e80D19ad83579A64c007002",
     "consolidationRequestContractAddress": "0x0000BBdDc7CE488642fb579F8B00f3a590007251",
     "pragueTime": 0,
-    "osakaTime": 1760205674,
-    "bpo1Time": 1760212970,
-    "bpo2Time": 1760220650,
-    "bpo3Time": 1760236010,
-    "bpo4Time": 1760243690
+    "osakaTime": 1760960142,
+    "bpo1Time": 1760967438,
+    "bpo2Time": 1760975118,
+    "bpo3Time": 1760990478,
+    "bpo4Time": 1760998158
   },
   "alloc": {
     "0x0000000000000000000000000000000000000000": {
@@ -967,5 +962,5 @@
   "nonce": "0x1234",
   "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "timestamp": "1760204290"
+  "timestamp": "1760958758"
 }
