@@ -146,16 +146,16 @@ chaos-mesh:
         network: fusaka-devnet-ssl-chaos-6
       annotations:
         description: "Prysm + Nethermind node"
-experiments:
-  enabled: true
-
-  network:
+  experiments:
     enabled: true
-    experiments:
-      - name: network-partition-half
-        description: "Split network into 2 equal groups"
-        type: "partition"
-        direction: "to"
-        device: "eth0"
-        autoSplit:
-          groups: 2
+
+    network:
+      enabled: true
+      experiments:
+        - name: network-partition-half
+          description: "Split network into 2 equal groups"
+          type: "partition"
+          direction: "to"
+          device: "eth0"
+          autoSplit:
+            groups: 2
