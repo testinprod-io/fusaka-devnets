@@ -47,8 +47,8 @@ ethereum_genesis_generator_version: "{{ ethereum_genesis_generator_container_ima
 ethereum_genesis_network_seed: "{{ ansible_inventory_sources[0] }}"
 ethereum_genesis_chain_id: "70{{ 99999999 | random(start=10000000, seed=ethereum_genesis_network_seed) }}"
 ethereum_genesis_generator_output_dir: "../network-configs/{{ ethereum_network_name | replace('fusaka-', '') }}"
-ethereum_genesis_timestamp: "1759777200"
-ethereum_genesis_timedelay: 0
+ethereum_genesis_timestamp: "1759736270"
+ethereum_genesis_timedelay: 3000
 ethereum_genesis_fork_version_suffix: "{{ 999999 | random(start=100000, seed=ethereum_genesis_network_seed) }}"
 ethereum_genesis_timestamp_relative_cmd:
   Linux: "date +%s -d '+45 minutes'"
@@ -69,7 +69,7 @@ ethereum_genesis_generator_config_files:
     export DENEB_FORK_VERSION="0x50{{ ethereum_genesis_fork_version_suffix }}"
     export ELECTRA_FORK_VERSION="0x60{{ ethereum_genesis_fork_version_suffix }}"
     export FULU_FORK_VERSION="0x70{{ ethereum_genesis_fork_version_suffix }}"
-    export FULU_FORK_EPOCH=180
+    export FULU_FORK_EPOCH=1
     export MAX_BLOBS_PER_BLOCK_ELECTRA=9
     export MAX_BLOBS_PER_BLOCK_FULU=9
     export TARGET_BLOBS_PER_BLOCK_ELECTRA=9
@@ -79,26 +79,9 @@ ethereum_genesis_generator_config_files:
     export GENESIS_GAS_LIMIT=100000000
     export WITHDRAWAL_TYPE=0x02
     export WITHDRAWAL_ADDRESS=0xfc6090a295177bCde882b605108A489020980bb0
-    
-    export BPO_1_EPOCH=200
-    export BPO_1_MAX_BLOBS=12
-    export BPO_1_TARGET_BLOBS=9
-    
-    export BPO_2_EPOCH=220
-    export BPO_2_MAX_BLOBS=18
-    export BPO_2_TARGET_BLOBS=12
-
-    export BPO_3_EPOCH=240
-    export BPO_3_MAX_BLOBS=25
-    export BPO_3_TARGET_BLOBS=18
-
-    export BPO_4_EPOCH=260
-    export BPO_4_MAX_BLOBS=30
-    export BPO_4_TARGET_BLOBS=25
-
-    export BPO_5_EPOCH=280
-    export BPO_5_MAX_BLOBS=40
-    export BPO_5_TARGET_BLOBS=30
+    export BPO_1_EPOCH=2
+    export BPO_1_MAX_BLOBS=72
+    export BPO_1_TARGET_BLOBS=72
 
 ethereum_genesis_validator_keys_output_dir: "{{ ansible_inventory_sources[0] | dirname }}/files/validator_keys"
 ethereum_genesis_validator_bls_change_execution_address: "{{ ethereum_node_cl_validator_fee_recipient }}"
