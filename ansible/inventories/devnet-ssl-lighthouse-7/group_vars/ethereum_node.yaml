@@ -1,0 +1,103 @@
+ethereum_cl_bootnodes:
+  - "enr:-Iq4QJk4WqRkjsX5c2CXtOra6HnxN-BMXnWhmhEQO9Bn9iABTJGdjUOurM7Btj1ouKaFkvTRoju5vz2GPmVON2dffQKGAX53x8JigmlkgnY0gmlwhLKAlv6Jc2VjcDI1NmsxoQK6S-Cii_KmfFdUJL2TANL3ksaKUnNXvTCv1tLwXs0QgIN1ZHCCIyk"
+  - "enr:-Mu4QHOG-dfFFDHQtZkm48VgFq9JcF5igrRifdP5f1MWuISEVreXiVpwUQYxbcuWQPDV2G_DnEFso5Cqt0kH48fpppobh2F0dG5ldHOIAQAAAAAAAICDY2djgYCEZXRoMpCbRJk_cHFgF8gAAAAAAAAAgmlkgnY0gmlwhKesj76DbmZkhLG0I1mJc2VjcDI1NmsxoQLImNwc-98seQXlEaXFO9eo7T6frJicOR3LgQvNYolN2ohzeW5jbmV0cw-DdGNwgiMog3VkcIIjKA"
+  - "enr:-Mq4QF3DzDxQU3Hs-MKeni8KJ5Of7f6cSyNnNIgBbI6x1l1pCl__GrYMD-2SRP5-dHgFgmfSm9yaV4crWsloStYNLQslh2F0dG5ldHOIAAAAwAAAAACDY2djBIRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEibhaWINuZmSEsbQjWYlzZWNwMjU2azGhAgUuQLIhrswo4uitZauv9js8G7j_pTFtml-wEDWtn8V2iHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  - "enr:-Mu4QCw-RcR_77QtkIYcqMerbdsozV9689GYVWzUNZ9sKjjgX7H0xG6PNxzZZFXJFFAt3BH5gFuAmvHpZfO8yakgUS0bh2F0dG5ldHOIAAAAAAAADACDY2djgYCEZXRoMpCbRJk_cHFgF8gAAAAAAAAAgmlkgnY0gmlwhMbTZqiDbmZkhLG0I1mJc2VjcDI1NmsxoQOsRcOBLkODO9zu-Nk9M5E3DDPsfx5VodJ7fAJ90XerWohzeW5jbmV0cw-DdGNwgiMog3VkcIIjKA"
+  - "enr:-Mq4QNDmSvhGtH-T_ukiT8tNjRwP8YWdNxc5TamaYGkQ2jQKc5x5rZXeAsU8umGNUt6-4N_RRJ4IjlYUmZdhjSO2dBcch2F0dG5ldHOIAAAGAAAAAACDY2djCIRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEj26Yf4NuZmSEsbQjWYlzZWNwMjU2azGhA4T9_UpRsIlhB2yIzxE5Kw6fUNUDIZJnY904lt3V26JGiHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  - "enr:-Oq4QKtSA5mbpqrxPdL7OeT93B5b57ARE77SOI7Qwk1u9pyWTgnejTBrcJUmA-9xXRBm0IfAxS9rLm0w__SuxV2BhH4Sh2F0dG5ldHOIAAAAAAAAGACDY2djgYCGY2xpZW50z4hHcmFuZGluZYUxLjEuNYRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEpRYHroNuZmSEsbQjWYRxdWljgiMpiXNlY3AyNTZrMaECPXDCIzwIycBIy3WNn-1CZBfeVTpa_CUHKfGUZ2CkRTCIc3luY25ldHMPg3RjcIIjKIN1ZHCCIyg"
+  - "enr:-Om4QIpfV-A8FdENsP-DbhIdK1aNrb60CVaLyeSoGGKncyGmFKmjtaMk4NO7VJz4q34T4-mdwKytSVn9wjL5VOLRKXsUh2F0dG5ldHOIAAwAAAAAAACDY2djCIZjbGllbnTPiEdyYW5kaW5lhTEuMS41hGV0aDKQm0SZP3BxYBfIAAAAAAAAAIJpZIJ2NIJpcITRJpGyg25mZISxtCNZhHF1aWOCIymJc2VjcDI1NmsxoQIjpMjN_VgN8RaajL2NkTAER5HbJHk4sr0057mQAnGry4hzeW5jbmV0cw-DdGNwgiMog3VkcIIjKA"
+  - "enr:-Oq4QPqAGgYR9ZHr-Rvj5CCuA56ZNPmPDKyRvtwV4wsnw4XGUeSz1vZcwpAht4nI91ympxX2gqXeFQy3OaCFVhO_glQWh2F0dG5ldHOIAAAAGAAAAACDY2djgYCGY2xpZW50z4hHcmFuZGluZYUxLjEuNYRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEn0HmtYNuZmSEsbQjWYRxdWljgiMpiXNlY3AyNTZrMaEDiIyio8X9ppl65ulwHdUjG3HmRg2E6fpYrJZVl9La8qGIc3luY25ldHMPg3RjcIIjKIN1ZHCCIyg"
+  - "enr:-Om4QLyWnVd_1AB5fD18gmjWIExiIF8hb01ntYfHIzUYO_KyNGFpTM9oXZ2zqlk0TkVUMApQaxpzG_IrwguYufOmCyIYh2F0dG5ldHOIAAAAAAAAAMCDY2djCIZjbGllbnTPiEdyYW5kaW5lhTEuMS41hGV0aDKQm0SZP3BxYBfIAAAAAAAAAIJpZIJ2NIJpcISAxwUCg25mZISxtCNZhHF1aWOCIymJc2VjcDI1NmsxoQNiOEvNlysPAEvWsFc7TDX0eHymotffuYsX7sPlbFiLLIhzeW5jbmV0cw-DdGNwgiMog3VkcIIjKA"
+  - "enr:-PG4QFYrqdSgGi1qA_h_x6AWDOa-uqoMIfUE2vsfBrAbD7G7JcdkMmKaJSQd7zbptCnGttbii12kHFdmozxTLCIK3HwQh2F0dG5ldHOIDAAAAAAAAACDY2djgYCGY2xpZW501opMaWdodGhvdXNlijguMC4wLXJjLjCEZXRoMpCbRJk_cHFgF8gAAAAAAAAAgmlkgnY0gmlwhEPNhVCDbmZkhLG0I1mEcXVpY4IjKYlzZWNwMjU2azGhAp4hbShuhZZ6uloG2PUuRppZ_VHBOmhrA7gm2u4E-thUiHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  - "enr:-PC4QHTYgha763eSMfAT_uofJdaTiCYhlYyq0L5D1euZRmM3F1AYVf7e-9EzLN5mnO5bZ7K34vqhFCCxlB18Lh7A8KMRh2F0dG5ldHOIAAAAGAAAAACDY2djCIZjbGllbnTWikxpZ2h0aG91c2WKOC4wLjAtcmMuMIRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEQBeqHYNuZmSEsbQjWYRxdWljgiMpiXNlY3AyNTZrMaEDQL7rgLzWHsfWA0gn2scfyQjE6lGOoHsTowjW7YPVmN2Ic3luY25ldHMPg3RjcIIjKIN1ZHCCIyg"
+  - "enr:-PG4QDVrIOlfcSD3Di63TBzP_SleV5tia2tr9PsyouIyxwBAeGbedcNeyrU6BcKexU_60zkAQ0BOn8J_Z3XT3saZEWAQh2F0dG5ldHOIAAAwAAAAAACDY2djgYCGY2xpZW501opMaWdodGhvdXNlijguMC4wLXJjLjCEZXRoMpCbRJk_cHFgF8gAAAAAAAAAgmlkgnY0gmlwhGj4d92DbmZkhLG0I1mEcXVpY4IjKYlzZWNwMjU2azGhA3ZmVrX0rHl4Vro6-dy2ZYsRzu6ux9koeX1LbTwhGmShiHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  - "enr:-PC4QFQsamJuUC_7HnX2q8bT0kFMJtKLwRD-0hzAnPuetaAEEX-472Q6LU585y_df2pI3rF8ulPn20kH5VrYKOFkVkgRh2F0dG5ldHOIAAAAAACAAQCDY2djCIZjbGllbnTWikxpZ2h0aG91c2WKOC4wLjAtcmMuMIRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEQBf39oNuZmSEsbQjWYRxdWljgiMpiXNlY3AyNTZrMaEC7a2DqkcrNrjgb83Zmoyu6W_YBfTz1d9nbKQQdhXLVAyIc3luY25ldHMPg3RjcIIjKIN1ZHCCIyg"
+  - "enr:-Nm4QFOxpTg11VMFbsSTeWlP8jC8-SPPL2TEZi5PR7prv-GcexeEE5VJqXtZCuu320nzjB6OXwJrEqyuTNYelU0JgvWGAZm7gqeKh2F0dG5ldHOIAIABAAAAAACDY2djgYCEZXRoMpCbRJk_cHFgF8gAAAAAAAAAgmlkgnY0gmlwhJ9ZWZaDbmZkhLG0I1mEcXVpY4IyyIlzZWNwMjU2azGhA5ARup6yg8WjF62C6GYykBAgztgXgWMWSABJ0LOx5ZW7iHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  - "enr:-Ni4QMQixi2LxTW3ll2lalqunmrQLFLExCHTB6PNz5KumLpMWxyydGuXLjXEt21aQutpSWJ_e_xzZJSt_RZwkjGKAKiGAZm7grI4h2F0dG5ldHOIYAAAAAAAAACDY2djCIRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEQBfStoNuZmSEsbQjWYRxdWljgjLIiXNlY3AyNTZrMaECyYnWZbE4hIbJ2zI16S9lXfj89TYg-N9-xdPLw5ha06GIc3luY25ldHMPg3RjcIIjKIN1ZHCCIyg"
+  - "enr:-Nm4QOYBp_s4R9-_oynIg6VSKJSVFzJLcMmA3nBEK0-7PcWdLKR_yaNd7AyO4aYrocG4tavUw459yfF35uwAq_AXMdCGAZm7gqavh2F0dG5ldHOIAAAAAAAAgAGDY2djgYCEZXRoMpCbRJk_cHFgF8gAAAAAAAAAgmlkgnY0gmlwhJ_fg0CDbmZkhLG0I1mEcXVpY4IyyIlzZWNwMjU2azGhA1g42XvhDxIzlaXXmuiFXYxIxwPXzMdBMUOTeerX-Tc8iHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  - "enr:-Ni4QHvsn5DUqxcFMghZFv9HNp4rtiJMLCEH-pjScbkZgnucXxyXMoMzEZ4I_93ruyxm_dY552pntEmSdm9IbqvPM4qGAZm7gq2yh2F0dG5ldHOIAAAAAAAAAGCDY2djCIRldGgykJtEmT9wcWAXyAAAAAAAAACCaWSCdjSCaXCEj26cBoNuZmSEsbQjWYRxdWljgjLIiXNlY3AyNTZrMaECZ_H2_2Tp1xOObNn2FScu-SlB18ng_zeAE7qhF6Wle8WIc3luY25ldHMPg3RjcIIjKIN1ZHCCIyg"
+
+ethereum_el_bootnodes:
+  - "enode://836f7917d3d20dbca90239865e347ba0acf34e6fb90474e78ccda27214e1608ea44e5624f271ece3df8c2a5fcaed56924b4a9f5aa22a3bc58791b22ead10d885@167.99.36.200:30303"
+  - "enode://32df80ebc510d483cdedbbac341db1f1ae54a25edbf3f2486e6127c45b8775bc1b18fe5116257d167abde0cdef783ae4c5917da61199d290ddd287e77ccdc9d6@165.22.7.174:30303"
+  - "enode://addf4b1696e8685036760fca2041b285614e280be5a78c0a08be9f16f7ae0114eba33f68c9dda8718d0b78372d519b46dae59f3e61ab3ee1498ed5047b83a499@209.38.145.178:30303"
+  - "enode://30034272a8ead3f62432846d512a21cfb3b0237ed881d23bfe4c38bd7fee664b9b1e93a336e07ba81be4ffa663174221896262117e0df4c911a36ec2647445be@159.65.230.181:30303"
+  - "enode://0e89222abb95c0ce2b79615ba9ad62ef7b1b42f7aae57b82d28b2d3d941ee792a2485de59d2b6741798b8e20ff91c5d9c35e7d7d145135782246d3a28b2649ba@128.199.5.2:30303"
+  - "enode://6480bfc4eb4a41ecc8c375ee0321c4c3e1f3e935c92e3cc023d17c888da1dded9fced16552163c5ad8638215f15b1d18ec6fdd3d631de9e544cdeda39c9e8185@67.205.133.80:30303"
+  - "enode://c13b2195b99ff60665f73b9e2b1fceeca16503a607ccbaf28c55bf48050fa6ae9b9b491cdc634b2c6e551ddb2965160807c0437eef984ed0423dbded7d6d416c@64.23.170.29:30303"
+  - "enode://c3eac72ac1080d91ed0a2fb3c53e4bd84eec1e9db5d05349f27c6dc6f1ce0773f52a2e74a287b9f00265b2d55801db65104c0b5b618822ef6a1182f82f1ed177@159.89.89.150:30303"
+  - "enode://fcaf470f15158c7d06ed156facbf3a1862d641a8cd28f9d5d043f81ad356223dc6436292fdfe06f2567a127be4185c3e778d82410f11b586c4eaa40e50921128@64.23.210.182:30303"
+  - "enode://728602135dd2b7e8d2cc78f8af4a3dc803cd2f71cbab3a9f5a9c06a6c517420642a41bebd03524273fb4556feedbf91688d18851c6b27ae4a1c28860d688803f@159.223.131.64:30303"
+  - "enode://4463ca5d07b2253103d2bae7935fc2ccf1e3e84cc6f3f629982ee3521dbf6ad6de598ed2bab1522d4f3ef4e9285aa1643ddf7cbd1ec100259bf5ef6a15ca8d1e@143.110.156.6:30303"
+  - "enode://3c186a5ac0ff71ee5bedd239901b1ce01b86be574c457fa2291187c262989e5247088e2d636cac05817fa8b36df82bb9aae897099ea1bf16c73b2197f07ff751@167.172.143.190:30303"
+  - "enode://05bb241372e7f7df77adea05762014ce6cbcc0623d31b48b29a793ea3b187838d14b6af9251603d0b0c53988f7256c35b0bdc220b43c8001cbee7ce4cdae68e5@137.184.90.88:30303"
+  - "enode://b8a81c41532dd77b7256c3cf4387767e95b92adeafdb0f085e9a1c0011019c3266d293b37a7dc49964206aa6f191b81d8ded750b9d5cc7c01a7be4a8a41ed8e5@198.211.102.168:30303"
+  - "enode://ca4b6a26042a80849b7eaeb795d005170f4d4e98634b47cfa7347d4786498b047b71779daa3978a2564fdc767366c70cf39606109988f0f7f64022e4013e2e16@143.110.152.127:30303"
+
+ethereum_node_xatu_sentry_enabled: true
+
+ethereum_el_staticpeers:  "{{ (groups['all'] | select('ne', inventory_hostname) | map('extract', hostvars, 'ethereum_node_fact_el_enode') | select('defined') | list) | to_json | from_json }}"
+
+# role: ethpandaops.general.docker_network
+# disable ipv6
+docker_network_ipam_config: []
+docker_network_enable_ipv6: false
+global_ipv6_enabled: false
+ethereum_node_ipv6_enabled: false
+
+# role: ethpandaops.general.prometheus
+prometheus_remote_push_url: "{{ secret_prometheus_remote_write.endpoint }}"
+prometheus_remote_write_username: "{{ secret_prometheus_remote_write.username }}"
+prometheus_remote_write_password: "{{ secret_prometheus_remote_write.password }}"
+prometheus_config: |
+  global:
+    scrape_interval: 30s
+    evaluation_interval: 30s
+    scrape_timeout: 10s
+    external_labels:
+      instance: "{{ ethereum_network_name }}-{{ inventory_hostname }}"
+      ip_address: "{{ ansible_host }}"
+      network: "{{ ethereum_network_name }}"
+      testnet: "{{ ethereum_network_name }}"
+      execution_client: "{{ ethereum_node_el }}"
+      consensus_client: "{{ ethereum_node_cl }}"
+      supernode: "{{ ethereum_node_cl_supernode_enabled | bool }}"
+  remote_write:
+    - queue_config:
+        batch_send_deadline: 5s
+        max_backoff: 500ms
+        max_samples_per_send: 500
+        min_backoff: 50ms
+        max_shards: 100
+      url: {{ prometheus_remote_push_url }}
+      remote_timeout: 10s
+      basic_auth:
+        username: {{ prometheus_remote_write_username }}
+        password: {{ prometheus_remote_write_password }}
+  scrape_configs:
+    - job_name: "prometheus"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["localhost:9090"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+    - job_name: "node"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["172.17.0.1:9100"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+    - job_name: "exporter"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["ethereum-metrics-exporter:9090"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+    - job_name: "consensus_node"
+      scrape_interval: 12s
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["{{ vars[ethereum_node_cl + '_container_name'] }}:{{ ethereum_node_cl_ports_metrics }}"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+            supernode: "{{ ethereum_node_cl_supernode_enabled | bool }}"
