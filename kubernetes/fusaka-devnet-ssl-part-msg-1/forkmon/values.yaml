@@ -1,0 +1,70 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/forkmon.yaml.j2
+
+forkmon:
+  fullnameOverride: forkmon
+  image:
+    repository: docker.ethquokkaops.io/dh/skylenet/nodemonitor
+    tag: darkmode
+    pullPolicy: IfNotPresent
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: forkmon.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+  network: fusaka-devnet-ssl-part-msg-1
+  endpoints:
+  # Rpc
+  - addr: http://geth-prysm-001:8545
+    name: rpc-prysm-geth-001
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: bootnode-1
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-1
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-10
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-11.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-11
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-12.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-12
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-13.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-13
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-14.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-14
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-15.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-15
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-16.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-16
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-2.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-2
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-3.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-3
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-4.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-4
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-5.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-5
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-6.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-6
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-7.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-7
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-8.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-8
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-9.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-9
+
+  config: |
+    # How often to reload data from the nodes
+    reload_interval = "10s"
+    # If specified, a http server will serve static content here
+    server_address = "0.0.0.0:{{ .Values.httpPort}}"
+    # Shown in the document title, if specified
+    chain_name="{{ .Values.network }}"
+    # Local or non third party connection require rpc kind
+    {{- range .Values.endpoints }}
+    [[clients]]
+      url  = {{ .addr | quote }}
+      name = {{ .name | quote }}
+      kind = "rpc"
+    {{- end }}

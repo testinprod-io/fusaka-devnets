@@ -1,0 +1,228 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dora.yaml.j2
+
+dora:
+  fullnameOverride: dora
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/dora
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1500m
+      memory: 3Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: dora.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  name: fusaka-devnet-ssl-part-msg-1
+  configPath: "https://config.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/cl/config.yaml"
+  validatorNamesInventory: "https://config.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/api/v1/nodes/validator-ranges"
+  ethExplorerLink: "https://explorer.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
+  publicRpcUrl: "https://rpc.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
+  rainbowkitProjectId: ""
+  executionGenesisConfig: "https://config.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/el/genesis.json"
+  apiRequireAuth: False
+  apiAuthSecret: "<path:/secrets/services/services.enc.yaml#dora | jsonPath {.api_secret}>"
+  apiWhitelistedIPs: []
+  apiDefaultRateLimit: 60
+  apiDisableDefaultRateLimit: false
+  proxyCount: 2
+  extraEnv:
+    - name: FRONTEND_PPROF
+      value: "true"
+    - name: FRONTEND_SHOW_SENSITIVE_PEER_INFOS
+      value: "true"
+    - name: API_CORS_ORIGINS
+      value: "*"
+    - name: FRONTEND_ENABLE_DAS_GUARDIAN_MASS_SCAN
+      value: "true"
+  postgresql:
+    name: "dora-postgresql"
+    fullnameOverride: "dora-postgresql"
+
+  mevRelays:
+    - index: 0
+      name: "Flashbots"
+      url: "http://mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz:9062/"
+
+  authGroups:
+    pandaops:
+      credentials:
+        username: ""
+        password: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>"
+
+  endpoints:
+  # Rpc
+  - url: http://prysm-geth-001:5052
+    name: rpc-prysm-geth-001
+    authGroup: pandaops
+    archive: true
+    priority: 1
+  - url: https://bn.bootnode-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: bootnode-1
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-1
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-10
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-11.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-11
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-12.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-12
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-13.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-13
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-14.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-14
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-15.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-15
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-16.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-16
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-2.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-2
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-3.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-3
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-4.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-4
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-5.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-5
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-6.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-6
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-7.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-7
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-8.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-8
+    authGroup: pandaops
+    priority: -1
+  - url: https://bn.prysm-geth-super-9.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-9
+    authGroup: pandaops
+    priority: -1
+  executionEndpoints:
+  # Rpc
+  - url: http://geth-prysm-001:8545
+    name: rpc-prysm-geth-001
+    authGroup: pandaops
+    archive: true
+    priority: 1
+  - url: https://rpc.bootnode-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: bootnode-1
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-1
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-10
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-11.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-11
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-12.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-12
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-13.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-13
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-14.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-14
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-15.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-15
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-16.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-16
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-2.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-2
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-3.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-3
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-4.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-4
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-5.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-5
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-6.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-6
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-7.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-7
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-8.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-8
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.prysm-geth-super-9.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-9
+    authGroup: pandaops
+    priority: -1
+    archive: false

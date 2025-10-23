@@ -1,0 +1,67 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/dugtrio.yaml.j2
+
+dugtrio:
+  fullnameOverride: dugtrio
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/dugtrio
+    tag: latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 100m
+      memory: 200Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    hosts:
+      - host: beacon.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  dugtrioFrontendTitle: "Dugtrio: fusaka-devnet-ssl-part-msg-1"
+  dugtrioProxyCount: 2
+  dugtrioProxyBlockedPaths:
+    - "^/teku/v[0-9]+/admin/.*"
+
+  endpoints:
+  # Rpc
+  - url: http://prysm-geth-001:5052
+    name: rpc-prysm-geth-001
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: bootnode-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-1
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-10
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-11.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-11
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-12.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-12
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-13.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-13
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-14.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-14
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-15.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-15
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-16.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-16
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-2.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-2
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-3.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-3
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-4.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-4
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-5.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-5
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-6.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-6
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-7.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-7
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-8.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-8
+  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-9.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: prysm-geth-super-9
