@@ -1,8 +1,4 @@
-ethereum_cl_bootnodes:
-  - "{{ hostvars['bootnode-1']['cl_bootnode_fact_enr'] }}"
-  - "{{ hostvars['bootnode-1']['ethereum_node_fact_cl_enr'] }}"
-  #- "{{ hostvars['teku-geth-1']['cl_bootnode_fact_enr'] }}"
-  #- "{{ hostvars['teku-geth-1']['ethereum_node_fact_cl_enr'] }}"
+ethereum_cl_bootnodes: []
 
 ethereum_el_bootnodes:
   - "{{ hostvars['bootnode-1']['ethereum_node_fact_el_enode'] }}"
@@ -17,84 +13,48 @@ eth_inventory_web_container_env:
   VIRTUAL_PATH: "/meta/api"
   VIRTUAL_DEST: "/"
   LETSENCRYPT_HOST: "{{ server_fqdn }}"
+ethereum_node_xatu_sentry_enabled: true
 
 # role: ethpandaops.general.ethereum_node
 ethereum_node_el: geth
-ethereum_node_cl: teku
+ethereum_node_cl: lighthouse
 ethereum_node_cl_validator_enabled: false
 
+# Disable checkpoint sync for bootnode (it's the source, not the consumer)
+ethereum_node_cl_checkpoint_sync_enabled: false
 
-# role: validator_keys
-#validator_keys_sync_files:
-#  - src: "{{ inventory_dir }}/files/validator_keys/{{ inventory_hostname }}/keys/"
-#    dest: "{{ lighthouse_validator_datadir }}/keys/"
-#  - src: "{{ inventory_dir }}/files/validator_keys/{{ inventory_hostname }}/secrets/"
-#    dest: "{{ lighthouse_validator_datadir }}/secrets/"
-#
-#validator_bls_sync_files:
-#  - src: "{{ inventory_dir }}/files/validator_keys/{{ inventory_hostname }}/change_operations.json"
-#    dest: "{{ lighthouse_validator_datadir }}/change_operations.json"
-#    owner: lighthouse
-#    group: lighthouse
-#
-## role: ethpandaops.general.lighthouse
-#lighthouse_container_name: beacon
-#lighthouse_validator_container_name: validator
-#lighthouse_container_image: "{{ default_ethereum_client_images.lighthouse }}"
-#lighthouse_container_env:
-#  VIRTUAL_HOST: "{{ ethereum_node_beacon_hostname }}"
-#  VIRTUAL_PORT: "{{ ethereum_node_cl_ports_http_beacon | string }}"
-#  LETSENCRYPT_HOST: "{{ ethereum_node_beacon_hostname }}"
-#lighthouse_container_volumes:
-#  - "{{ lighthouse_datadir }}:/data"
-#  - "{{ lighthouse_auth_jwt_path }}:/execution-auth.jwt:ro"
-#  - "{{ eth_testnet_config_dir }}:/network-config:ro"
-#lighthouse_container_command_extra_args:
-#  - --testnet-dir=/network-config
-#  - --debug-level=debug
-#lighthouse_validator_container_volumes:
-#  - "{{ lighthouse_validator_datadir }}:/validator-data"
-#  - "{{ eth_testnet_config_dir }}:/network-config:ro"
-#lighthouse_validator_container_command_extra_args:
-#  - --testnet-dir=/network-config
-#  - --graffiti={{ ansible_hostname }}
-#lighthouse_validator_datadir: /data/lighthouse-validator
-#lighthouse_container_pull: true
+# role: ethpandaops.general.bootstrap
+bootstrap_default_user_authorized_keys_github_team_cl:
+  - AgeManning
+  - ethdreamer
+  - paulhauner
+  - pawanjay176
+  - michaelsproul
+  - antondlr
+  - realbigsean
+  - jimmygchen
+  - dapplion
+  - dknopik
 
-## role: validator_keys
-validator_keys_sync_files:
-  - src: "{{ inventory_dir }}/files/validator_keys/{{ inventory_hostname }}/teku-keys/"
-    dest: "{{ teku_validator_datadir }}/keys/"
-  - src: "{{ inventory_dir }}/files/validator_keys/{{ inventory_hostname }}/teku-secrets/"
-    dest: "{{ teku_validator_datadir }}/secrets/"
 
-validator_bls_sync_files:
-  - src: "{{ inventory_dir }}/files/validator_keys/{{ inventory_hostname }}/change_operations.json"
-    dest: "{{ teku_validator_datadir }}/change_operations.json"
-    owner: teku
-    group: teku
-teku_validator_datadir: /data/teku-validator
-# role: ethpandaops.general.teku
-teku_container_name: beacon
-teku_container_image: "{{ default_ethereum_client_images.teku }}"
-teku_container_env:
+# role: ethpandaops.general.lighthouse
+lighthouse_container_name: beacon
+lighthouse_validator_container_name: validator
+lighthouse_container_image: "{{ default_ethereum_client_images.lighthouse }}"
+lighthouse_container_env:
   VIRTUAL_HOST: "{{ ethereum_node_beacon_hostname }}"
   VIRTUAL_PORT: "{{ ethereum_node_cl_ports_http_beacon | string }}"
   LETSENCRYPT_HOST: "{{ ethereum_node_beacon_hostname }}"
-teku_container_volumes:
-  - "{{ teku_datadir }}:/data"
-  - "{{ teku_auth_jwt_path }}:/execution-auth.jwt:ro"
+lighthouse_container_volumes:
+  - "{{ lighthouse_datadir }}:/data"
+  - "{{ lighthouse_auth_jwt_path }}:/execution-auth.jwt:ro"
   - "{{ eth_testnet_config_dir }}:/network-config:ro"
-teku_container_command_extra_args:
-  - --network=/network-config/config.yaml
-  - --genesis-state=/network-config/genesis.ssz
-  - --p2p-peer-upper-bound=100
-  - --data-storage-non-canonical-blocks-enabled=true
-  - --data-storage-mode=ARCHIVE
-  - --logging=info
-  - --Xlog-include-p2p-warnings-enabled
-  - --metrics-block-timing-tracking-enabled
-  - --p2p-discovery-bootnodes={{ ethereum_cl_bootnodes | join(',') }}
+lighthouse_container_command_extra_args:
+  - --testnet-dir=/network-config
+  - --boot-nodes={{ ethereum_cl_bootnodes | join(',') }}
+  - --target-peers=500
+
+lighthouse_container_pull: true
 
 ethereum_el_staticpeers:  "{{ (groups['all'] | select('ne', inventory_hostname) | map('extract', hostvars, 'ethereum_node_fact_el_enode') | select('defined') | list) | to_json | from_json }}"
 

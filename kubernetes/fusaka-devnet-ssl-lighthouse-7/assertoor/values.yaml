@@ -1,0 +1,304 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-10
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-10.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-10.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-11
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-11.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-11.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-12
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-12.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-12.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-13
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-13.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-13.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-14
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-14.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-14.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-15
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-15.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-15.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-16
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-16.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-16.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-17
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-17.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-17.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-18
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-18.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-18.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-19
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-19.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-19.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-20
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-20.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-20.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-21
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-21.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-21.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-22
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-22.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-22.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-23
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-23.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-23.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-24
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-24.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-24.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-25
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-25.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-25.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-26
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-26.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-26.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-27
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-27.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-27.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-28
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-28.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-28.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-29
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-29.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-29.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-30
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-30.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-30.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-31
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-31.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-31.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-32
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-32.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-32.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-33
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-33.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-33.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-34
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-34.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-34.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-35
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-35.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-35.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-36
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-36.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-36.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-37
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-37.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-37.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-38
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-38.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-38.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-39
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-39.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-39.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-40
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-40.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-40.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-41
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-41.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-41.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-42
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-42.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-42.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-43
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-43.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-43.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-44
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-44.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-44.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-45
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-45.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-45.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-6.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-6.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-7
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-7.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-7.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-8
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-8.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-8.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-full-9
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-9.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-full-9.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-super-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-super-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-super-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-super-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-super-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-super-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-super-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-super-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+    - name:  lighthouse-geth-super-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.lighthouse-geth-super-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - lighthouse-geth-full-1
+      - lighthouse-geth-full-10
+      - lighthouse-geth-full-11
+      - lighthouse-geth-full-12
+      - lighthouse-geth-full-13
+      - lighthouse-geth-full-14
+      - lighthouse-geth-full-15
+      - lighthouse-geth-full-16
+      - lighthouse-geth-full-17
+      - lighthouse-geth-full-18
+      - lighthouse-geth-full-19
+      - lighthouse-geth-full-2
+      - lighthouse-geth-full-20
+      - lighthouse-geth-full-21
+      - lighthouse-geth-full-22
+      - lighthouse-geth-full-23
+      - lighthouse-geth-full-24
+      - lighthouse-geth-full-25
+      - lighthouse-geth-full-26
+      - lighthouse-geth-full-27
+      - lighthouse-geth-full-28
+      - lighthouse-geth-full-29
+      - lighthouse-geth-full-3
+      - lighthouse-geth-full-30
+      - lighthouse-geth-full-31
+      - lighthouse-geth-full-32
+      - lighthouse-geth-full-33
+      - lighthouse-geth-full-34
+      - lighthouse-geth-full-35
+      - lighthouse-geth-full-36
+      - lighthouse-geth-full-37
+      - lighthouse-geth-full-38
+      - lighthouse-geth-full-39
+      - lighthouse-geth-full-4
+      - lighthouse-geth-full-40
+      - lighthouse-geth-full-41
+      - lighthouse-geth-full-42
+      - lighthouse-geth-full-43
+      - lighthouse-geth-full-44
+      - lighthouse-geth-full-45
+      - lighthouse-geth-full-5
+      - lighthouse-geth-full-6
+      - lighthouse-geth-full-7
+      - lighthouse-geth-full-8
+      - lighthouse-geth-full-9
+      - lighthouse-geth-super-1
+      - lighthouse-geth-super-2
+      - lighthouse-geth-super-3
+      - lighthouse-geth-super-4
+      - lighthouse-geth-super-5
+    validatorPairNames:
+      - lighthouse-geth-full-1
+      - lighthouse-geth-full-10
+      - lighthouse-geth-full-11
+      - lighthouse-geth-full-12
+      - lighthouse-geth-full-13
+      - lighthouse-geth-full-14
+      - lighthouse-geth-full-15
+      - lighthouse-geth-full-16
+      - lighthouse-geth-full-17
+      - lighthouse-geth-full-18
+      - lighthouse-geth-full-19
+      - lighthouse-geth-full-2
+      - lighthouse-geth-full-20
+      - lighthouse-geth-full-21
+      - lighthouse-geth-full-22
+      - lighthouse-geth-full-23
+      - lighthouse-geth-full-24
+      - lighthouse-geth-full-25
+      - lighthouse-geth-full-26
+      - lighthouse-geth-full-27
+      - lighthouse-geth-full-28
+      - lighthouse-geth-full-29
+      - lighthouse-geth-full-3
+      - lighthouse-geth-full-30
+      - lighthouse-geth-full-31
+      - lighthouse-geth-full-32
+      - lighthouse-geth-full-33
+      - lighthouse-geth-full-34
+      - lighthouse-geth-full-35
+      - lighthouse-geth-full-36
+      - lighthouse-geth-full-37
+      - lighthouse-geth-full-38
+      - lighthouse-geth-full-39
+      - lighthouse-geth-full-4
+      - lighthouse-geth-full-40
+      - lighthouse-geth-full-41
+      - lighthouse-geth-full-42
+      - lighthouse-geth-full-43
+      - lighthouse-geth-full-44
+      - lighthouse-geth-full-45
+      - lighthouse-geth-full-5
+      - lighthouse-geth-full-6
+      - lighthouse-geth-full-7
+      - lighthouse-geth-full-8
+      - lighthouse-geth-full-9
+      - lighthouse-geth-super-2
+      - lighthouse-geth-super-3
+      - lighthouse-geth-super-4
+      - lighthouse-geth-super-5
+
+  assertoorTests: []

@@ -1,0 +1,588 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/chaos-mesh.yaml.j2
+
+# Configuration for the official chaos-mesh chart
+chaos-mesh:
+  chaos-mesh:
+    # Dashboard configuration
+    fullnameOverride: fusaka-devnet-ssl-lighthouse-7
+    
+    dashboard:
+      create: true
+      securityMode: False
+      ingress:
+        enabled: true
+        apiVersionOverrides: "networking.k8s.io/v1"  
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          external-dns.alpha.kubernetes.io/hostname: chaos-mesh.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+        hosts:
+          - name: chaos-mesh.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz
+        paths: ["/"]
+        ingressClassName: nginx
+          
+    # Controller Manager configuration
+    controllerManager:
+      replicaCount: 1
+      # Disable mTLS for physical machine connections
+      chaosdSecurityMode: False
+    
+    # Chaos Daemon configuration
+    chaosDaemon:
+      runtime: containerd
+      socketPath: /run/containerd/containerd.sock
+
+  # Custom physical machines configuration (not supported by upstream chart)
+  # These will be created by our custom template
+  physicalMachines:
+    enabled: true
+    machines:
+    - name: lighthouse-geth-full-1
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "157.230.222.14"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-1
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-10
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-10.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-10.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "64.23.230.16"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-10
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-11
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-11.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-11.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "159.223.211.88"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-11
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-12
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-12.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-12.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "134.209.30.19"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-12
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-13
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-13.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-13.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "161.35.223.74"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-13
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-14
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-14.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-14.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "143.198.35.6"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-14
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-15
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-15.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-15.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "128.199.23.207"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-15
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-16
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-16.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-16.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "170.64.218.231"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-16
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-17
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-17.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-17.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "159.223.147.69"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-17
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-18
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-18.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-18.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "64.23.163.158"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-18
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-19
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-19.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-19.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "167.99.36.213"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-19
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-2
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "24.199.111.83"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-2
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-20
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-20.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-20.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "144.126.203.44"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-20
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-21
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-21.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-21.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "207.154.198.103"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-21
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-22
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-22.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-22.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "138.197.140.198"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-22
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-23
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-23.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-23.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "143.110.249.72"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-23
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-24
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-24.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-24.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "209.38.21.128"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-24
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-25
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-25.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-25.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "159.223.174.59"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-25
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-26
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-26.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-26.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "164.92.108.117"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-26
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-27
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-27.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-27.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "209.38.103.169"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-27
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-28
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-28.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-28.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "165.22.122.166"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-28
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-29
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-29.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-29.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "142.93.166.14"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-29
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-3
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "159.223.7.52"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-3
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-30
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-30.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-30.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "178.128.225.111"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-30
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-31
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-31.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-31.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "134.209.157.3"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-31
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-32
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-32.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-32.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "134.199.175.168"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-32
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-33
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-33.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-33.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "192.241.139.10"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-33
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-34
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-34.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-34.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "164.92.122.103"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-34
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-35
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-35.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-35.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "161.35.82.16"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-35
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-36
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-36.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-36.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "144.126.227.139"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-36
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-37
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-37.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-37.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "167.172.184.163"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-37
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-38
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-38.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-38.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "146.190.246.182"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-38
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-39
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-39.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-39.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "64.227.148.195"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-39
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-4
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "134.209.189.67"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-4
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-40
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-40.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-40.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "209.38.20.157"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-40
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-41
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-41.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-41.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "165.227.87.9"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-41
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-42
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-42.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-42.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "146.190.115.224"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-42
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-43
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-43.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-43.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "209.38.37.77"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-43
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-44
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-44.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-44.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "144.126.202.56"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-44
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-45
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-45.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-45.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "139.59.154.170"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-45
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-5
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "104.248.130.121"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-5
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-6
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-6.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-6.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "147.182.156.189"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-6
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-7
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-7.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-7.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "128.199.21.139"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-7
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-8
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-8.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-8.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "134.199.155.171"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-8
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-full-9
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-full-9.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-full-9.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "159.89.231.14"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-full-9
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-super-1
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-super-1.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "147.182.129.241"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-super-1
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-super-2
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-super-2.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "143.110.238.196"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-super-2
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-super-3
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-super-3.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "134.209.84.154"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-super-3
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-super-4
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-super-4.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "165.22.113.249"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-super-4
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"
+    - name: lighthouse-geth-super-5
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.lighthouse-geth-super-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz/chaosd/"
+      hostname: "lighthouse-geth-super-5.fusaka-devnet-ssl-lighthouse-7.yolkie.xyz"
+      ip: "64.226.96.206"
+      labels:
+        consensus: lighthouse
+        execution: geth
+        nodename: lighthouse-geth-super-5
+        network: fusaka-devnet-ssl-lighthouse-7
+      annotations:
+        description: "Lighthouse + Geth node"

@@ -21,7 +21,7 @@ geth_container_command_extra_args:
   - --networkid={{ ethereum_network_id }}
   - --syncmode=full
   - --bootnodes={{ ethereum_el_staticpeers | join(',') }}
-  - --miner.gaslimit=100000000
+  - --miner.gaslimit=60000000
   - --rpc.allow-unprotected-txs
 geth_init_custom_network: true
 geth_init_custom_network_genesis_file: "{{ eth_testnet_config_dir }}/genesis.json"
@@ -43,7 +43,7 @@ prometheus_config: |
       testnet: "{{ ethereum_network_name }}"
       execution_client: "{{ ethereum_node_el }}"
       consensus_client: "{{ ethereum_node_cl }}"
-      bandwidth_limit: "{{ bandwidth }}"
+      #bandwidth_limit: "{{ bandwidth }}"
   remote_write:
     - queue_config:
         batch_send_deadline: 5s

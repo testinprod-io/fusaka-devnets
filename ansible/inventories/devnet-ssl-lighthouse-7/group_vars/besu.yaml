@@ -51,7 +51,7 @@ prometheus_config: |
       testnet: "{{ ethereum_network_name }}"
       execution_client: "{{ ethereum_node_el }}"
       consensus_client: "{{ ethereum_node_cl }}"
-      bandwidth_limit: "{{ bandwidth }}"
+      #bandwidth_limit: "{{ bandwidth }}"
   remote_write:
     - queue_config:
         batch_send_deadline: 5s
