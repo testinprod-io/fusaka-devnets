@@ -208,6 +208,13 @@ resource "digitalocean_firewall" "main" {
     source_addresses = ["0.0.0.0/0", "::/0"]
   }
 
+  // MEV-Boost Relay API port
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "9062"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
   // Allow all outbound traffic
   outbound_rule {
     protocol              = "tcp"
