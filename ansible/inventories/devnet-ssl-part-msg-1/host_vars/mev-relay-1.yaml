@@ -64,7 +64,7 @@ mev_relay_docker_network_name: shared
 mev_relay_docker_networks:
   - name: "{{ mev_relay_docker_network_name }}"
 
-beacon_endpoint: http://localhost:5052
+beacon_endpoint: http://beacon:5052
 mev_builder_json_api_port: 8645
 
 gen_validators_root: "{{ lookup('file', eth_testnet_config_local_dir_src + 'genesis_validators_root.txt') }}"
