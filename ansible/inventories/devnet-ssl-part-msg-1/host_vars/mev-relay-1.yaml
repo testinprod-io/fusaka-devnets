@@ -64,7 +64,7 @@ mev_relay_docker_network_name: shared
 mev_relay_docker_networks:
   - name: "{{ mev_relay_docker_network_name }}"
 
-beacon_endpoint: http://beacon:5052
+beacon_endpoint: http://localhost:5052
 mev_builder_json_api_port: 8645
 
 gen_validators_root: "{{ lookup('file', eth_testnet_config_local_dir_src + 'genesis_validators_root.txt') }}"
@@ -179,6 +179,7 @@ lighthouse_container_volumes:
 lighthouse_container_command_extra_args:
   - --testnet-dir=/network-config
   - --boot-nodes={{ ethereum_cl_bootnodes | join(',') }}
+  # Prepare payloads ahead of time for rbuilder
   - --always-prepare-payload
   - --prepare-payload-lookahead=8000
   - --suggested-fee-recipient={{ ethereum_node_cl_validator_fee_recipient }}

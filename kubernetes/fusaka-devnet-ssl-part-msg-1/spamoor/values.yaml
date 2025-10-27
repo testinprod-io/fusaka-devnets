@@ -23,7 +23,7 @@ spamoor:
             pathType: Prefix
 
   customArgs:
-    - --fulu-activation=1761557552
+    - --fulu-activation=1761580468
 
   persistence:
     enabled: true
@@ -33,6 +33,7 @@ spamoor:
   # Rpc
   - "http://geth-prysm-001:8545"
   - "name(bootnode-1)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
+  - "group(mev-relay)name(mev-relay-1) + https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
   - "name(prysm-geth-super-1)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
   - "name(prysm-geth-super-10)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
   - "name(prysm-geth-super-11)https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-11.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"

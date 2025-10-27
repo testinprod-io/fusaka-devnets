@@ -21,6 +21,8 @@ forkmon:
     name: rpc-prysm-geth-001
   - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
     name: bootnode-1
+  - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: mev-relay-1
   - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
     name: prysm-geth-super-1
   - addr: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz

@@ -70,6 +70,10 @@ dora:
     name: bootnode-1
     authGroup: pandaops
     priority: -1
+  - url: https://bn.mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: mev-relay-1
+    authGroup: pandaops
+    priority: -1
   - url: https://bn.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
     name: prysm-geth-super-1
     authGroup: pandaops
@@ -143,6 +147,11 @@ dora:
     priority: 1
   - url: https://rpc.bootnode-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
     name: bootnode-1
+    authGroup: pandaops
+    priority: -1
+    archive: false
+  - url: https://rpc.mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+    name: mev-relay-1
     authGroup: pandaops
     priority: -1
     archive: false

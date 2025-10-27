@@ -36,6 +36,17 @@ chaos-mesh:
   physicalMachines:
     enabled: true
     machines:
+    - name: mev-relay-1
+      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
+      hostname: "mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
+      ip: "206.189.193.45"
+      labels:
+        consensus: lighthouse
+        execution: reth
+        nodename: mev-relay-1
+        network: fusaka-devnet-ssl-part-msg-1
+      annotations:
+        description: "Lighthouse + Reth node"
     - name: prysm-geth-super-1
       address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
       hostname: "prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
