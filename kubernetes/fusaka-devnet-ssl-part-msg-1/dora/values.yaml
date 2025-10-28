@@ -30,7 +30,6 @@ dora:
   rainbowkitProjectId: ""
   executionGenesisConfig: "https://config.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/el/genesis.json"
   apiRequireAuth: False
-  apiAuthSecret: "<path:/secrets/services/services.enc.yaml#dora | jsonPath {.api_secret}>"
   apiWhitelistedIPs: []
   apiDefaultRateLimit: 60
   apiDisableDefaultRateLimit: false
@@ -47,6 +46,8 @@ dora:
   postgresql:
     name: "dora-postgresql"
     fullnameOverride: "dora-postgresql"
+    image:
+      repository: bitnamilegacy/postgresql
 
   mevRelays:
     - index: 0
