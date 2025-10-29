@@ -112,7 +112,8 @@ mev_relay_api_container_env:
   DISABLE_PAYLOAD_DATABASE_STORAGE=1
   ENABLE_BUILDER_CANCELLATIONS=1
   BLOCKSIM_MAX_CONCURRENT=0
-  API_TIMEOUT_READ_MS=10000
+  API_TIMEOUT_READ_MS=60000
+  API_MAX_REQUEST_SIZE=52428800
 mev_relay_api_container_pull: true
 mev_relay_api_container_networks: "{{ mev_relay_docker_networks }}"
 mev_relay_api_container_ports:
@@ -183,7 +184,7 @@ lighthouse_container_command_extra_args:
   - --always-prepare-payload
   - --prepare-payload-lookahead=8000
   - --suggested-fee-recipient={{ ethereum_node_cl_validator_fee_recipient }}
-  #- --allow-insecure-genesis-sync
+  - --malicious-withhold-count=64
 lighthouse_validator_container_volumes:
   - "{{ lighthouse_validator_datadir }}:/validator-data"
   - "{{ eth_testnet_config_dir }}:/network-config:ro"
@@ -245,6 +246,8 @@ reth_container_command_extra_args:
   - --engine.persistence-threshold=0
   - --engine.memory-block-buffer-target=0
   - --rpc.eth-proof-window=3
+  - --txpool.no-local-transactions-propagation
+  - --rpc-max-request-size=52428800
 reth_container_pull: true
 
 reth_container_image: "{{ default_tooling_images.mev_builder }}"
@@ -252,7 +255,7 @@ ethereum_node_json_rpc_snooper_engine_enabled: false
 
 reth_rbuilder_config: |
   log_json = true
-  log_level = "info,rbuilder=debug"
+  log_level = "debug,rbuilder=debug"
   redacted_telemetry_server_port = 6061
   redacted_telemetry_server_ip = "0.0.0.0"
   full_telemetry_server_port = 6062
@@ -293,8 +296,8 @@ reth_rbuilder_config: |
   name = "flashbots"
   url = "http://0xa55c1285d84ba83a5ad26420cd5ad3091e49c55a813eee651cd467db38a8c8e63192f47955e9376f6b42f6d190571cb5@mev-relay-api:9062"
   priority = 0
-  use_ssz_for_submit = false
-  use_gzip_for_submit = false
+  use_ssz_for_submit = true
+  use_gzip_for_submit = true
 
   [[builders]]
   name = "mp-ordering"

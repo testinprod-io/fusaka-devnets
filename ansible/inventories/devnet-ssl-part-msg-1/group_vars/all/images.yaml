@@ -20,7 +20,7 @@ default_ethereum_client_images:
 
 default_tooling_images:
   mev_boost: ethpandaops/mev-boost:develop
-  mev_builder: ethpandaops/reth-rbuilder:develop
+  mev_builder: ethpandaops/reth-rbuilder:develop-d8d17c9
   mev_relay: ethpandaops/mev-boost-relay:main
   xatu_sentry: docker.ethquokkaops.io/dh/ethpandaops/xatu:latest
   xatu_cannon: docker.ethquokkaops.io/dh/ethpandaops/xatu:latest
