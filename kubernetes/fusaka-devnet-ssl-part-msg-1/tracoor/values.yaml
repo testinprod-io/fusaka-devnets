@@ -105,6 +105,16 @@ tracoor-single:
             traceDisableMemory: true
             traceDisableStack: true
             traceDisableStorage: true
+      - name: prysm-geth-full-1
+        ethereum:
+          overrideNetworkName: fusaka-devnet-ssl-part-msg-1
+          beacon:
+            nodeAddress: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+          execution:
+            nodeAddress: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+            traceDisableMemory: true
+            traceDisableStack: true
+            traceDisableStorage: true
       - name: prysm-geth-super-1
         ethereum:
           overrideNetworkName: fusaka-devnet-ssl-part-msg-1

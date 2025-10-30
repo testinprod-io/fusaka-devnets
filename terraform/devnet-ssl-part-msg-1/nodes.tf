@@ -15,6 +15,7 @@ variable "mev_relay" {
     count           = 1
     validator_start = 0
     validator_end   = 0
+    size = "c-32-intel"
   }
 }
 
@@ -410,9 +411,9 @@ variable "lighthouse_nimbusel_full" {
 variable "prysm_geth_full" {
   default = {
     name            = "prysm-geth-full"
-    count           = 0
-    validator_start = 0
-    validator_end   = 0
+    count           = 112
+    validator_start = 128
+    validator_end   = 1024
   }
 }
 

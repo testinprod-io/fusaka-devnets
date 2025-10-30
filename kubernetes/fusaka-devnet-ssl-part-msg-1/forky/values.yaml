@@ -77,6 +77,11 @@ forky:
           config:
             address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
             polling_interval: "12s"
+        - name: prysm-geth-full-1
+          type: "beacon_node"
+          config:
+            address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+            polling_interval: "12s"
         - name: prysm-geth-super-1
           type: "beacon_node"
           config:
