@@ -2,224 +2,32 @@
 
 # Configuration for the official chaos-mesh chart
 chaos-mesh:
-  chaos-mesh:
-    # Dashboard configuration
-    fullnameOverride: fusaka-devnet-ssl-part-msg-1
-    
-    dashboard:
-      create: true
-      securityMode: False
-      ingress:
-        enabled: true
-        apiVersionOverrides: "networking.k8s.io/v1"  
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          external-dns.alpha.kubernetes.io/hostname: chaos-mesh.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
-        hosts:
-          - name: chaos-mesh.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
-        paths: ["/"]
-        ingressClassName: nginx
-          
-    # Controller Manager configuration
-    controllerManager:
-      replicaCount: 1
-      # Disable mTLS for physical machine connections
-      chaosdSecurityMode: False
-    
-    # Chaos Daemon configuration
-    chaosDaemon:
-      runtime: containerd
-      socketPath: /run/containerd/containerd.sock
+  # Dashboard configuration
+  dashboard:
+    create: true
+    securityMode: False
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: ingress-nginx-public
+        external-dns.alpha.kubernetes.io/hostname: chaos-mesh.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+      hosts:
+        - name: chaos-mesh.fusaka-devnet-ssl-part-msg-1.yolkie.xyz
+          paths:
+            - path: /
+              pathType: Prefix
+  
+  # Controller Manager configuration
+  controllerManager:
+    replicaCount: 1
+    # Disable mTLS for physical machine connections
+    chaosdSecurityMode: False
+  
+  # Chaos Daemon configuration
+  chaosDaemon:
+    runtime: containerd
+    socketPath: /run/containerd/containerd.sock
 
-  # Custom physical machines configuration (not supported by upstream chart)
-  # These will be created by our custom template
-  physicalMachines:
-    enabled: true
-    machines:
-    - name: mev-relay-1
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "mev-relay-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "206.189.193.45"
-      labels:
-        consensus: lighthouse
-        execution: reth
-        nodename: mev-relay-1
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Lighthouse + Reth node"
-    - name: prysm-geth-super-1
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-1.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "137.184.153.78"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-1
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-10
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-10.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "143.198.149.195"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-10
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-11
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-11.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-11.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "142.93.128.5"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-11
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-12
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-12.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-12.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "206.189.26.121"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-12
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-13
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-13.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-13.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "64.226.68.219"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-13
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-14
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-14.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-14.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "138.197.165.51"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-14
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-15
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-15.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-15.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "143.110.177.102"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-15
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-16
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-16.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-16.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "134.199.144.99"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-16
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-2
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-2.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-2.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "143.198.106.95"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-2
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-3
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-3.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-3.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "167.99.39.48"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-3
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-4
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-4.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-4.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "178.128.41.68"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-4
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-5
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-5.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-5.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "207.154.238.44"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-5
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-6
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-6.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-6.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "143.198.34.94"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-6
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-7
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-7.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-7.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "139.59.35.19"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-7
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-8
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-8.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-8.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "209.38.18.99"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-8
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
-    - name: prysm-geth-super-9
-      address: "https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-9.fusaka-devnet-ssl-part-msg-1.yolkie.xyz/chaosd/"
-      hostname: "prysm-geth-super-9.fusaka-devnet-ssl-part-msg-1.yolkie.xyz"
-      ip: "147.182.138.84"
-      labels:
-        consensus: prysm
-        execution: geth
-        nodename: prysm-geth-super-9
-        network: fusaka-devnet-ssl-part-msg-1
-      annotations:
-        description: "Prysm + Geth node"
+# Custom physical machines configuration (not supported by upstream chart)
+# These will be created by our custom template
+physicalMachines:
