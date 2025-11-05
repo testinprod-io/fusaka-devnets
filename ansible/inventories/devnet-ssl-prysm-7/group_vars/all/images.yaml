@@ -3,8 +3,8 @@ default_ethereum_client_images:
   lighthouse: sigp/lighthouse:v8.0.0-rc.2
   lodestar: chainsafe/lodestar:v1.35.0-rc.0
   nimbus: statusim/nimbus-eth2:multiarch-v25.9.1
-  prysm: gcr.io/offchainlabs/prysm/beacon-chain:v6.1.4
-  prysm_validator: gcr.io/offchainlabs/prysm/validator:v6.1.4
+  prysm: public.ecr.aws/s5g8t9d9/ethereum-devnets/prysm:v6.1.4-with-metrics
+  prysm_validator: public.ecr.aws/s5g8t9d9/ethereum-devnets/prysm-validator:v6.1.4-with-metrics
   teku: consensys/teku:25.9.3
   grandine: ethpandaops/grandine:develop
 ### Execution layer clients

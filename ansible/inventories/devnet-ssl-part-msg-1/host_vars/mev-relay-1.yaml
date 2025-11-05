@@ -115,7 +115,7 @@ mev_relay_api_container_env:
   LOG_LEVEL=debug
   DISABLE_PAYLOAD_DATABASE_STORAGE=1
   ENABLE_BUILDER_CANCELLATIONS=1
-  BLOCKSIM_MAX_CONCURRENT=0
+  BLOCKSIM_MAX_CONCURRENT=8
   API_TIMEOUT_READ_MS=10000
   API_MAX_REQUEST_SIZE=52428800
 mev_relay_api_container_pull: true
@@ -191,6 +191,12 @@ lighthouse_container_command_extra_args:
   - --malicious-withhold-count=64
   - --debug-level=debug
   - --disable-inbound-rate-limiter
+  # Configure self-limiter to allow larger data column sidecar batches for faster propagation
+  # Format: protocol:tokens/time_in_seconds (separate multiple with ';')
+  # Increase data_column_sidecars_by_range to prevent rate limiting delays (1.5-2.3s) when
+  # peers request missing columns via range requests after missing gossip messages.
+  # Even though gossip publishes columns immediately, peers that miss gossip need range requests.
+  - --self-limiter-protocols=data_column_sidecars_by_range:999999/1
   # Configure self-limiter to allow larger blob sidecar batches
   # Format: protocol:tokens/time_in_seconds (separate multiple with ';')
   # Increase blob_sidecars_by_range quotas to prevent "batch that will never fit" errors
@@ -311,8 +317,8 @@ reth_rbuilder_config: |
   root_hash_compare_sparse_trie=false
 
   subsidy = "1"
-  #time_to_keep_mempool_txs_secs=100000
   simulation_threads=8
+  #time_to_keep_mempool_txs_secs=100000
 
   [[relays]]
   name = "flashbots"

@@ -47,7 +47,7 @@ ethereum_genesis_generator_version: "{{ ethereum_genesis_generator_container_ima
 ethereum_genesis_network_seed: "{{ ansible_inventory_sources[0] }}"
 ethereum_genesis_chain_id: "70{{ 99999999 | random(start=10000000, seed=ethereum_genesis_network_seed) }}"
 ethereum_genesis_generator_output_dir: "../network-configs/{{ ethereum_network_name | replace('fusaka-', '') }}"
-ethereum_genesis_timestamp: "1761898740"
+ethereum_genesis_timestamp: "1762347686"
 ethereum_genesis_timedelay: 3000
 ethereum_genesis_fork_version_suffix: "{{ 999999 | random(start=100000, seed=ethereum_genesis_network_seed) }}"
 ethereum_genesis_timestamp_relative_cmd:
@@ -110,6 +110,17 @@ bootstrap_default_user_authorized_keys_github_all:
   - parkgunou
   - sm-stack
   - sunnysidedJ
+  - marcopolo
+  - barnabasbusa
+  - parithosh
+  - samcm
+  - savid
+  - skylenet
+  - pk910
+  - mattevans
+  - bharath-123
+  - jtraglia
+  - KatyaRyazantseva
 bootstrap_default_user_authorized_keys_github: >
   {{
     (bootstrap_default_user_authorized_keys_github_all | default([])) +
