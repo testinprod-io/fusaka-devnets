@@ -44,9 +44,6 @@ assertoor:
     - name:  bootnode-1
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
-    - name:  mev-relay-1
-      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
-      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
     - name:  prysm-geth-full-1
       executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
       consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
@@ -437,7 +434,6 @@ assertoor:
     walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
     clientPairNames:
       - bootnode-1
-      - mev-relay-1
       - prysm-geth-full-1
       - prysm-geth-full-10
       - prysm-geth-full-100

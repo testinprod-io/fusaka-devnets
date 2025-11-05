@@ -95,16 +95,6 @@ tracoor-single:
             traceDisableMemory: true
             traceDisableStack: true
             traceDisableStorage: true
-      - name: mev-relay-1
-        ethereum:
-          overrideNetworkName: fusaka-devnet-ssl-prysm-7
-          beacon:
-            nodeAddress: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
-          execution:
-            nodeAddress: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
-            traceDisableMemory: true
-            traceDisableStack: true
-            traceDisableStorage: true
       - name: prysm-geth-full-1
         ethereum:
           overrideNetworkName: fusaka-devnet-ssl-prysm-7

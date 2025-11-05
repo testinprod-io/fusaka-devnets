@@ -68,20 +68,20 @@
         "baseFeeUpdateFraction": "0x4c6964"
       },
       {
-        "timestamp": "0x69047fac",
+        "timestamp": "0x690b595e",
         "target": 72,
         "max": 72,
         "baseFeeUpdateFraction": "0x2634b21"
       }
     ],
-    "eip7594TransitionTimestamp": "0x69047e2c",
-    "eip7823TransitionTimestamp": "0x69047e2c",
-    "eip7825TransitionTimestamp": "0x69047e2c",
-    "eip7883TransitionTimestamp": "0x69047e2c",
-    "eip7918TransitionTimestamp": "0x69047e2c",
-    "eip7934TransitionTimestamp": "0x69047e2c",
-    "eip7939TransitionTimestamp": "0x69047e2c",
-    "eip7951TransitionTimestamp": "0x69047e2c"
+    "eip7594TransitionTimestamp": "0x690b57de",
+    "eip7823TransitionTimestamp": "0x690b57de",
+    "eip7825TransitionTimestamp": "0x690b57de",
+    "eip7883TransitionTimestamp": "0x690b57de",
+    "eip7918TransitionTimestamp": "0x690b57de",
+    "eip7934TransitionTimestamp": "0x690b57de",
+    "eip7939TransitionTimestamp": "0x690b57de",
+    "eip7951TransitionTimestamp": "0x690b57de"
   },
   "genesis": {
     "seal": {
@@ -92,7 +92,7 @@
     },
     "difficulty": "0x0",
     "author": "0x0000000000000000000000000000000000000000",
-    "timestamp": "0x690470f4",
+    "timestamp": "0x690b4aa6",
     "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
     "extraData": "",
     "gasLimit": "0x2aea540"

@@ -10,10 +10,6 @@
   name: bootnode-1
   authGroup: pandaops
   priority: -1
-- url: https://bn.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
-  name: mev-relay-1
-  authGroup: pandaops
-  priority: -1
 - url: https://bn.prysm-geth-full-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
   name: prysm-geth-full-1
   authGroup: pandaops
