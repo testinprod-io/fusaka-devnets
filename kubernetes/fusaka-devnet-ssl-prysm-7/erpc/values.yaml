@@ -134,6 +134,7 @@ erpc:
             - "trace_block"
         upstreams:
           - endpoint: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
+          - endpoint: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
           - endpoint: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
           - endpoint: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-10.fusaka-devnet-ssl-prysm-7.yolkie.xyz
           - endpoint: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-100.fusaka-devnet-ssl-prysm-7.yolkie.xyz

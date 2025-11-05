@@ -11,6 +11,11 @@
   authGroup: pandaops
   priority: -1
   archive: false
+- url: https://rpc.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
+  name: mev-relay-1
+  authGroup: pandaops
+  priority: -1
+  archive: false
 - url: https://rpc.prysm-geth-full-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
   name: prysm-geth-full-1
   authGroup: pandaops

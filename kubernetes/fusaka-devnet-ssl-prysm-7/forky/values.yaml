@@ -65,12 +65,17 @@ forky:
           spec:
             seconds_per_slot: 12
             slots_per_epoch: 32
-            genesis_time: 1762350686
+            genesis_time: 1762369407
       sources:
         - name: bootnode-1
           type: "beacon_node"
           config:
             address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
+            polling_interval: "12s"
+        - name: mev-relay-1
+          type: "beacon_node"
+          config:
+            address: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.mev-relay-1.fusaka-devnet-ssl-prysm-7.yolkie.xyz
             polling_interval: "12s"
         - name: prysm-geth-full-1
           type: "beacon_node"
