@@ -1,0 +1,134 @@
+# Ansible managed. Don't change this file manually. Template info: /vendor/collections/ansible_collections/ethpandaops/general/roles/generate_kubernetes_config/templates/assertoor.yaml.j2
+
+assertoor:
+  fullnameOverride: assertoor
+
+  image:
+    repository: docker.ethquokkaops.io/dh/ethpandaops/assertoor
+    tag: master-latest
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+
+  ingress:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  ingressAdmin:
+    enabled: true
+    className: ingress-nginx-public
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    hosts:
+      - host: assertoor-admin.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+
+  persistence:
+    enabled: true
+
+  endpoints:
+    - name:  bootnode-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.bootnode-1.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-1.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-1.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-10
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-10.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-10.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-11
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-11.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-11.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-12
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-12.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-12.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-2.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-2.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-3.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-3.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-4.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-4.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-5
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-5.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-5.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-6
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-6.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-6.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-7
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-7.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-7.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-8
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-8.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-8.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-full-9
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-full-9.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-9.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-super-1
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-1.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-super-2
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-2.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-2.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-super-3
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-3.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-3.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+    - name:  prysm-geth-super-4
+      executionUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@rpc.prysm-geth-super-4.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+      consensusUrl: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-super-4.fusaka-devnet-ssl-part-msg-2.yolkie.xyz
+
+  validatorNamesInventory: https://config.fusaka-devnet-ssl-part-msg-2.yolkie.xyz/api/v1/nodes/validator-ranges
+  globalVariables:
+    walletPrivkey: "<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.assertoor_private_key}>"
+    clientPairNames:
+      - bootnode-1
+      - prysm-geth-full-1
+      - prysm-geth-full-10
+      - prysm-geth-full-11
+      - prysm-geth-full-12
+      - prysm-geth-full-2
+      - prysm-geth-full-3
+      - prysm-geth-full-4
+      - prysm-geth-full-5
+      - prysm-geth-full-6
+      - prysm-geth-full-7
+      - prysm-geth-full-8
+      - prysm-geth-full-9
+      - prysm-geth-super-1
+      - prysm-geth-super-2
+      - prysm-geth-super-3
+      - prysm-geth-super-4
+    validatorPairNames:
+      - prysm-geth-full-1
+      - prysm-geth-full-10
+      - prysm-geth-full-11
+      - prysm-geth-full-12
+      - prysm-geth-full-2
+      - prysm-geth-full-3
+      - prysm-geth-full-4
+      - prysm-geth-full-5
+      - prysm-geth-full-6
+      - prysm-geth-full-7
+      - prysm-geth-full-8
+      - prysm-geth-full-9
+      - prysm-geth-super-2
+      - prysm-geth-super-3
+      - prysm-geth-super-4
+
+  assertoorTests: []
