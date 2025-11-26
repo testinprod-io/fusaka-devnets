@@ -68,26 +68,26 @@
         "baseFeeUpdateFraction": "0x4c6964"
       },
       {
-        "timestamp": "0x69261cbd",
+        "timestamp": "0x69269e7b",
         "target": 72,
         "max": 72,
         "baseFeeUpdateFraction": "0x2634b21"
       },
       {
-        "timestamp": "0x69261cbd",
+        "timestamp": "0x69269ffb",
         "target": 128,
         "max": 128,
         "baseFeeUpdateFraction": "0x43ebe73"
       }
     ],
-    "eip7594TransitionTimestamp": "0x69261b3d",
-    "eip7823TransitionTimestamp": "0x69261b3d",
-    "eip7825TransitionTimestamp": "0x69261b3d",
-    "eip7883TransitionTimestamp": "0x69261b3d",
-    "eip7918TransitionTimestamp": "0x69261b3d",
-    "eip7934TransitionTimestamp": "0x69261b3d",
-    "eip7939TransitionTimestamp": "0x69261b3d",
-    "eip7951TransitionTimestamp": "0x69261b3d"
+    "eip7594TransitionTimestamp": "0x69269cfb",
+    "eip7823TransitionTimestamp": "0x69269cfb",
+    "eip7825TransitionTimestamp": "0x69269cfb",
+    "eip7883TransitionTimestamp": "0x69269cfb",
+    "eip7918TransitionTimestamp": "0x69269cfb",
+    "eip7934TransitionTimestamp": "0x69269cfb",
+    "eip7939TransitionTimestamp": "0x69269cfb",
+    "eip7951TransitionTimestamp": "0x69269cfb"
   },
   "genesis": {
     "seal": {
@@ -98,7 +98,7 @@
     },
     "difficulty": "0x0",
     "author": "0x0000000000000000000000000000000000000000",
-    "timestamp": "0x69260e05",
+    "timestamp": "0x69268fc3",
     "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
     "extraData": "",
     "gasLimit": "0x2aea540"
