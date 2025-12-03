@@ -1,0 +1,410 @@
+bootstrap_default_user_authorized_keys_github_team_el:
+  - avalonche
+  - Wazzymandias
+  - bharath-123
+  - michaelsproul
+  - ZanCorDX
+  - AgeManning
+  - ethdreamer
+  - paulhauner
+  - pawanjay176
+  - michaelsproul
+  - antondlr
+  - realbigsean
+  - jimmygchen
+  - dapplion
+  - dknopik
+
+# Use the same JWT path as reth for beacon-execution communication
+lighthouse_auth_jwt_path: /data/execution-auth.jwt
+
+# Disable xatu_sentry for mev-relay-1 to avoid env=None issues
+ethereum_node_xatu_sentry_enabled: false
+
+mev_relay_cleanup_all: false
+
+# Override PostgreSQL image to use a working version
+mev_relay_db_container_image: postgres:15-alpine
+# Override Redis image to use official redis:7-alpine
+mev_relay_redis_container_image: redis:7-alpine
+
+# Redis configuration to disable persistence for devnet
+mev_relay_redis_container_command:
+  - redis-server
+  - --save
+  - ""
+  - --appendonly
+  - "no"
+  - --stop-writes-on-bgsave-error
+  - "no"
+  - --maxmemory-policy
+  - "allkeys-lru"
+
+# PostgreSQL environment variables
+mev_relay_db_container_env:
+  POSTGRES_PASSWORD: "postgres"
+  POSTGRES_USER: "postgres"
+  POSTGRES_DB: "boostrelay"
+  POSTGRES_INITDB_ARGS: "--auth-host=trust --auth-local=trust"
+  PGDATA: "/var/lib/postgresql/data/pgdata"
+
+# Use a named volume instead of bind mount to avoid permission issues
+mev_relay_db_container_volumes:
+  - "mev_relay_postgres_data:/var/lib/postgresql/data"
+
+# Pre-tasks to clean up and create fresh volumes
+mev_relay_pre_tasks:
+  - name: Remove existing PostgreSQL containers and volumes
+    shell: |
+      docker stop mev-relay-database 2>/dev/null || true
+      docker rm mev-relay-database 2>/dev/null || true
+      docker volume rm mev_relay_postgres_data 2>/dev/null || true
+    ignore_errors: true
+  
+  - name: Create fresh PostgreSQL volume
+    shell: docker volume create mev_relay_postgres_data
+    ignore_errors: true
+
+mev_relay_user: mev_relay
+mev_relay_datadir: "/data/mev_relay"
+mev_relay_docker_network_name: shared
+mev_relay_docker_networks:
+  - name: "{{ mev_relay_docker_network_name }}"
+
+beacon_endpoint: http://beacon:5052
+mev_builder_json_api_port: 8645
+
+gen_validators_root: "{{ lookup('file', eth_testnet_config_local_dir_src + 'genesis_validators_root.txt') }}"
+
+# ------------------------------------------------------------------
+# mev-relay-housekeeper
+mev_relay_housekeeper_enabled: true
+mev_relay_housekeeper_datadir: "{{ mev_relay_datadir }}/mev-relay-housekeeper"
+mev_relay_housekeeper_container_name: mev-relay-housekeeper
+mev_relay_housekeeper_container_image: "{{ default_tooling_images.mev_relay }}"
+mev_relay_housekeeper_container_env:
+  GENESIS_FORK_VERSION=0x10{{ ethereum_genesis_fork_version_suffix }}
+  GENESIS_VALIDATORS_ROOT={{ gen_validators_root }}
+  BELLATRIX_FORK_VERSION=0x30{{ ethereum_genesis_fork_version_suffix }}
+  CAPELLA_FORK_VERSION=0x40{{ ethereum_genesis_fork_version_suffix }}
+  DENEB_FORK_VERSION=0x50{{ ethereum_genesis_fork_version_suffix }}
+  ELECTRA_FORK_VERSION=0x60{{ ethereum_genesis_fork_version_suffix }}
+  FULU_FORK_VERSION=0x70{{ ethereum_genesis_fork_version_suffix }}
+  DB_TABLE_PREFIX=custom
+  LOG_LEVEL=debug
+
+mev_relay_housekeeper_container_pull: true
+mev_relay_housekeeper_container_command_extra_args:
+    - --network=custom
+    - --beacon-uris={{ beacon_endpoint }}
+    - --redis-uri=mev-relay-redis:6379
+    - --db=postgres://postgres:postgres@mev-relay-database:5432/boostrelay?sslmode=disable
+
+# ------------------------------------------------------------------
+# mev-relay-api
+mev_relay_api_enabled: true
+mev_relay_api_datadir: "{{ mev_relay_datadir }}/mev-relay-api"
+mev_relay_api_container_name: mev-relay-api
+mev_relay_api_container_image: "{{ default_tooling_images.mev_relay }}"
+mev_relay_api_container_env:
+  GENESIS_FORK_VERSION=0x10{{ ethereum_genesis_fork_version_suffix }}
+  GENESIS_VALIDATORS_ROOT={{ gen_validators_root }}
+  BELLATRIX_FORK_VERSION=0x30{{ ethereum_genesis_fork_version_suffix }}
+  CAPELLA_FORK_VERSION=0x40{{ ethereum_genesis_fork_version_suffix }}
+  DENEB_FORK_VERSION=0x50{{ ethereum_genesis_fork_version_suffix }}
+  ELECTRA_FORK_VERSION=0x60{{ ethereum_genesis_fork_version_suffix }}
+  FULU_FORK_VERSION=0x70{{ ethereum_genesis_fork_version_suffix }}
+  DB_TABLE_PREFIX=custom
+  LOG_LEVEL=debug
+  DISABLE_PAYLOAD_DATABASE_STORAGE=1
+  ENABLE_BUILDER_CANCELLATIONS=1
+  BLOCKSIM_MAX_CONCURRENT=0
+  API_TIMEOUT_READ_MS=10000
+  API_MAX_REQUEST_SIZE=52428800
+mev_relay_api_container_pull: true
+mev_relay_api_container_networks: "{{ mev_relay_docker_networks }}"
+mev_relay_api_container_ports:
+  - "0.0.0.0:{{ mev_relay_api_listening_port }}:{{ mev_relay_api_listening_port }}"
+mev_relay_api_container_command_extra_args:
+  - --network=custom
+  - --beacon-uris={{ beacon_endpoint }}
+  - --debug
+  - --redis-uri=mev-relay-redis:6379
+  - --db=postgres://postgres:postgres@mev-relay-database:5432/boostrelay?sslmode=disable
+  - --secret-key=0x607a11b45a7219cc61a3d9c5fd08c7eebd602a6a19a977f8d3771d5711a550f2
+  - --listen-addr=0.0.0.0:9062
+  - --blocksim=http://execution:8545
+# ------------------------------------------------------------------
+# mev-relay-website
+mev_relay_website_enabled: true
+mev_relay_website_datadir: "{{ mev_relay_datadir }}/mev-relay-website"
+mev_relay_website_container_name: mev-relay-website
+mev_relay_website_container_image: "{{ default_tooling_images.mev_relay }}"
+mev_relay_website_container_env:
+  GENESIS_FORK_VERSION=0x10{{ ethereum_genesis_fork_version_suffix }}
+  GENESIS_VALIDATORS_ROOT={{ gen_validators_root }}
+  BELLATRIX_FORK_VERSION=0x30{{ ethereum_genesis_fork_version_suffix }}
+  CAPELLA_FORK_VERSION=0x40{{ ethereum_genesis_fork_version_suffix }}
+  DENEB_FORK_VERSION=0x50{{ ethereum_genesis_fork_version_suffix }}
+  ELECTRA_FORK_VERSION=0x60{{ ethereum_genesis_fork_version_suffix }}
+  FULU_FORK_VERSION=0x70{{ ethereum_genesis_fork_version_suffix }}
+  DB_TABLE_PREFIX=custom
+  LOG_LEVEL=debug
+  LINK_DATA_API=http://mev-relay-1.{{ network_server_subdomain }}:9062
+  RELAY_URL=http://0xa55c1285d84ba83a5ad26420cd5ad3091e49c55a813eee651cd467db38a8c8e63192f47955e9376f6b42f6d190571cb5@mev-relay-1.{{ network_server_subdomain }}:9062
+mev_relay_website_container_ports:
+  - "9060:9060"
+mev_relay_website_container_pull: true
+mev_relay_website_container_networks: "{{ mev_relay_docker_networks }}"
+mev_relay_website_container_command_extra_args:
+  - --network=custom
+  - --redis-uri=mev-relay-redis:6379
+  - --db=postgres://postgres:postgres@mev-relay-database:5432/boostrelay?sslmode=disable
+  - --show-config-details
+  - --listen-addr=0.0.0.0:9060
+  - https://0xa55c1285d84ba83a5ad26420cd5ad3091e49c55a813eee651cd467db38a8c8e63192f47955e9376f6b42f6d190571cb5@mev-relay-api.{{ network_server_subdomain }}:9062
+
+
+
+# role: ethpandaops.general.ethereum_node
+ethereum_node_cl: lighthouse
+ethereum_node_mev_boost_enabled: false
+lighthouse_checkpoint_sync_enabled: true
+
+# role: ethpandaops.general.lighthouse
+lighthouse_container_name: beacon
+lighthouse_container_image: "{{ default_ethereum_client_images.lighthouse }}"
+lighthouse_container_env:
+  VIRTUAL_HOST: "{{ ethereum_node_beacon_hostname }}"
+  VIRTUAL_PORT: "{{ ethereum_node_cl_ports_http_beacon | string }}"
+  LETSENCRYPT_HOST: "{{ ethereum_node_beacon_hostname }}"
+lighthouse_container_networks: "{{ mev_relay_docker_networks }}"
+lighthouse_container_volumes:
+  - "{{ lighthouse_datadir }}:/data"
+  - "{{ lighthouse_auth_jwt_path }}:/execution-auth.jwt:ro"
+  - "{{ eth_testnet_config_dir }}:/network-config:ro"
+lighthouse_container_command_extra_args:
+  - --testnet-dir=/network-config
+  - --boot-nodes={{ ethereum_cl_bootnodes | join(',') }}
+  #- --target-peers=50
+  # Prepare payloads ahead of time for rbuilder
+  - --always-prepare-payload
+  - --prepare-payload-lookahead=8000
+  - --suggested-fee-recipient={{ ethereum_node_cl_validator_fee_recipient }}
+  - --malicious-withhold-count=64
+  - --debug-level=debug
+  - --disable-inbound-rate-limiter
+  # Configure self-limiter to allow larger data column sidecar batches for faster propagation
+  # Format: protocol:tokens/time_in_seconds (separate multiple with ';')
+  # Increase data_column_sidecars_by_range to prevent rate limiting delays (1.5-2.3s) when
+  # peers request missing columns via range requests after missing gossip messages.
+  # Even though gossip publishes columns immediately, peers that miss gossip need range requests.
+  - --self-limiter-protocols=data_column_sidecars_by_range:999999/1
+  # Configure self-limiter to allow larger blob sidecar batches
+  # Format: protocol:tokens/time_in_seconds (separate multiple with ';')
+  # Increase blob_sidecars_by_range quotas to prevent "batch that will never fit" errors
+  # This allows faster blob propagation to prevent orphaned blocks
+  #- --self-limiter-protocols=blob_sidecars_by_range:10000/1
+lighthouse_validator_container_volumes:
+  - "{{ lighthouse_validator_datadir }}:/validator-data"
+  - "{{ eth_testnet_config_dir }}:/network-config:ro"
+lighthouse_validator_container_command_extra_args:
+  - --testnet-dir=/network-config
+  - --graffiti={{ ansible_hostname }}
+lighthouse_validator_datadir: /data/lighthouse-validator
+lighthouse_container_pull: true
+
+ethereum_el_bootnodes:
+  - "{{ hostvars['bootnode-1']['ethereum_node_fact_el_enode'] }}"
+  #- "enode://e14c849ccf816794e5a2565bf6f925ee085ea7d0e31b0f51ac5a62a3706d13b65679ae74c5dca2ed907cb3c5f28da4dcdf693d9b524dee12a56657ee324ab4ba@137.184.153.78:30303"
+  #- "enode://ae5ee379ec8b0a43160beb776fc84e3d4a8545c59c35833a8104649a62d642b4aed41ebd260906d07d3d5a09a4a828efeaf0f96925f0dff5eef851666995fcb4@142.93.128.5:30303"
+  #- "enode://41f501848f9b7629683f3f7c653823cd3fc8cf3a44b8fb228e5456d849f98a305897250b9533e872e9224b5fd260693763a27eb5cd9b27b003cd80067ec400a1@64.226.68.219:30303"
+  #- "enode://e3b8e8ba843fdc9e60089fc698f30a1242a5d8dc08824b4d32019aaee8eb4bda9c214c806686e8fb056a691408ab819fef220f5929db940077f7b6e3983ed4ab@167.99.39.48:30303"
+  #- "enode://183d60360e7b16f01f12ccdd9c666cfad186f268ad907b546f94e33b63d46e6be09d7a45349f9520439167f35741e525861c0703aceeab79697f8bfa9e219769@209.38.18.99:30303"
+
+ethereum_cl_bootnodes:
+  - "{{ hostvars['bootnode-1']['cl_bootnode_fact_enr'] }}"
+  - "{{ hostvars['bootnode-1']['ethereum_node_fact_cl_enr'] }}"
+  #- "enr:-Nm4QJSXcLFlLiGEHs_k4OCUYtZdHBm8cte-w9Y_ThZc8CEYYMZud1GTKVec2mE_t3nw2v0Iu0kPI3dnBvDATzUpJAOGAZooA35Mh2F0dG5ldHOIAAAAAAAAAAaDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhIm4mU6DbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhAk330_HmXcl1bOMw8OR_9C2TArOZXUu2Ar3_ZZAqNZFbiHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QMbxlNTheXhSaitbbUvKTfxc16VYIFTujg8e-PQkAKzGKHYN4_STuqnMCm7Moq90JyPM4Zf2ZjKbl0E7BUfEOyyGAZooA38Th2F0dG5ldHOIAAAAAAAYAACDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhI_GlcODbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhAp8JCKQkyT6_vJYcAkuabQTlJAMphKReDL1l_ZSsMkm3iHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QOC938KcMBhwoz9Ufq_0aXqN_bRx3lR5f17ok1MQuyfFRpbjLqq5cVpXqdPbgg-N0jXguhrc0IvWRxdfiaVAjCaGAZooA4HGh2F0dG5ldHOIAAADAAAAAACDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhI_GIl6DbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhA62h3onYO5_MXVQ4P1g0adsivDdHE5TPolIMGU_Pn3KGiHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QHQ3f-v-pEprrMRBRw5RWf_K0xJDHvWkt2RrMq6P98SnSrHKFIp-IRQlXTbt26K6YvCYM3DzLI283zkicTSs2WyGAZooA33lh2F0dG5ldHOIAAAAAAAAAAyDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhJO2ilSDbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhAx37mhgUcP-0VHIPTLlKK9oaxpPEvRtB3IhcWQmrrQsCiHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QHQ3f-v-pEprrMRBRw5RWf_K0xJDHvWkt2RrMq6P98SnSrHKFIp-IRQlXTbt26K6YvCYM3DzLI283zkicTSs2WyGAZooA33lh2F0dG5ldHOIAAAAAAAAAAyDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhJO2ilSDbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhAx37mhgUcP-0VHIPTLlKK9oaxpPEvRtB3IhcWQmrrQsCiHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QLPBXlEvVVKFqNxvA_fdZobGGnk6-IJONhLxCDOZfd1CHcEjGYl1gIL20qU_KBSFYlCEfhQzKdo23yGUxXwlS-6GAZooA42Kh2F0dG5ldHOIAACAAQAAAACDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhNEmEmODbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhA5t7Bwl14sj7dteEvnXnSRUSKGjhWjTLzartz1gi5xH2iHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QFmeGR5cxGwQWRFgn-26MCptUFq0N5g0QtE-PKcoIGIxU1LZ5TvvkJ-FI45kYCVyrs2tUjfSwboMYFopZaW6xHqGAZooA4nqh2F0dG5ldHOIgAEAAAAAAACDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhIs7IxODbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhA6xz2hhgGLbl8AmdwTbrP-K2iizFeVeprSR6TGLIa34riHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QFv5578-gVyQW6ViAfg6qdJ_N3B7yQxshDTewT8s_8vPXmF5sABsbtmh49XJ2XIHT1fVBd586yYlguAAuWciFFKGAZooA3ljh2F0dG5ldHOIAAAAgAEAAACDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhEDiRNuDbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhAhv0aixA_77aP9WHG4lVhjoa3-B0C7gaEEnD693VxoN4iHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+  #- "enr:-Nm4QHIhpGa6dIBJ-SUrwRjLW_qsce9l9mrPZBl766HgR_5XT4w_gMhLHwtd7Dj5OzJUboUswDoMKPh0F_rZYbudpO-GAZooA3rOh2F0dG5ldHOIAAAAgAEAAACDY2djgYCEZXRoMpDj_rNccEhYIP__________gmlkgnY0gmlwhM69GnmDbmZkhAAAAACEcXVpY4IyyIlzZWNwMjU2azGhAwcC9arXUzs3RfV4TAaR9YKrwLsOUna9lmeo67eR5Cs2iHN5bmNuZXRzD4N0Y3CCIyiDdWRwgiMo"
+# role: ethpandaops.general.ethereum_node
+ethereum_node_el: reth
+reth_rbuilder_enabled: true
+
+# reth configuration
+reth_datadir: /data/reth
+reth_auth_jwt_path: /data/execution-auth.jwt
+
+# role: ethpandaops.general.reth
+reth_container_name: execution
+reth_container_env:
+  VIRTUAL_HOST: "{{ ethereum_node_rcp_hostname }}"
+  VIRTUAL_PORT: "{{ ethereum_node_el_ports_http_rpc | string }}"
+  LETSENCRYPT_HOST: "{{ ethereum_node_rcp_hostname }}"
+  BUILDER_TX_SIGNING_KEY: "{{ secret_mev_builder_tx_signing_key | default(secret_mev_signingkey) }}"
+  COINBASE_SECRET_KEY: "{{ secret_mev_coinbase_secret_key | default(secret_mev_signingkey) }}"
+  RELAY_SECRET_KEY: "{{ secret_mev_relay_secret_key | default(secret_mev_signingkey) }}"
+  #OPTIMISTIC_RELAY_SECRET_KEY: Not supported in reth 1.8.3-dev
+
+reth_container_volumes:
+  - "{{ reth_datadir }}:/data"
+  - "{{ reth_auth_jwt_path }}:/execution-auth.jwt:ro"
+  - "{{ eth_testnet_config_dir }}:/network-config:ro"
+
+
+reth_container_ports_ipv4:
+  - "127.0.0.1:{{ reth_ports_http_rpc }}:{{ reth_ports_http_rpc }}"
+  - "127.0.0.1:{{ reth_ports_engine }}:{{ reth_ports_engine }}"
+  - "127.0.0.1:{{ reth_ports_metrics }}:{{ reth_ports_metrics }}"
+  - "127.0.0.1:{{ reth_ports_ws_rpc }}:{{ reth_ports_ws_rpc }}"
+  - "0.0.0.0:{{ reth_ports_p2p }}:{{ reth_ports_p2p }}"
+  - "0.0.0.0:{{ reth_ports_p2p }}:{{ reth_ports_p2p }}/udp"
+  - "0.0.0.0:8645:8645"
+
+reth_container_command_extra_args:
+  - --chain=/network-config/genesis.json
+  - --bootnodes={{ ethereum_el_bootnodes | join(',') }}
+  #- --ethstats={{ inventory_hostname }}:{{ ethstats_secret }}@{{ ethstats_url }}
+  - --http.api=trace,rpc,eth,net,debug,web3,admin,flashbots,txpool
+  - --ws.api=trace,rpc,eth,net,debug,web3,admin,flashbots,txpool
+  - --ws.origins=*
+  - --builder.gaslimit=60000000
+  - --engine.persistence-threshold=0
+  - --engine.memory-block-buffer-target=0
+  - --rpc.eth-proof-window=3
+  - --txpool.no-local-transactions-propagation
+  - --rpc-max-request-size=52428800
+reth_container_pull: true
+
+reth_container_image: "{{ default_tooling_images.mev_builder }}"
+ethereum_node_json_rpc_snooper_engine_enabled: false
+
+reth_rbuilder_config: |
+  log_json = true
+  log_level = "debug,rbuilder=debug"
+  redacted_telemetry_server_port = 6061
+  redacted_telemetry_server_ip = "0.0.0.0"
+  full_telemetry_server_port = 6062
+  full_telemetry_server_ip = "0.0.0.0"
+
+  chain = "/network-config/genesis.json"
+  reth_datadir = "/data/reth"
+
+  coinbase_secret_key = "env:COINBASE_SECRET_KEY"
+  relay_secret_key = "env:RELAY_SECRET_KEY"
+  # optimistic_relay_secret_key = "env:OPTIMISTIC_RELAY_SECRET_KEY"  # Not supported in reth 1.8.3-dev
+
+  cl_node_url = ["http://beacon:5052"]
+  jsonrpc_server_port = 8645
+  jsonrpc_server_ip = "0.0.0.0"
+  el_node_ipc_path = "/tmp/reth.ipc"
+  extra_data = "🐼⚡🤖⚡☀️"
+
+  ignore_cancellable_orders = true
+
+  genesis_fork_version = "0x10{{ ethereum_genesis_fork_version_suffix }}"
+
+  sbundle_mergeable_signers = []
+  live_builders = ["mp-ordering"]
+
+  enabled_relays = ["flashbots"]
+
+  root_hash_use_sparse_trie=true
+  root_hash_compare_sparse_trie=false
+
+  subsidy = "1"
+  simulation_threads=8
+  #time_to_keep_mempool_txs_secs=100000
+
+  [[relays]]
+  name = "flashbots"
+  url = "http://0xa55c1285d84ba83a5ad26420cd5ad3091e49c55a813eee651cd467db38a8c8e63192f47955e9376f6b42f6d190571cb5@mev-relay-api:9062"
+  priority = 0
+  use_ssz_for_submit = true
+  use_gzip_for_submit = true
+
+  [[builders]]
+  name = "mp-ordering"
+  algo = "ordering-builder"
+  discard_txs = true
+  sorting = "max-profit"
+  failed_order_retries = 1
+  drop_failed_orders = true
+  build_duration_deadline_ms = 3000
+
+ethereum_node_docker_watchtower_containers_list:
+  - execution
+  - beacon
+  - validator
+  - xatu-sentry
+  - mev-relay-housekeeper
+  - mev-relay-api
+  - mev-relay-website
+
+# Prometheus configuration for mev-relay
+prometheus_remote_push_url: "{{ secret_prometheus_remote_write.endpoint }}"
+prometheus_remote_write_username: "{{ secret_prometheus_remote_write.username }}"
+prometheus_remote_write_password: "{{ secret_prometheus_remote_write.password }}"
+prometheus_config: |
+  global:
+    scrape_interval: 30s
+    evaluation_interval: 30s
+    scrape_timeout: 10s
+    external_labels:
+      instance: "{{ ethereum_network_name }}-{{ inventory_hostname }}"
+      ip_address: "{{ ansible_host }}"
+      network: "{{ ethereum_network_name }}"
+      testnet: "{{ ethereum_network_name }}"
+      execution_client: "{{ ethereum_node_el }}"
+      consensus_client: "{{ ethereum_node_cl }}"
+      supernode: "{{ ethereum_node_cl_supernode_enabled | bool }}"
+  remote_write:
+    - queue_config:
+        batch_send_deadline: 5s
+        max_backoff: 500ms
+        max_samples_per_send: 500
+        min_backoff: 50ms
+        max_shards: 100
+      url: {{ prometheus_remote_push_url }}
+      remote_timeout: 10s
+      basic_auth:
+        username: {{ prometheus_remote_write_username }}
+        password: {{ prometheus_remote_write_password }}
+  scrape_configs:
+    - job_name: "prometheus"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["localhost:9090"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+    - job_name: "node"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["172.17.0.1:9100"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+    - job_name: "exporter"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["ethereum-metrics-exporter:9090"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+    - job_name: "mev_relay_housekeeper"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["mev-relay-housekeeper:9090"]
+          labels:
+            instance: "{{ inventory_hostname }}"
+    - job_name: "mev_relay_api"
+      metrics_path: "/metrics"
+      static_configs:
+        - targets: ["mev-relay-api:9090"]
+          labels:
+            instance: "{{ inventory_hostname }}"
