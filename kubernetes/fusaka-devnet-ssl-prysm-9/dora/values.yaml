@@ -47,8 +47,6 @@ dora:
   postgresql:
     name: "dora-postgresql"
     fullnameOverride: "dora-postgresql"
-    image:
-      repository: bitnamilegacy/postgresql
 
   mevRelays:
     - index: 0
@@ -70,10 +68,6 @@ dora:
     priority: 1
   - url: https://bn.bootnode-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
     name: bootnode-1
-    authGroup: pandaops
-    priority: -1
-  - url: https://bn.mev-relay-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
-    name: mev-relay-1
     authGroup: pandaops
     priority: -1
   - url: https://bn.prysm-geth-full-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
@@ -597,11 +591,6 @@ dora:
     priority: 1
   - url: https://rpc.bootnode-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
     name: bootnode-1
-    authGroup: pandaops
-    priority: -1
-    archive: false
-  - url: https://rpc.mev-relay-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
-    name: mev-relay-1
     authGroup: pandaops
     priority: -1
     archive: false

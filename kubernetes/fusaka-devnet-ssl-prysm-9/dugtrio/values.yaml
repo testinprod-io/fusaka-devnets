@@ -33,8 +33,6 @@ dugtrio:
     name: rpc-prysm-geth-001
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.bootnode-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
     name: bootnode-1
-  - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.mev-relay-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
-    name: mev-relay-1
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-1.fusaka-devnet-ssl-prysm-9.yolkie.xyz
     name: prysm-geth-full-1
   - url: https://<path:/secrets/services/services.enc.yaml#ethereum | jsonPath {.testnets.none-devnets.node_ingress.combined}>@bn.prysm-geth-full-10.fusaka-devnet-ssl-prysm-9.yolkie.xyz

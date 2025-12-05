@@ -26,7 +26,7 @@ xatu-mimicry:
       config:
         retryInterval: 60s
         nodeRecords:
-          - enode://5714b374f30a401f3825ed3420a048b5ceb3bf2a3b9fb94bb925d81cd00a3f443df4624fa8dd102417a0efa72d869b5d72d3f599ef01280580903a052cc0f640@134.122.52.121:30303?discport=30303
+          - enode://eac97cb5cdecdfd54a8eb6febbdbfb44bd7e6b0453b673d847754ab07fcced7643e4633242f2608b3222f70105b9d13c334eb034c9f9805919b1c0dd82adafc1@134.209.199.199:30303?discport=30303
     outputs:
     - name: grpc
       type: xatu
